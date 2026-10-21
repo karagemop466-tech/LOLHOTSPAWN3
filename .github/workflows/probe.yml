@@ -2,27 +2,24 @@ name: probe
 on:
   workflow_dispatch:
   push:
-    branches: ["arena/**"]
-    paths: [".github/workflows/probe.yml", "scripts/**"]
+    branches: ["arena/**", "session-*/**"]
+    paths: ["scripts/probe.mjs"]
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: probe hotspawn
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: run probe
+        run: node scripts/probe.mjs
+      - name: commit output
         run: |
-          node -e '
-          const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
-          (async () => {
-            const r = await fetch("https://play.hotspawn.com/lol-pickems", { headers: { "user-agent": UA, "accept": "text/html" } });
-            const t = await r.text();
-            console.log("STATUS", r.status, "LEN", t.length);
-            console.log("HEADERS", JSON.stringify([...r.headers].slice(0,40)));
-            const idx = t.indexOf("View Match");
-            console.log("IDX_VIEW_MATCH", idx);
-            console.log("---- WINDOW AROUND FIRST MATCH ----");
-            console.log(t.slice(Math.max(0, idx - 3000), idx + 1500));
-            console.log("---- SCRIPT TAGS ----");
-            for (const m of t.matchAll(/<script[^>]*>/g)) console.log(m[0]);
-          })().catch(e => { console.error("ERR", e); process.exit(1); });
-          '
+          git config user.name "hotspawn-bot"
+          git config user.email "hotspawn-bot@users.noreply.github.com"
+          git add -A _probe || true
+          git commit -m "probe: capture output [skip ci]" || echo "no changes"
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}"
