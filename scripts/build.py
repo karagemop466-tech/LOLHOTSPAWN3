@@ -93,4 +93,8 @@ flag='''<h1>🚩 Flagged for Review</h1><p>Irregularities don't block publishing
 <tr><td>F7</td><td>Odds timestamp</td><td>All lines captured '''+NOW+'''; books move lines. Each card links its source for a pre-lock re-check.</td></tr></table><p><a class="btn" href="index.html">← Picks</a></p>'''
 open(f"{ROOT}/docs/flagged.html","w").write(page("Flagged for Review",flag))
 open(f"{ROOT}/docs/.nojekyll","w").write("")
+open(f"{ROOT}/.nojekyll","w").write("")
+import shutil
+for f in ["index.html","unresolved.html","method.html","flagged.html"]:
+    shutil.copy(f"{ROOT}/docs/{f}", f"{ROOT}/{f}")  # Pages serves repo root on this repo
 print(f"Built {len(MATCHES)} matches: {len(feat)} featured, {len(unres)} unresolved")
