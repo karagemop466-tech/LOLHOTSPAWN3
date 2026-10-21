@@ -84,18 +84,37 @@ async function collectHotspawn() {
 /* ------------------------------------------------------------------ *
  * 2. Hotspawn permalinks (authoritative match URLs)
  * ------------------------------------------------------------------ */
-async function collectPermalinks(ids) {
+async function collectPermalinks(ids, diag) {
   const out = {};
-  const batches = [];
-  for (let i = 0; i < ids.length; i += 40) batches.push(ids.slice(i, i + 40));
-  for (const b of batches) {
+  async function tryBatch(batch) {
     const r = await getJson(
-      `https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=${b.join(",")}`,
-      { accept: "application/json" }
+      `https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=${batch.join(",")}`,
+      { accept: "application/json" },
+      2
     );
-    const links = r.body?.permalinks || {};
-    Object.assign(out, links);
-    await sleep(250);
+    const links = r.body?.permalinks;
+    if (links && typeof links === "object") {
+      Object.assign(out, links);
+      return true;
+    }
+    if (diag.firstFailure === undefined) {
+      diag.firstFailure = { status: r.status, bodyHead: JSON.stringify(r.body ?? r.raw ?? "").slice(0, 400), batch: batch.slice(0, 3) };
+    }
+    return false;
+  }
+  for (let i = 0; i < ids.length; i += 40) {
+    const batch = ids.slice(i, i + 40);
+    const ok = await tryBatch(batch);
+    if (!ok) {
+      // fall back to small batches, then singles
+      for (let j = 0; j < batch.length; j += 5) {
+        const small = batch.slice(j, j + 5);
+        const ok2 = await tryBatch(small);
+        if (!ok2) for (const id of small) await tryBatch([id]);
+        await sleep(150);
+      }
+    }
+    await sleep(200);
   }
   return out;
 }
@@ -249,9 +268,11 @@ const ALIASES = [
   [/\blyon\b/g, "lyon"],
   [/\bkarmine corp\b/g, "kc"],
 ];
+const CHAR_MAP = { "ø": "o", "æ": "ae", "å": "a", "ł": "l", "đ": "d", "ð": "d", "þ": "th", "ß": "ss", "ı": "i", "œ": "oe" };
 function normName(s) {
   let x = String(s || "")
     .toLowerCase()
+    .replace(/[øæåłđðþßıœ]/g, (c) => CHAR_MAP[c] || c)
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[’'`]/g, "")
@@ -324,11 +345,13 @@ async function main() {
   const ids = fixtures.map((f) => String(f.id));
 
   let permalinks = {};
+  const plDiag = {};
   try {
-    permalinks = await collectPermalinks(ids);
+    permalinks = await collectPermalinks(ids, plDiag);
   } catch (e) {
     errors.push({ source: "hotspawn-permalinks", error: String(e.message || e) });
   }
+  if (plDiag.firstFailure) errors.push({ source: "hotspawn-permalinks", error: "first failed batch: " + JSON.stringify(plDiag.firstFailure) });
 
   let pinnacle = { leagues: [], matchups: [] };
   try {
