@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-21T20:31:07.163Z",
- "collectionMs": 4429,
+ "generatedAt": "2026-10-21T20:35:45.321Z",
+ "collectionMs": 14108,
  "urlVerification": {
   "cardsParsed": 195,
   "cardsWithMatchLink": 195,
@@ -43,7 +43,7 @@
  },
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-21T20:31:07.163Z",
+  "fetchedAt": "2026-10-21T20:35:45.321Z",
   "fixtures": 264,
   "renderedCards": 195,
   "htmlBytes": 1985584,
@@ -63,14 +63,14 @@
   "pinnacle": {
    "leagues": [
     {
-     "id": 9587,
-     "name": "League of Legends - World Championship",
-     "matchups": 10
-    },
-    {
      "id": 225201,
      "name": "League of Legends - EMEA Masters",
      "matchups": 1
+    },
+    {
+     "id": 9587,
+     "name": "League of Legends - World Championship",
+     "matchups": 10
     }
    ],
    "matchups": 9
@@ -78,10 +78,14 @@
   "thunderpick": {
    "matchups": 9
   },
+  "polymarket": {
+   "matchups": 0,
+   "pagesScanned": 16
+  },
   "checkedSources": [
    {
     "name": "Pinnacle",
-    "detail": "9 LoL matchups with moneyline (League of Legends - World Championship; League of Legends - EMEA Masters)",
+    "detail": "9 LoL matchups with moneyline (League of Legends - EMEA Masters; League of Legends - World Championship)",
     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
    },
    {

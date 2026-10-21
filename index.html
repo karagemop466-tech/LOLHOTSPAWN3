@@ -25,7 +25,7 @@
   <p class="lede">Automated collection from the Hotspawn Pick'ems LoL lobby. Probabilities come from external bookmakers
   (Pinnacle, Thunderpick) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
   listed separately and are <strong>not</strong> given a made-up number.</p>
-  <p class="updated">Last collection: <strong>2026-10-21 20:31 UTC</strong> · refreshes every 6 hours · inventory 264 fixtures / 27 competitions</p>
+  <p class="updated">Last collection: <strong>2026-10-21 20:35 UTC</strong> · refreshes every 6 hours · inventory 264 fixtures / 27 competitions</p>
 </section>
 
 <div class="quick">
@@ -253,7 +253,7 @@
     <p>Collector runs on a <strong>6-hour schedule</strong> (GitHub Actions, <code>scripts/collect.mjs</code>) and can be
     triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle and Thunderpick LoL markets,
     (3) re-maps prices to fixtures by team name + kick-off time, (4) recomputes no-vig probabilities, (5) rebuilds this site.</p>
-    <p class="small">Last run: 2026-10-21 20:31 UTC · collection took 4429 ms ·
+    <p class="small">Last run: 2026-10-21 20:35 UTC · collection took 14108 ms ·
     errors this run: 0 · market rows fetched: 18 ·
     rows attached to a fixture: 18.</p>
     <p class="small">Integrity checks: lobby rendered 195 match cards vs 195 upcoming fixtures in the
@@ -267,7 +267,7 @@
     <a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">Hotspawn Pick'ems LoL lobby</a>, with win probabilities only where an external
     betting market provides a verifiable price. Refreshed every 6 hours by GitHub Actions.</p>
     <p class="small">Data: <a href="data/matches.json">matches.json</a> · <a href="data/matches.csv">matches.csv</a> ·
-    Last collection: 2026-10-21 20:31 UTC ·
+    Last collection: 2026-10-21 20:35 UTC ·
     Sources are linked on every row. Unverified items are listed on the <a href="flagged.html">Flagged</a> page.</p>
   </div>
 </footer>
