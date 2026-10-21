@@ -109,7 +109,7 @@ id,startUtc,status,competition,tier,teamA,teamB,resolution,pick,pickProb,probA,p
 1067675,2026-10-23T20:00:00.000Z,upcoming,Worlds 2026 Main Event,s,Anyone's Legend,Karmine Corp,market,Anyone's Legend,0.6403,0.6403,0.3597,high,Pinnacle,1.500,2.670,
 1067676,2026-10-23T21:00:00.000Z,upcoming,Worlds 2026 Main Event,s,G2 Esports,Dplus KIA,market,Dplus KIA,0.5817,0.4183,0.5817,high,Pinnacle,2.300,1.654,
 1067879,2026-10-23T22:00:00.000Z,upcoming,Worlds 2026 Main Event,s,Team Liquid,CTBC Flying Oyster,market,Team Liquid,0.7083,0.7083,0.2917,high,Pinnacle,1.351,3.280,
-1067678,2026-10-23T23:00:00.000Z,upcoming,Worlds 2026 Main Event,s,LØS,T1,unresolved,,,,,none,,,,
+1067678,2026-10-23T23:00:00.000Z,upcoming,Worlds 2026 Main Event,s,LØS,T1,market,T1,0.8456,0.1544,0.8456,high,Pinnacle,6.160,1.125,
 1067679,2026-10-24T00:00:00.000Z,upcoming,Worlds 2026 Main Event,s,Team Secret Whales,LYON,market,LYON,0.5689,0.4311,0.5689,high,Pinnacle,2.230,1.690,
 1075719,2026-10-24T14:00:00.000Z,upcoming,PRM 3rd Division 26-27 Fall,waiting for information,Berlin 5,AceGaming Hearts,unresolved,,,,,none,,,,
 1081085,2026-10-24T15:00:00.000Z,upcoming,LigaGG CELOL B 2026 Split 2 Playoffs,waiting for information,BaronX,Marere Academy,unresolved,,,,,none,,,,

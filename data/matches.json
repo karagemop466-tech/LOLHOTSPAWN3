@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-21T20:26:07.913Z",
- "collectionMs": 7563,
+ "generatedAt": "2026-10-21T20:27:36.263Z",
+ "collectionMs": 23194,
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-21T20:26:07.913Z",
+  "fetchedAt": "2026-10-21T20:27:36.263Z",
   "fixtures": 264,
   "renderedCards": 195,
   "htmlBytes": 1985584,
@@ -14,9 +14,9 @@
   "total": 264,
   "upcoming": 195,
   "started": 69,
-  "upcomingResolved": 8,
-  "upcomingUnresolved": 187,
-  "upcomingHighConfidence": 7
+  "upcomingResolved": 9,
+  "upcomingUnresolved": 186,
+  "upcomingHighConfidence": 8
  },
  "sources": {
   "pinnacle": {
@@ -108,9 +108,9 @@
    "name": "Worlds 2026 Main Event",
    "total": 8,
    "upcoming": 8,
-   "resolved": 7,
-   "unresolved": 1,
-   "market": 7
+   "resolved": 8,
+   "unresolved": 0,
+   "market": 8
   },
   {
    "name": "Komplettligaen 2026 Autumn",
@@ -273,24 +273,16 @@
    "market": 0
   }
  ],
- "errors": [],
+ "errors": [
+  {
+   "source": "hotspawn-permalinks",
+   "error": "first failed batch: {\"status\":403,\"bodyHead\":\"\\\"<!DOCTYPE html><html lang=\\\\\\\"en-US\\\\\\\"><head><title>Just a moment...</title><meta http-equiv=\\\\\\\"Content-Type\\\\\\\" content=\\\\\\\"text/html; charset=UTF-8\\\\\\\"><meta http-equiv=\\\\\\\"X-UA-Compatible\\\\\\\" content=\\\\\\\"IE=Edge\\\\\\\"><meta nam\\\"\",\"batch\":[\"1053095\",\"1053096\",\"1066214\"]}"
+  }
+ ],
  "mapping": {
   "marketRowsFetched": 18,
-  "marketRowsAttached": 16,
-  "unmatchedMarkets": [
-   {
-    "source": "Pinnacle",
-    "match": "LOS vs T1",
-    "startTime": "2026-10-23T22:00:00Z",
-    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight"
-   },
-   {
-    "source": "Thunderpick",
-    "match": "LOS vs T1",
-    "startTime": "2026-10-23T23:00:00.000+00:00",
-    "sourceUrl": "https://thunderpick.io/match/2849431"
-   }
-  ]
+  "marketRowsAttached": 18,
+  "unmatchedMarkets": []
  },
  "matches": [
   {
@@ -3620,14 +3612,62 @@
    "hotspawnUrl": null,
    "hotspawnPickedA": 0,
    "hotspawnPickedB": 100,
-   "resolution": "unresolved",
-   "probA": null,
-   "probB": null,
-   "basis": null,
-   "confidence": "none",
-   "pick": null,
-   "pickProb": null,
-   "pickSide": null
+   "market": {
+    "source": "Pinnacle",
+    "books": [
+     {
+      "source": "Pinnacle",
+      "matchName": "LOS vs T1",
+      "oddsA": 6.16,
+      "oddsB": 1.125,
+      "probA": 0.15442690459849004,
+      "probB": 0.8455730954015098,
+      "overround": 5.122655122655129,
+      "startTime": "2026-10-23T22:00:00Z",
+      "bestOf": 1,
+      "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight",
+      "apiUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight",
+      "confidence": "sharp",
+      "matchScore": 1,
+      "swapped": false
+     },
+     {
+      "source": "Thunderpick",
+      "matchName": "LOS vs T1",
+      "oddsA": 6.3,
+      "oddsB": 1.08,
+      "probA": 0.14634146341463414,
+      "probB": 0.8536585365853657,
+      "overround": 8.465608465608465,
+      "startTime": "2026-10-23T23:00:00.000+00:00",
+      "bestOf": 1,
+      "sourceUrl": "https://thunderpick.io/match/2849431",
+      "apiUrl": "https://api.bo3.gg/api/v1/matches?filter[matches.id][eq]=130799",
+      "confidence": "retail",
+      "matchScore": 1,
+      "swapped": false
+     }
+    ],
+    "oddsA": 6.16,
+    "oddsB": 1.125,
+    "probA": 0.15442690459849004,
+    "probB": 0.8455730954015098,
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight",
+    "confidence": "sharp",
+    "agreement": {
+     "sameSide": true,
+     "spreadPts": 0.8,
+     "nBooks": 2
+    }
+   },
+   "resolution": "market",
+   "probA": 0.15442690459849004,
+   "probB": 0.8455730954015098,
+   "basis": "Pinnacle moneyline, vig removed (overround 5.12%)",
+   "confidence": "high",
+   "pick": "T1",
+   "pickProb": 0.8455730954015098,
+   "pickSide": "B"
   },
   {
    "id": "1067679",

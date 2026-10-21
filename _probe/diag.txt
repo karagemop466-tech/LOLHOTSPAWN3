@@ -1,12 +1,10 @@
-generatedAt 2026-10-21T20:26:07.913Z collectionMs 7563
-inventory {"source":"https://play.hotspawn.com/lol-pickems","fetchedAt":"2026-10-21T20:26:07.913Z","fixtures":264,"renderedCards":195,"htmlBytes":1985584,"competitions":27,"permalinksResolved":0}
-counts {"total":264,"upcoming":195,"started":69,"upcomingResolved":8,"upcomingUnresolved":187,"upcomingHighConfidence":7}
+generatedAt 2026-10-21T20:27:36.263Z collectionMs 23194
+inventory {"source":"https://play.hotspawn.com/lol-pickems","fetchedAt":"2026-10-21T20:27:36.263Z","fixtures":264,"renderedCards":195,"htmlBytes":1985584,"competitions":27,"permalinksResolved":0}
+counts {"total":264,"upcoming":195,"started":69,"upcomingResolved":9,"upcomingUnresolved":186,"upcomingHighConfidence":8}
 sources [{"id":9587,"name":"League of Legends - World Championship","matchups":10},{"id":225201,"name":"League of Legends - EMEA Masters","matchups":1}] pinnacle matchups 9 thunderpick 9
-errors []
-mapping {"fetched":18,"attached":16}
+errors [{"source":"hotspawn-permalinks","error":"first failed batch: {\"status\":403,\"bodyHead\":\"\\\"<!DOCTYPE html><html lang=\\\\\\\"en-US\\\\\\\"><head><title>Just a moment...</title><meta http-equiv=\\\\\\\"Content-Type\\\\\\\" content=\\\\\\\"text/html; charset=UTF-8\\\\\\\"><meta http-equiv=\\\\\\\"X-UA-Compatible\\\\\\\" content=\\\\\\\"IE=Edge\\\\\\\"><meta nam\\\"\",\"batch\":[\"1053095\",\"1053096\",\"1066214\"]}"}]
+mapping {"fetched":18,"attached":18}
 --- unmatched market rows ---
-   Pinnacle | LOS vs T1 | 2026-10-23T22:00:00Z
-   Thunderpick | LOS vs T1 | 2026-10-23T23:00:00.000+00:00
 --- competitions ---
     65 tot  63 up   0 mkt | PRM 3rd Division 26-27 Fall
     40 tot  40 up   0 mkt | PRM 2nd Division 26-27 Fall
@@ -14,7 +12,7 @@ mapping {"fetched":18,"attached":16}
     26 tot  18 up   0 mkt | RIVALS LEAGUE Season 2
     19 tot  18 up   0 mkt | 4 Nations 2026 Halloween Heist
     12 tot   9 up   0 mkt | Arabian League 2nd Division 2026 Summer
-     8 tot   8 up   7 mkt | Worlds 2026 Main Event
+     8 tot   8 up   8 mkt | Worlds 2026 Main Event
     13 tot   6 up   0 mkt | Komplettligaen 2026 Autumn
      5 tot   4 up   0 mkt | LigaGG CELOL B 2026 Split 2 Playoffs
      7 tot   1 up   0 mkt | Arabian Regional Championship 2026: Lebanon-Libya-Syria-Palestine
@@ -43,6 +41,7 @@ mapping {"fetched":18,"attached":16}
    2026-10-23T20:00 Anyone's Legend vs Karmine Corp | Pinnacle 1.5 2.67 -> 64.0/36.0 | pick Anyone's Legend high | books 2 agree=true spread=1.8
    2026-10-23T21:00 G2 Esports vs Dplus KIA | Pinnacle 2.3 1.65359477124183 -> 41.8/58.2 | pick Dplus KIA high | books 2 agree=true spread=1.1
    2026-10-23T22:00 Team Liquid vs CTBC Flying Oyster | Pinnacle 1.3508771929824561 3.28 -> 70.8/29.2 | pick Team Liquid high | books 2 agree=true spread=0.7
+   2026-10-23T23:00 LØS vs T1 | Pinnacle 6.16 1.125 -> 15.4/84.6 | pick T1 high | books 2 agree=true spread=0.8
    2026-10-24T00:00 Team Secret Whales vs LYON | Pinnacle 2.23 1.6896551724137931 -> 43.1/56.9 | pick LYON high | books 2 agree=true spread=1.3
 --- next 12 upcoming ---
    2026-10-22T12:00 a | EM 2026 Summer Main Event | Galions vs Solary | market | url: MISSING
