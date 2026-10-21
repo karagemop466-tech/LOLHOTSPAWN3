@@ -238,55 +238,77 @@ async function collectThunderpick() {
 
 
 /* ------------------------------------------------------------------ *
- * 5. Polymarket (prediction market) — per-match LoL moneylines
+ * 5. Polymarket (prediction market) — per-match LoL moneylines.
+ *    Gamma has no working category listing for LoL, so we query its
+ *    public search for each fixture that already has a bookmaker line.
  * ------------------------------------------------------------------ */
-async function collectPolymarket() {
+const normLoose = (x) =>
+  String(x || "").toLowerCase().replace(/[øØ]/g, "o").replace(/[æÆ]/g, "ae")
+    .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ").trim();
+
+function teamInText(name, text) {
+  const t = normLoose(text);
+  const parts = normLoose(name).split(" ").filter(Boolean);
+  if (!parts.length) return false;
+  const distinctive = parts.filter((p) => p.length > 2);
+  if (!distinctive.length) return t.includes(parts.join(" "));
+  return distinctive.some((p) => t.includes(p));
+}
+
+async function collectPolymarket(seeds) {
   const base = "https://gamma-api.polymarket.com";
   const rows = [];
-  const seen = new Set();
-  let pagesScanned = 0;
-  for (let offset = 0; offset < 1600; offset += 100) {
-    const r = await getJson(`${base}/events?closed=false&limit=100&offset=${offset}&order=startDate&ascending=true`);
-    const evs = Array.isArray(r.body) ? r.body : [];
-    if (!evs.length) break;
-    pagesScanned++;
+  const tried = new Set();
+  let queries = 0, eventsSeen = 0;
+  for (const seed of seeds) {
+    const key = `${seed.home}|${seed.away}|${seed.startTime}`;
+    if (tried.has(key)) continue;
+    tried.add(key);
+    const q = encodeURIComponent(`${seed.home} ${seed.away}`);
+    const r = await getJson(`${base}/public-search?q=${q}&limit_per_type=6`);
+    queries++;
+    const evs = r.body?.events || [];
+    eventsSeen += evs.length;
     for (const ev of evs) {
       if (!/^LoL:/i.test(ev.title || "")) continue;
-      if (seen.has(String(ev.id))) continue;
-      seen.add(String(ev.id));
+      if (!teamInText(seed.home, ev.title) || !teamInText(seed.away, ev.title)) continue;
       const mks = (ev.markets || []).filter((m) => m && m.active !== false);
-      if (!mks.length) continue;
-      // series moneyline (not the per-game children)
       const ml =
         mks.find((m) => /^moneyline$/i.test((m.groupItemTitle || "").trim())) ||
+        mks.find((m) => String(m.sportsMarketType || "") === "moneyline") ||
         mks.find((m) => !/game\s*\d/i.test(m.question || "") && String(m.sportsMarketType || "") !== "child_moneyline");
       if (!ml) continue;
       let outcomes = [], prices = [];
-      try { outcomes = JSON.parse(ml.outcomes || "[]"); } catch {}
-      try { prices = JSON.parse(ml.outcomePrices || "[]").map(Number); } catch {}
+      try { outcomes = JSON.parse(ml.outcomes || "[]"); } catch { continue; }
+      try { prices = JSON.parse(ml.outcomePrices || "[]").map(Number); } catch { continue; }
       if (outcomes.length !== 2 || prices.length !== 2) continue;
       if (!prices.every((x) => Number.isFinite(x) && x > 0 && x < 1)) continue;
       const sum = prices[0] + prices[1];
+      const homeFirst = teamInText(seed.home, outcomes[0]) && !teamInText(seed.home, outcomes[1]);
+      const probs = homeFirst ? [prices[0], prices[1]] : [prices[1], prices[0]];
+      const decs = homeFirst ? [1 / prices[0], 1 / prices[1]] : [1 / prices[1], 1 / prices[0]];
       rows.push({
         source: "Polymarket",
         league: (ev.title || "").replace(/^LoL:\s*/i, ""),
         matchupId: String(ev.id),
-        startTime: ml.eventStartTime || ml.gameStartTime || ev.startDate,
+        startTime: ev.endDate || seed.startTime,
         bestOf: null,
-        home: outcomes[0],
-        away: outcomes[1],
-        homeDecimal: 1 / prices[0],
-        awayDecimal: 1 / prices[1],
-        probHome: prices[0] / sum,
-        probAway: prices[1] / sum,
+        home: homeFirst ? outcomes[0] : outcomes[1],
+        away: homeFirst ? outcomes[1] : outcomes[0],
+        homeDecimal: decs[0],
+        awayDecimal: decs[1],
+        probHome: probs[0] / sum,
+        probAway: probs[1] / sum,
         overround: (sum - 1) * 100,
         sourceUrl: `https://polymarket.com/event/${ev.slug}`,
         apiUrl: `${base}/events?slug=${ev.slug}`,
       });
+      break;
     }
-    await sleep(150);
+    await sleep(220);
   }
-  return { rows, pagesScanned };
+  return { rows, queries, eventsSeen };
 }
 
 /* ------------------------------------------------------------------ *
@@ -428,9 +450,10 @@ async function main() {
   } catch (e) {
     errors.push({ source: "bo3-thunderpick", error: String(e.message || e) });
   }
-  let polymarket = { rows: [], pagesScanned: 0 };
+  let polymarket = { rows: [], queries: 0, eventsSeen: 0 };
   try {
-    polymarket = await collectPolymarket();
+    const seeds = [...pinnacle.matchups, ...thunderpick].map((m) => ({ home: m.home, away: m.away, startTime: m.startTime }));
+    polymarket = await collectPolymarket(seeds);
   } catch (e) {
     errors.push({ source: "polymarket", error: String(e.message || e) });
   }
@@ -617,7 +640,7 @@ async function main() {
     sources: {
       pinnacle: { leagues: pinnacle.leagues, matchups: pinnacle.matchups.length },
       thunderpick: { matchups: thunderpick.length },
-      polymarket: { matchups: polymarket.rows.length, pagesScanned: polymarket.pagesScanned },
+      polymarket: { matchups: polymarket.rows.length, queries: polymarket.queries, eventsSeen: polymarket.eventsSeen },
       checkedSources,
     },
     competitions: Object.values(byComp).sort((a, b) => b.upcoming - a.upcoming || b.total - a.total),
