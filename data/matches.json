@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-21T20:35:45.321Z",
- "collectionMs": 14108,
+ "generatedAt": "2026-10-21T20:37:22.574Z",
+ "collectionMs": 12388,
  "urlVerification": {
   "cardsParsed": 195,
   "cardsWithMatchLink": 195,
@@ -43,7 +43,7 @@
  },
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-21T20:35:45.321Z",
+  "fetchedAt": "2026-10-21T20:37:22.574Z",
   "fixtures": 264,
   "renderedCards": 195,
   "htmlBytes": 1985584,
@@ -79,8 +79,9 @@
    "matchups": 9
   },
   "polymarket": {
-   "matchups": 0,
-   "pagesScanned": 16
+   "matchups": 18,
+   "queries": 18,
+   "eventsSeen": 108
   },
   "checkedSources": [
    {
@@ -320,9 +321,34 @@
  ],
  "errors": [],
  "mapping": {
-  "marketRowsFetched": 18,
-  "marketRowsAttached": 18,
-  "unmatchedMarkets": []
+  "marketRowsFetched": 36,
+  "marketRowsAttached": 25,
+  "unmatchedMarkets": [
+   {
+    "source": "Polymarket",
+    "match": "Bilibili Gaming vs Movistar KOI",
+    "startTime": "2026-10-24T06:00:00Z",
+    "sourceUrl": "https://polymarket.com/event/lol-blg-mkoi-2026-10-23"
+   },
+   {
+    "source": "Polymarket",
+    "match": "Hanwha Life Esports vs Top Esports",
+    "startTime": "2026-10-24T03:00:00Z",
+    "sourceUrl": "https://polymarket.com/event/lol-hle1-tes-2026-10-23"
+   },
+   {
+    "source": "Polymarket",
+    "match": "Top Esports vs Hanwha Life Esports",
+    "startTime": "2026-10-24T03:00:00Z",
+    "sourceUrl": "https://polymarket.com/event/lol-hle1-tes-2026-10-23"
+   },
+   {
+    "source": "Polymarket",
+    "match": "Bilibili Gaming vs Movistar KOI",
+    "startTime": "2026-10-24T06:00:00Z",
+    "sourceUrl": "https://polymarket.com/event/lol-blg-mkoi-2026-10-23"
+   }
+  ]
  },
  "matches": [
   {
@@ -2310,6 +2336,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": true
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "Solary vs Galions",
+      "oddsA": 1.941747572815534,
+      "oddsB": 2.061855670103093,
+      "probA": 0.515,
+      "probB": 0.485,
+      "overround": 0,
+      "startTime": "2026-10-22T18:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-gal-sly-2026-10-22",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-gal-sly-2026-10-22",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": true
      }
     ],
     "oddsA": 1.8547008547008548,
@@ -2321,7 +2363,7 @@
     "agreement": {
      "sameSide": false,
      "spreadPts": 2.3,
-     "nBooks": 2
+     "nBooks": 3
     }
    },
    "flags": [
@@ -3229,6 +3271,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "Gen.G vs Invictus Gaming",
+      "oddsA": 1.2903225806451613,
+      "oddsB": 4.444444444444445,
+      "probA": 0.775,
+      "probB": 0.225,
+      "overround": 0,
+      "startTime": "2026-10-23T23:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-gen-ig1-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-gen-ig1-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 1.230414746543779,
@@ -3240,7 +3298,7 @@
     "agreement": {
      "sameSide": true,
      "spreadPts": 1.5,
-     "nBooks": 2
+     "nBooks": 3
     }
    },
    "resolution": "market",
@@ -3569,6 +3627,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "Anyone's Legend vs Karmine Corp",
+      "oddsA": 1.5267175572519083,
+      "oddsB": 2.8985507246376816,
+      "probA": 0.655,
+      "probB": 0.345,
+      "overround": 0,
+      "startTime": "2026-10-24T01:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-al-kc-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-al-kc-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 1.5,
@@ -3580,7 +3654,7 @@
     "agreement": {
      "sameSide": true,
      "spreadPts": 1.8,
-     "nBooks": 2
+     "nBooks": 3
     }
    },
    "resolution": "market",
@@ -3645,6 +3719,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "G2 Esports vs Dplus KIA",
+      "oddsA": 2.531645569620253,
+      "oddsB": 1.6528925619834711,
+      "probA": 0.395,
+      "probB": 0.605,
+      "overround": 0,
+      "startTime": "2026-10-24T02:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-g2-dk-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-g2-dk-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 2.26,
@@ -3655,8 +3745,8 @@
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 0.4,
-     "nBooks": 2
+     "spreadPts": 3.5,
+     "nBooks": 3
     }
    },
    "resolution": "market",
@@ -3721,6 +3811,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "Team Liquid vs CTBC Flying Oyster",
+      "oddsA": 1.3986013986013988,
+      "oddsB": 3.5087719298245617,
+      "probA": 0.715,
+      "probB": 0.285,
+      "overround": 0,
+      "startTime": "2026-10-24T00:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-tl2-cfo-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-tl2-cfo-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 1.3508771929824561,
@@ -3731,8 +3837,8 @@
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 0.7,
-     "nBooks": 2
+     "spreadPts": 1.4,
+     "nBooks": 3
     }
    },
    "resolution": "market",
@@ -3797,6 +3903,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "LOS vs T1",
+      "oddsA": 8,
+      "oddsB": 1.1428571428571428,
+      "probA": 0.125,
+      "probB": 0.875,
+      "overround": 0,
+      "startTime": "2026-10-24T04:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-los-t1-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-los-t1-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 6.16,
@@ -3807,8 +3929,8 @@
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 0.8,
-     "nBooks": 2
+     "spreadPts": 2.9,
+     "nBooks": 3
     }
    },
    "resolution": "market",
@@ -3873,6 +3995,22 @@
       "confidence": "retail",
       "matchScore": 1,
       "swapped": false
+     },
+     {
+      "source": "Polymarket",
+      "matchName": "Team Secret Whales vs LYON",
+      "oddsA": 2.4096385542168677,
+      "oddsB": 1.7094017094017095,
+      "probA": 0.415,
+      "probB": 0.585,
+      "overround": 0,
+      "startTime": "2026-10-24T05:00:00Z",
+      "bestOf": null,
+      "sourceUrl": "https://polymarket.com/event/lol-tsw-ly-2026-10-23",
+      "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-tsw-ly-2026-10-23",
+      "confidence": "market",
+      "matchScore": 1,
+      "swapped": false
      }
     ],
     "oddsA": 2.23,
@@ -3883,8 +4021,8 @@
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 1.3,
-     "nBooks": 2
+     "spreadPts": 1.6,
+     "nBooks": 3
     }
    },
    "resolution": "market",
