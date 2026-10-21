@@ -1,9 +1,4 @@
 {
-  "at": "2026-10-21T20:27:36.263Z",
-  "errors": [
-    {
-      "source": "hotspawn-permalinks",
-      "error": "first failed batch: {\"status\":403,\"bodyHead\":\"\\\"<!DOCTYPE html><html lang=\\\\\\\"en-US\\\\\\\"><head><title>Just a moment...</title><meta http-equiv=\\\\\\\"Content-Type\\\\\\\" content=\\\\\\\"text/html; charset=UTF-8\\\\\\\"><meta http-equiv=\\\\\\\"X-UA-Compatible\\\\\\\" content=\\\\\\\"IE=Edge\\\\\\\"><meta nam\\\"\",\"batch\":[\"1053095\",\"1053096\",\"1066214\"]}"
-    }
-  ]
+  "at": "2026-10-21T20:31:07.163Z",
+  "errors": []
 }
