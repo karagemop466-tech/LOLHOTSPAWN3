@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-21T20:37:22.574Z",
- "collectionMs": 12388,
+ "generatedAt": "2026-10-21T20:39:23.341Z",
+ "collectionMs": 14688,
  "urlVerification": {
   "cardsParsed": 195,
   "cardsWithMatchLink": 195,
@@ -43,7 +43,7 @@
  },
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-21T20:37:22.574Z",
+  "fetchedAt": "2026-10-21T20:39:23.341Z",
   "fixtures": 264,
   "renderedCards": 195,
   "htmlBytes": 1985584,
@@ -79,7 +79,7 @@
    "matchups": 9
   },
   "polymarket": {
-   "matchups": 18,
+   "matchups": 9,
    "queries": 18,
    "eventsSeen": 108
   },
@@ -321,7 +321,7 @@
  ],
  "errors": [],
  "mapping": {
-  "marketRowsFetched": 36,
+  "marketRowsFetched": 27,
   "marketRowsAttached": 25,
   "unmatchedMarkets": [
    {
@@ -335,18 +335,6 @@
     "match": "Hanwha Life Esports vs Top Esports",
     "startTime": "2026-10-24T03:00:00Z",
     "sourceUrl": "https://polymarket.com/event/lol-hle1-tes-2026-10-23"
-   },
-   {
-    "source": "Polymarket",
-    "match": "Top Esports vs Hanwha Life Esports",
-    "startTime": "2026-10-24T03:00:00Z",
-    "sourceUrl": "https://polymarket.com/event/lol-hle1-tes-2026-10-23"
-   },
-   {
-    "source": "Polymarket",
-    "match": "Bilibili Gaming vs Movistar KOI",
-    "startTime": "2026-10-24T06:00:00Z",
-    "sourceUrl": "https://polymarket.com/event/lol-blg-mkoi-2026-10-23"
    }
   ]
  },
