@@ -78,11 +78,49 @@ async function collectHotspawn() {
   // Secondary, independent parse of the rendered cards (integrity cross-check).
   const cardCount = (r.text.match(/<app-pickem-vs-card/g) || []).length;
 
-  return { url, fixtures, fetchedAt: NOW.toISOString(), htmlLen, cardCount };
+  return { url, fixtures, fetchedAt: NOW.toISOString(), htmlLen, cardCount, html: r.text };
+}
+
+
+/* ------------------------------------------------------------------ *
+ * 2. Hotspawn match links — parsed from the lobby HTML cards.
+ *    (wp-json /pickem/v1/fixtures is Cloudflare-protected for GitHub
+ *     Actions egress IPs: HTTP 403 "Just a moment...", so we do not use it.)
+ * ------------------------------------------------------------------ */
+function parseLobbyCards(html) {
+  const chunks = html.split("<app-pickem-vs-card").slice(1);
+  const cards = [];
+  for (const c of chunks) {
+    const href = /href="(https:\/\/www\.hotspawn\.com\/matches\/[^"]+)"/.exec(c)?.[1] || null;
+    const teams = [...c.matchAll(/class="vs-card-team-name"[^>]*>\s*([^<]+?)\s*<\/div>/g)].map((m) =>
+      m[1].replace(/&amp;/g, "&").replace(/&#39;/g, "'").trim()
+    );
+    if (teams.length < 2) continue;
+    const date = /class="vs-card-date"[^>]*>\s*([^<]+?)\s*<\/div>/.exec(c)?.[1]?.trim() || null;
+    const comp = /class="vs-card-tournament"[^>]*>\s*([^<]+?)\s*<\/div>/.exec(c)?.[1]?.trim() || null;
+    cards.push({ href, teamA: teams[0], teamB: teams[1], date, comp });
+  }
+  return cards;
+}
+
+const slugPart = (s) =>
+  String(s || "")
+    .toLowerCase()
+    .replace(/[’'`]/g, "")
+    .replace(/[øØ]/g, "o")
+    .replace(/[æÆ]/g, "ae")
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+function buildMatchUrl(f) {
+  return `https://www.hotspawn.com/matches/${slugPart(f.participants0_name)}-vs-${slugPart(
+    f.participants1_name
+  )}-${slugPart(f.competition_name)}-${f.id}`;
 }
 
 /* ------------------------------------------------------------------ *
- * 2. Hotspawn permalinks (authoritative match URLs)
+ * 2b. Legacy permalink helper (kept for reference; endpoint is blocked)
  * ------------------------------------------------------------------ */
 async function collectPermalinks(ids, diag) {
   const out = {};
@@ -342,16 +380,25 @@ async function main() {
   }
 
   const fixtures = hotspawn.fixtures;
-  const ids = fixtures.map((f) => String(f.id));
 
-  let permalinks = {};
-  const plDiag = {};
-  try {
-    permalinks = await collectPermalinks(ids, plDiag);
-  } catch (e) {
-    errors.push({ source: "hotspawn-permalinks", error: String(e.message || e) });
+
+  // Match links come from the lobby HTML (play.hotspawn.com is not Cloudflare-gated).
+  const cards = parseLobbyCards(hotspawn.html);
+  const permalinks = {};
+  const slugCheck = { checked: 0, ok: 0, mismatches: [] };
+  for (const c of cards) {
+    if (!c.href) continue;
+    // validate our deterministic slug builder against the real href
+    const id = c.href.match(/-(\d+)$/)?.[1];
+    if (id) {
+      const fixtureForCheck = { participants0_name: c.teamA, participants1_name: c.teamB, competition_name: c.comp, id };
+      const built = buildMatchUrl(fixtureForCheck);
+      slugCheck.checked++;
+      if (built === c.href) slugCheck.ok++;
+      else if (slugCheck.mismatches.length < 8) slugCheck.mismatches.push({ real: c.href, built });
+      permalinks[id] = c.href;
+    }
   }
-  if (plDiag.firstFailure) errors.push({ source: "hotspawn-permalinks", error: "first failed batch: " + JSON.stringify(plDiag.firstFailure) });
 
   let pinnacle = { leagues: [], matchups: [] };
   try {
@@ -370,7 +417,9 @@ async function main() {
   const nowMs = NOW.getTime();
   const matches = fixtures.map((f) => {
     const startMs = Number(f.scheduled_start_time);
-    const link = permalinks[String(f.id)] || null;
+    const fromCard = permalinks[String(f.id)] || null;
+    const link = fromCard || buildMatchUrl(f);
+    const linkSource = fromCard ? "lobby-card" : "constructed-slug";
     const m = {
       id: String(f.id),
       competition: f.competition_name,
@@ -387,6 +436,7 @@ async function main() {
       lockTime: f.lock_time ? new Date(Number(f.lock_time)).toISOString() : null,
       status: startMs < nowMs ? "completed-or-started" : "upcoming",
       hotspawnUrl: link,
+      hotspawnUrlSource: linkSource,
       hotspawnPickedA: f.participants0_picked_percent,
       hotspawnPickedB: f.participants1_picked_percent,
       // NOTE: hotspawn pick% is stored for transparency only; it is NEVER used as a probability input.
@@ -516,6 +566,13 @@ async function main() {
   const data = {
     generatedAt: NOW.toISOString(),
     collectionMs: Date.now() - started,
+    urlVerification: {
+      cardsParsed: cards.length,
+      cardsWithMatchLink: cards.filter((c) => c.href).length,
+      slugBuilderChecked: slugCheck.checked,
+      slugBuilderExactMatches: slugCheck.ok,
+      slugBuilderMismatchSamples: slugCheck.mismatches,
+    },
     inventory: {
       source: hotspawn.url,
       fetchedAt: hotspawn.fetchedAt,
@@ -523,7 +580,8 @@ async function main() {
       renderedCards: hotspawn.cardCount,
       htmlBytes: hotspawn.htmlLen,
       competitions: Object.keys(byComp).length,
-      permalinksResolved: Object.values(permalinks).filter(Boolean).length,
+      matchLinksFromLobbyHtml: Object.values(permalinks).filter(Boolean).length,
+      matchLinksConstructed: matches.filter((m) => m.hotspawnUrlSource === "constructed-slug").length,
     },
     counts: {
       total: matches.length,

@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: collect
-        run: node scripts/probe-tournaments.mjs
+        run: node scripts/collect.mjs
       - name: diag
         if: always()
         run: true || true
