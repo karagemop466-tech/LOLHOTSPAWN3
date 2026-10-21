@@ -184,7 +184,8 @@ const indexBody = `
     <p><strong>What is not covered, and why.</strong> ${unresolved.length} upcoming fixtures are amateur / semi-pro leagues
     (PRM 2nd &amp; 3rd Division, Tunisian Super League, 4 Nations, RIVALS LEAGUE, Komplettligaen, Icelandic Esports League,
     Arabian League 2nd Division, LigaGG CELOL). <strong>No bookmaker prices them</strong>: Pinnacle lists only World Championship
-    and EMEA Masters for LoL, Thunderpick/bo3.gg the same, and Polymarket only carries tournament futures. Without a market
+    and EMEA Masters for LoL, Thunderpick/bo3.gg the same, and Polymarket's per-match LoL markets cover exactly the same
+    nine fixtures (its LoL category has 9 markets: 8 Worlds + 1 EMEA Masters). Without a market
     there is no verifiable probability, so these rows show <em>unresolved</em> instead of an invented number. The
     <a href="unresolved.html">Unresolved page</a> lists each one with the sources checked and the limitation.</p>
 
@@ -309,6 +310,7 @@ const marketsBody = `
 <div class="kpis">
   <div class="kpi"><div class="n">${data.sources.pinnacle.matchups}</div><div class="l">Pinnacle LoL moneylines</div></div>
   <div class="kpi"><div class="n">${data.sources.thunderpick.matchups}</div><div class="l">Thunderpick LoL moneylines</div></div>
+  <div class="kpi"><div class="n">${data.sources.polymarket.matchups}</div><div class="l">Polymarket per-match LoL markets</div></div>
   <div class="kpi good"><div class="n">${data.mapping.marketRowsAttached}</div><div class="l">Prices mapped to a Hotspawn fixture</div></div>
   <div class="kpi"><div class="n">${data.sources.pinnacle.leagues.length}</div><div class="l">Pinnacle LoL competitions listed</div></div>
 </div>
@@ -329,9 +331,9 @@ const marketsBody = `
     <p>American → decimal: <code>price &gt; 0 ? 1 + price/100 : 1 + 100/|price|</code><br>
     Implied: <code>1 / decimal</code><br>
     No-vig: <code>p<sub>team</sub> = implied<sub>team</sub> / (implied<sub>A</sub> + implied<sub>B</sub>)</code></p>
-    <p>When both Pinnacle and Thunderpick price a match, Pinnacle is used as the primary (sharper, lower margin) and
-    Thunderpick is the cross-check. If the two disagree on the favourite, the row is downgraded to <em>low</em> confidence
-    and flagged.</p>
+    <p>Pinnacle is the primary book (sharpest, lowest margin). Thunderpick and Polymarket are pulled as independent
+    cross-checks: every priced fixture shows each book's own no-vig probability, and if any book disagrees on the
+    favourite the row is downgraded to <em>low</em> confidence.</p>
   </div>
 </section>
 

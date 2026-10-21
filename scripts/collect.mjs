@@ -260,6 +260,7 @@ async function collectPolymarket(seeds) {
   const base = "https://gamma-api.polymarket.com";
   const rows = [];
   const tried = new Set();
+  const seenEvents = new Set();
   let queries = 0, eventsSeen = 0;
   for (const seed of seeds) {
     const key = `${seed.home}|${seed.away}|${seed.startTime}`;
@@ -272,6 +273,7 @@ async function collectPolymarket(seeds) {
     eventsSeen += evs.length;
     for (const ev of evs) {
       if (!/^LoL:/i.test(ev.title || "")) continue;
+      if (seenEvents.has(String(ev.id))) continue;
       if (!teamInText(seed.home, ev.title) || !teamInText(seed.away, ev.title)) continue;
       const mks = (ev.markets || []).filter((m) => m && m.active !== false);
       const ml =
@@ -288,6 +290,7 @@ async function collectPolymarket(seeds) {
       const homeFirst = teamInText(seed.home, outcomes[0]) && !teamInText(seed.home, outcomes[1]);
       const probs = homeFirst ? [prices[0], prices[1]] : [prices[1], prices[0]];
       const decs = homeFirst ? [1 / prices[0], 1 / prices[1]] : [1 / prices[1], 1 / prices[0]];
+      seenEvents.add(String(ev.id));
       rows.push({
         source: "Polymarket",
         league: (ev.title || "").replace(/^LoL:\s*/i, ""),

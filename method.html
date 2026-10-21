@@ -85,7 +85,7 @@
       <td><a href="https://lol.fandom.com/api.php?action=cargoquery" target="_blank" rel="noopener">open ↗</a></td>
     </tr><tr>
       <td><strong>Polymarket</strong><div class="small">prediction market</div></td>
-      <td>HTTP 200. LoL markets are tournament futures only (e.g. 'Worlds 2026 Winning Region', LCK/LPL to win Worlds). No per-match market exists for any of the 195 upcoming Hotspawn fixtures.</td>
+      <td>HTTP 200 via gamma-api. Per-match LoL markets DO exist but are not enumerable through the `tag_slug` listing (that returns tournament futures only, e.g. 'Worlds 2026 Winning Region'). The collector therefore queries `public-search` for each fixture that already carries a bookmaker line and reads the series 'Moneyline' market (e.g. Galions 51.5c / Solary 48.5c for the EMEA Masters final). Coverage equals the bookmaker set: the 8 Worlds Swiss fixtures + the EMEA Masters final. No amateur league has a Polymarket market.</td>
       <td><a href="https://gamma-api.polymarket.com/events?tag_slug=league-of-legends" target="_blank" rel="noopener">open ↗</a></td>
     </tr><tr>
       <td><strong>Oddspedia</strong><div class="small">odds comparison site</div></td>

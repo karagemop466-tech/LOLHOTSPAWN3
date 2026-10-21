@@ -30,6 +30,7 @@
 <div class="kpis">
   <div class="kpi"><div class="n">9</div><div class="l">Pinnacle LoL moneylines</div></div>
   <div class="kpi"><div class="n">9</div><div class="l">Thunderpick LoL moneylines</div></div>
+  <div class="kpi"><div class="n">18</div><div class="l">Polymarket per-match LoL markets</div></div>
   <div class="kpi good"><div class="n">25</div><div class="l">Prices mapped to a Hotspawn fixture</div></div>
   <div class="kpi"><div class="n">2</div><div class="l">Pinnacle LoL competitions listed</div></div>
 </div>
@@ -300,9 +301,9 @@
     <p>American → decimal: <code>price &gt; 0 ? 1 + price/100 : 1 + 100/|price|</code><br>
     Implied: <code>1 / decimal</code><br>
     No-vig: <code>p<sub>team</sub> = implied<sub>team</sub> / (implied<sub>A</sub> + implied<sub>B</sub>)</code></p>
-    <p>When both Pinnacle and Thunderpick price a match, Pinnacle is used as the primary (sharper, lower margin) and
-    Thunderpick is the cross-check. If the two disagree on the favourite, the row is downgraded to <em>low</em> confidence
-    and flagged.</p>
+    <p>Pinnacle is the primary book (sharpest, lowest margin). Thunderpick and Polymarket are pulled as independent
+    cross-checks: every priced fixture shows each book's own no-vig probability, and if any book disagrees on the
+    favourite the row is downgraded to <em>low</em> confidence.</p>
   </div>
 </section>
 
