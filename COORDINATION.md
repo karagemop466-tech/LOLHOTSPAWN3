@@ -8,4 +8,4 @@ Session: arena/a8d3a4de (2026-10-21) — sole session, full scope claimed & done
 | 6-hourly auto-refresh + Pages deploy | done | .github/workflows/ |
 | PR -> merge -> live Pages | done (link below) | — |
 Key irregularities: see docs/flagged.html (F1 Hotspawn LoL tab JS-only; F2 G2/DK pundit vs market; F4 Swiss R2 TBD; F5 two Tier-D 50/50).
-PR: (recorded after merge)
+PRs merged: #1 full build, #2 root-serve fix. Live: https://karagemop466-tech.github.io/LOLHOTSPAWN3/ (verified 2026-10-21).
