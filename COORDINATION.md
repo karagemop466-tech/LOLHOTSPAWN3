@@ -12,12 +12,12 @@
 
 | Task ID | Task Description | Status | Owner Session | File Scope |
 |---|---|---|---|---|
-| T1 | Hotspawn LoL fixture reverse engineering & complete ingestion (Hotspawn Fixtures API + SSR lobby, 195+ matches) | done | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `scripts/build.py`, `data/seed_fixtures.json` |
+| T1 | Hotspawn LoL fixture reverse engineering & complete ingestion (Hotspawn Fixtures API + SSR lobby, 264 matches) | done | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `scripts/build.py`, `data/seed_fixtures.json` |
 | T2 | Multi-tier pick & odds origination engine (Polymarket + Sharp Esportsbooks + Leaguepedia Standings/Elo + Unresolved isolation) | done | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `data/picks.json`, `data/verification_register.json` |
 | T3 | Automated 6-hour refresh workflow (`refresh.yml`, 4–8h cadence) | done | arena/40177473-lolhotspawn3 | `.github/workflows/refresh.yml` |
 | T4 | Mobile-first dashboard & executive summary (Landing page, Picks page, Unresolved section, Methodology) | done | arena/40177473-lolhotspawn3 | `index.html`, `picks.html`, `unresolved.html`, `methodology.html`, `docs/`, `assets/` |
 | T5 | Verification register & Flagged for Review page (line-by-line source checks, limitations) | done | arena/40177473-lolhotspawn3 | `flagged.html`, `docs/flagged.html`, `data/verification_register.json` |
-| T6 | Final integration, end-to-end verification, PR to `main`, auto-merge, Pages confirmation | in progress | arena/40177473-lolhotspawn3 | Repo root, git PR # |
+| T6 | Final integration, end-to-end verification, PR to `main`, auto-merge, Pages confirmation | done | arena/40177473-lolhotspawn3 | Repo root, git PR # |
 
 ## Sources (Verified 2026-10-21)
 - Hotspawn Official Lobby: `https://play.hotspawn.com/lol-pickems` & `https://play.hotspawn.com/lobby`
@@ -31,11 +31,11 @@
 - Gamer.no: `https://gamer.no` (Komplettligaen Norway)
 
 ## Verification & Integrity Log (2026-10-21)
-- **100% Match Coverage**: 195 matches ingested and priced across 13 tournaments (Worlds, EMEA Masters, PRM 2nd Div, PRM 3rd Div, Komplettligaen, 4 Nations, Tunisian Super League, etc.).
+- **100% Match Coverage**: All 264 scheduled matches ingested and priced across all divisions.
 - **Origination Breakdown**:
   - `MARKET_BOOKS`: 8 matches (Worlds 2026 Swiss R1 de-vigged sharp consensus).
-  - `MODEL_STANDINGS`: 155 matches originated from official Leaguepedia / tournament split standings with Bayesian shrinkage.
-  - `UNRESOLVED`: 32 matches isolated in dedicated Unresolved section (grassroots amateur mix-teams with 0 recorded competitive games).
+  - `MODEL_STANDINGS`: 171 matches originated from official Leaguepedia / tournament split standings with Bayesian shrinkage.
+  - `UNRESOLVED`: 85 matches isolated in dedicated Unresolved section (grassroots amateur mix-teams with 0 recorded competitive games).
 - **Line Integrity**: Verified line-by-line that every match has an obvious pick, probabilities sum to 100.0%, and every row links to an official source.
 - **Internal Links**: 100% verified with zero broken links.
 - **Mobile Design**: Responsive cards, touch-friendly tap targets, and clean dark-mode dashboard implemented.
