@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-21T20:29:39.365657+00:00",
-  "generated_at_display": "2026-10-21 20:29 UTC",
+  "generated_at": "2026-10-21T20:31:00.058143+00:00",
+  "generated_at_display": "2026-10-21 20:31 UTC",
   "lobby": "https://play.hotspawn.com/lol-pickems",
-  "fixture_source": "hotspawn_fixtures_api",
+  "fixture_source": "cached_seed_fixtures",
   "count": 264,
   "counts_by_method": {
     "MARKET_BOOKS": 8,
-    "MARKET_POLYMARKET": 1,
+    "MARKET_POLYMARKET": 0,
     "MODEL_STANDINGS": 171,
     "MODEL_ELO": 0,
-    "UNRESOLVED": 84
+    "UNRESOLVED": 85
   },
   "matches": [
     {
@@ -2393,15 +2393,15 @@
       "crowd1": 91,
       "crowd2": 9,
       "source_lobby": "https://play.hotspawn.com/lol-pickems",
-      "prob_team1": 0.775,
-      "prob_team2": 0.225,
+      "prob_team1": 0.5,
+      "prob_team2": 0.5,
       "pick": "Hanwha Life Esports",
-      "pick_prob": 0.775,
-      "method": "MARKET_POLYMARKET",
-      "evidence": "Polymarket Prediction Market: LoL: Hanwha Life Esports vs Top Esports (BO1) - Worlds Group Stage",
-      "confidence": "High — independent market contract price",
-      "market_url": "https://polymarket.com/event/lol-hle1-tes-2026-10-23",
-      "source_url": "https://polymarket.com/sports/league-of-legends",
+      "pick_prob": 0.5,
+      "method": "UNRESOLVED",
+      "evidence": "Grassroots amateur division; zero verified competitive games in Leaguepedia/Liquipedia; no bookmaker coverage",
+      "confidence": "Unresolved — 50/50 baseline; treat as no-edge / unverified",
+      "market_url": "",
+      "source_url": "https://www.hotspawn.com/matches/hanwha-life-esports-vs-top-esports-worlds-2026-main-event-1067677",
       "crowd_note": "Hotspawn lobby crowd % is tracked for reference only and is never used as an input to win probability."
     },
     {

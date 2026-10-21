@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-10-21T20:29:39.365657+00:00",
+  "verified_at": "2026-10-21T20:31:00.058143+00:00",
   "count": 264,
   "register": [
     {
@@ -1243,12 +1243,12 @@
       "tournament": "Worlds 2026 Main Event",
       "start": "Oct 23, 18:00",
       "pick": "Hanwha Life Esports",
-      "pick_prob": 0.775,
-      "method": "MARKET_POLYMARKET",
-      "evidence": "Polymarket Prediction Market: LoL: Hanwha Life Esports vs Top Esports (BO1) - Worlds Group Stage",
-      "confidence": "High \u2014 independent market contract price",
-      "source_url": "https://polymarket.com/event/lol-hle1-tes-2026-10-23",
-      "verified": true
+      "pick_prob": 0.5,
+      "method": "UNRESOLVED",
+      "evidence": "Grassroots amateur division; zero verified competitive games in Leaguepedia/Liquipedia; no bookmaker coverage",
+      "confidence": "Unresolved \u2014 50/50 baseline; treat as no-edge / unverified",
+      "source_url": "https://www.hotspawn.com/matches/hanwha-life-esports-vs-top-esports-worlds-2026-main-event-1067677",
+      "verified": false
     },
     {
       "matchup": "AceGaming vs Babos Gaming",
