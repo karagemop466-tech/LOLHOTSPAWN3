@@ -1,0 +1,41 @@
+name: _test
+on:
+  workflow_dispatch:
+  push:
+    branches: ["arena/**", "session-*/**"]
+    paths: ["scripts/**", ".github/workflows/_test.yml"]
+permissions: { contents: write }
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: node scripts/collect.mjs
+      - run: node scripts/build.mjs
+      - run: node scripts/check-links.mjs
+      - name: diag
+        if: always()
+        run: |
+          node -e '
+            const d=JSON.parse(require("fs").readFileSync("data/matches.json","utf8"));
+            const L=[];
+            L.push("counts "+JSON.stringify(d.counts));
+            L.push("sources "+JSON.stringify(d.sources.polymarket)+" th "+d.sources.thunderpick.matchups+" pin "+d.sources.pinnacle.matchups);
+            L.push("mapping "+d.mapping.marketRowsFetched+" -> "+d.mapping.marketRowsAttached+" unmatched="+d.mapping.unmatchedMarkets.length);
+            L.push("url "+JSON.stringify(d.urlVerification));
+            L.push("errors "+JSON.stringify(d.errors));
+            L.push("--- priced ---");
+            for (const m of d.matches.filter(x=>x.market)) L.push([m.startUtc.slice(0,16),m.teamA,"vs",m.teamB,m.market.source,m.market.books.map(b=>b.source+" "+(b.probA*100).toFixed(1)).join(" | "),"pick="+m.pick,m.confidence].join(" "));
+            require("fs").mkdirSync("research",{recursive:true});
+            require("fs").writeFileSync("research/last-run.txt",L.join("\n"));
+          '
+      - run: |
+          git config user.name "test-bot"; git config user.email "test-bot@users.noreply.github.com"
+          git add -A data research index.html picks.html markets.html unresolved.html method.html flagged.html assets .nojekyll
+          git commit -m "test: collect+build [skip ci]" || echo none
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true

@@ -236,6 +236,59 @@ async function collectThunderpick() {
   return rows;
 }
 
+
+/* ------------------------------------------------------------------ *
+ * 5. Polymarket (prediction market) — per-match LoL moneylines
+ * ------------------------------------------------------------------ */
+async function collectPolymarket() {
+  const base = "https://gamma-api.polymarket.com";
+  const rows = [];
+  const seen = new Set();
+  let pagesScanned = 0;
+  for (let offset = 0; offset < 1600; offset += 100) {
+    const r = await getJson(`${base}/events?closed=false&limit=100&offset=${offset}&order=startDate&ascending=true`);
+    const evs = Array.isArray(r.body) ? r.body : [];
+    if (!evs.length) break;
+    pagesScanned++;
+    for (const ev of evs) {
+      if (!/^LoL:/i.test(ev.title || "")) continue;
+      if (seen.has(String(ev.id))) continue;
+      seen.add(String(ev.id));
+      const mks = (ev.markets || []).filter((m) => m && m.active !== false);
+      if (!mks.length) continue;
+      // series moneyline (not the per-game children)
+      const ml =
+        mks.find((m) => /^moneyline$/i.test((m.groupItemTitle || "").trim())) ||
+        mks.find((m) => !/game\s*\d/i.test(m.question || "") && String(m.sportsMarketType || "") !== "child_moneyline");
+      if (!ml) continue;
+      let outcomes = [], prices = [];
+      try { outcomes = JSON.parse(ml.outcomes || "[]"); } catch {}
+      try { prices = JSON.parse(ml.outcomePrices || "[]").map(Number); } catch {}
+      if (outcomes.length !== 2 || prices.length !== 2) continue;
+      if (!prices.every((x) => Number.isFinite(x) && x > 0 && x < 1)) continue;
+      const sum = prices[0] + prices[1];
+      rows.push({
+        source: "Polymarket",
+        league: (ev.title || "").replace(/^LoL:\s*/i, ""),
+        matchupId: String(ev.id),
+        startTime: ml.eventStartTime || ml.gameStartTime || ev.startDate,
+        bestOf: null,
+        home: outcomes[0],
+        away: outcomes[1],
+        homeDecimal: 1 / prices[0],
+        awayDecimal: 1 / prices[1],
+        probHome: prices[0] / sum,
+        probAway: prices[1] / sum,
+        overround: (sum - 1) * 100,
+        sourceUrl: `https://polymarket.com/event/${ev.slug}`,
+        apiUrl: `${base}/events?slug=${ev.slug}`,
+      });
+    }
+    await sleep(150);
+  }
+  return { rows, pagesScanned };
+}
+
 /* ------------------------------------------------------------------ *
  * Name normalisation + matching
  * ------------------------------------------------------------------ */
@@ -375,6 +428,12 @@ async function main() {
   } catch (e) {
     errors.push({ source: "bo3-thunderpick", error: String(e.message || e) });
   }
+  let polymarket = { rows: [], pagesScanned: 0 };
+  try {
+    polymarket = await collectPolymarket();
+  } catch (e) {
+    errors.push({ source: "polymarket", error: String(e.message || e) });
+  }
 
   /* ---- assemble matches ---- */
   const nowMs = NOW.getTime();
@@ -411,6 +470,7 @@ async function main() {
   const marketsAll = [
     ...pinnacle.matchups.map((m) => ({ ...m, kind: "pinnacle" })),
     ...thunderpick.map((m) => ({ ...m, kind: "thunderpick" })),
+    ...(polymarket.rows || []).map((m) => ({ ...m, kind: "polymarket" })),
   ];
 
   for (const m of matches) {
@@ -445,7 +505,7 @@ async function main() {
         bestOf: mk.bestOf,
         sourceUrl: mk.sourceUrl,
         apiUrl: mk.apiUrl || mk.sourceUrl,
-        confidence: source === "Pinnacle" ? "sharp" : "retail",
+        confidence: source === "Pinnacle" ? "sharp" : source === "Polymarket" ? "market" : "retail",
         matchScore: Number(c.score.toFixed(3)),
         swapped: c.swapped,
       });
@@ -557,6 +617,7 @@ async function main() {
     sources: {
       pinnacle: { leagues: pinnacle.leagues, matchups: pinnacle.matchups.length },
       thunderpick: { matchups: thunderpick.length },
+      polymarket: { matchups: polymarket.rows.length, pagesScanned: polymarket.pagesScanned },
       checkedSources,
     },
     competitions: Object.values(byComp).sort((a, b) => b.upcoming - a.upcoming || b.total - a.total),
