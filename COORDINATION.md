@@ -16,7 +16,7 @@ Status values: `unclaimed` · `in progress` · `done` · `needs review`.
 | T6 | Automated 6-hour refresh | done | `1882cf1a` | `.github/workflows/refresh.yml` |
 | T7 | Fix Pages deployment (broken since PR #1) | done | `1882cf1a` | Pages settings, `.github/workflows/pages.yml` (removed) |
 | T8 | Repo review + irregularity log | done → **needs review** | `1882cf1a` | `data/flags.json`, `flagged.html` |
-| T9 | PR → merge → verify live site | in progress | `1882cf1a` | — |
+| T9 | PR → merge → verify live site | **done** | `1882cf1a` | — |
 | T10 | Integrate parallel session `40177473` (archive, no deletion) | done | `1882cf1a` | `archive/**`, `COORDINATION.md` |
 | T11 | Add Polymarket as third market source | done | `1882cf1a` | `scripts/collect.mjs`, `data/source-audit.json` |
 
@@ -102,6 +102,26 @@ Nothing was deleted: every file from the other session exists under `archive/ses
 - **Automation verified on main**: the 6-hourly `refresh.yml` ran on the merge (`run 39672469469`, success) and committed
   `dab69f3 data: refresh Hotspawn LoL picks 2026-10-21T20:41Z`, which is the commit Pages built. End-to-end loop: collect →
   build → link check → commit → Pages rebuild.
+- **PR #8** — https://github.com/karagemop466-tech/LOLHOTSPAWN3/pull/8 — **MERGED** 2026-10-21T20:43Z (accuracy pass).
+  Its merge triggered `refresh.yml` again (`run 39672783921`, success) → commit `5f5eb0d`.
+- **Final Pages build**: `5f5eb0d` → status `built` (2026-10-21T20:43:58Z).
+  Note: the intermediate build for merge commit `38435e3` errored at 0s because two commits landed within seconds of each
+  other; GitHub rebuilt automatically from the newer commit and the live site is correct. Not a data issue.
+- **Live verification of the deployed pages** (fetched over HTTPS, not inferred):
+  - `/` → executive summary, 264 fixtures, 9 priced, 186 unresolved, links to all sub-pages.
+  - `/flagged.html` → automatic checks show **27 market rows fetched, 27 attached, 0 unmatched, 0 collector errors**.
+  - `/picks.html`, `/unresolved.html`, `/markets.html`, `/method.html` all reachable and internally linked.
+
+### Final published dataset (commit `5f5eb0d`)
+
+| Metric | Value |
+|---|---|
+| Fixtures | 264 (27 competitions) · 195 upcoming · 69 started |
+| Priced by external market | **9** (Worlds 2026 Swiss R1 ×8 + EMEA Masters final) |
+| Books attached | Pinnacle 9 · Thunderpick 9 · Polymarket 9 → 27 rows, **27 attached, 0 unmatched** |
+| Documented unresolved | **186** |
+| Match links from Hotspawn HTML | 195/195 upcoming |
+| Collector errors | 0 |
 
 ## Final dataset of record (regenerated on every run)
 
