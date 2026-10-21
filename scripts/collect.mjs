@@ -295,7 +295,7 @@ async function collectPolymarket(seeds) {
         source: "Polymarket",
         league: (ev.title || "").replace(/^LoL:\s*/i, ""),
         matchupId: String(ev.id),
-        startTime: ev.endDate || seed.startTime,
+        startTime: ml.eventStartTime || ml.gameStartTime || ev.startDate || seed.startTime,
         bestOf: null,
         home: homeFirst ? outcomes[0] : outcomes[1],
         away: homeFirst ? outcomes[1] : outcomes[0],
@@ -466,8 +466,11 @@ async function main() {
   const matches = fixtures.map((f) => {
     const startMs = Number(f.scheduled_start_time);
     const fromCard = permalinks[String(f.id)] || null;
-    const link = fromCard || buildMatchUrl(f);
-    const linkSource = fromCard ? "lobby-card" : "constructed-slug";
+    // Only links parsed out of Hotspawn's own HTML are published as verified.
+    // For fixtures without a rendered card (already started) the lobby URL is used
+    // as the source of record; the slug-constructed guess is kept separately, unverified.
+    const link = fromCard || null;
+    const linkSource = fromCard ? "lobby-card" : "lobby-fallback";
     const m = {
       id: String(f.id),
       competition: f.competition_name,
@@ -485,6 +488,7 @@ async function main() {
       status: startMs < nowMs ? "completed-or-started" : "upcoming",
       hotspawnUrl: link,
       hotspawnUrlSource: linkSource,
+      hotspawnUrlUnverifiedGuess: fromCard ? null : buildMatchUrl(f),
       hotspawnPickedA: f.participants0_picked_percent,
       hotspawnPickedB: f.participants1_picked_percent,
       // NOTE: hotspawn pick% is stored for transparency only; it is NEVER used as a probability input.
@@ -630,7 +634,7 @@ async function main() {
       htmlBytes: hotspawn.htmlLen,
       competitions: Object.keys(byComp).length,
       matchLinksFromLobbyHtml: Object.values(permalinks).filter(Boolean).length,
-      matchLinksConstructed: matches.filter((m) => m.hotspawnUrlSource === "constructed-slug").length,
+      matchLinksLobbyFallback: matches.filter((m) => m.hotspawnUrlSource === "lobby-fallback").length,
     },
     counts: {
       total: matches.length,

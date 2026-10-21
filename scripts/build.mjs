@@ -102,7 +102,7 @@ function matchCard(m) {
   const bWin = has && m.probB > m.probA;
   const src = m.hotspawnUrl
     ? `<a href="${esc(m.hotspawnUrl)}" target="_blank" rel="noopener">Hotspawn match ↗</a>`
-    : `<span class="pill mut">no match URL</span>`;
+    : `<a href="${esc(data.inventory.source)}" target="_blank" rel="noopener">Hotspawn lobby ↗</a> <span class="pill mut">no per-match page</span>`;
   const marketLink = m.market
     ? `<a href="${esc(m.market.sourceUrl)}" target="_blank" rel="noopener">${esc(m.market.source)} line ↗</a>`
     : "";
@@ -147,7 +147,7 @@ const indexBody = `
 <section class="hero">
   <h1>Every League of Legends match on Hotspawn — with a pick wherever a real betting line exists</h1>
   <p class="lede">Automated collection from the Hotspawn Pick'ems LoL lobby. Probabilities come from external bookmakers
-  (Pinnacle, Thunderpick) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
+  (Pinnacle, Thunderpick, Polymarket) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
   listed separately and are <strong>not</strong> given a made-up number.</p>
   <p class="updated">Last collection: <strong>${esc(isoShort(data.generatedAt))}</strong> · refreshes every 6 hours · inventory ${data.inventory.fixtures} fixtures / ${data.inventory.competitions} competitions</p>
 </section>
@@ -179,7 +179,7 @@ const indexBody = `
     <p><strong>What is covered.</strong> ${data.inventory.fixtures} fixtures across ${data.inventory.competitions} competitions
     (${upcoming.length} upcoming, ${started.length} already started/completed). ${resolved.length} upcoming fixtures carry a
     verifiable external moneyline: <strong>Pinnacle</strong> is the primary (sharp) book and every one of those fixtures is
-    cross-checked against <strong>Thunderpick</strong>.</p>
+    cross-checked against <strong>Thunderpick</strong> and <strong>Polymarket</strong>.</p>
 
     <p><strong>What is not covered, and why.</strong> ${unresolved.length} upcoming fixtures are amateur / semi-pro leagues
     (PRM 2nd &amp; 3rd Division, Tunisian Super League, 4 Nations, RIVALS LEAGUE, Komplettligaen, Icelandic Esports League,
@@ -220,7 +220,7 @@ const indexBody = `
   <h2>Refresh &amp; integrity</h2>
   <div class="card">
     <p>Collector runs on a <strong>6-hour schedule</strong> (GitHub Actions, <code>scripts/collect.mjs</code>) and can be
-    triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle and Thunderpick LoL markets,
+    triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle, Thunderpick and Polymarket LoL markets,
     (3) re-maps prices to fixtures by team name + kick-off time, (4) recomputes no-vig probabilities, (5) rebuilds this site.</p>
     <p class="small">Last run: ${esc(isoShort(data.generatedAt))} · collection took ${data.collectionMs} ms ·
     errors this run: ${data.errors.length} · market rows fetched: ${data.mapping.marketRowsFetched} ·
@@ -271,7 +271,7 @@ ${started.length ? `<section>
   <p class="small">These fixtures are in the lobby's week but their start time has passed, so they are excluded from picks.
   Hotspawn does not render per-match cards for them, so the source link points at the lobby.</p>
   <details><summary class="small">Show ${started.length} fixtures</summary>
-  <div class="matches">${started.map((m) => matchCard({ ...m, hotspawnUrl: m.hotspawnUrlSource === "lobby-card" ? m.hotspawnUrl : data.inventory.source })).join("")}</div>
+  <div class="matches">${started.map(matchCard).join("")}</div>
   </details>
 </section>` : ""}`;
 
@@ -439,8 +439,8 @@ const methodBody = `
       probability input.</li>
       <li><strong>Match links.</strong> Each rendered card contains the canonical
       <code>https://www.hotspawn.com/matches/…</code> URL; those are extracted so every row links to its source.</li>
-      <li><strong>Prices.</strong> Pinnacle (guest API, no key) and Thunderpick (via bo3.gg) LoL moneylines are pulled for all
-      competitions those books list.</li>
+      <li><strong>Prices.</strong> Pinnacle (guest API, no key), Thunderpick (via bo3.gg) and Polymarket (gamma public-search)
+      LoL moneylines are pulled for every fixture those books list.</li>
       <li><strong>Mapping.</strong> A price is attached to a fixture only when the kick-off times are within 8 hours <em>and</em>
       the normalised team-name similarity is ≥ 0.72 (either orientation). Otherwise the price is left unmatched and reported.</li>
       <li><strong>Probability.</strong> Decimal odds → implied → remove the margin by normalisation. Primary book = Pinnacle;
@@ -533,7 +533,7 @@ const flaggedBody = `
       <li>Market rows fetched: <strong>${data.mapping.marketRowsFetched}</strong>; attached to a fixture: <strong>${data.mapping.marketRowsAttached}</strong>;
       unmatched: <strong>${data.mapping.unmatchedMarkets.length}</strong>.</li>
       <li>Rows missing a match URL: <strong>${data.matches.filter((m) => !m.hotspawnUrl).length}</strong>.</li>
-      <li>Resolved fixtures where the two books disagree on the favourite: <strong>${data.matches.filter((m) => m.market && m.market.agreement && !m.market.agreement.sameSide).length}</strong>.</li>
+      <li>Resolved fixtures where the books disagree on the favourite: <strong>${data.matches.filter((m) => m.market && m.market.agreement && !m.market.agreement.sameSide).length}</strong>.</li>
       <li>Collector errors: <strong>${data.errors.length}</strong>.</li>
     </ul>
     ${data.mapping.unmatchedMarkets.length ? `<div class="note warn"><strong>Unmatched external prices:</strong><ul>${data.mapping.unmatchedMarkets.map((u) => `<li>${esc(u.source)} — ${esc(u.match)} (${esc(u.startTime)})</li>`).join("")}</ul></div>` : `<div class="note"><strong>Every external price fetched was attached to a fixture.</strong></div>`}

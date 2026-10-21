@@ -94,9 +94,14 @@ Nothing was deleted: every file from the other session exists under `archive/ses
 ## PR / merge record
 
 - Session branch: `arena/1882cf1a-lolhotspawn3`
-- PR: _(recorded after creation)_
-- Merge result: _(recorded after merge)_
-- Pages deploy: _(recorded after verification)_
+- **PR #7** — https://github.com/karagemop466-tech/LOLHOTSPAWN3/pull/7 — **MERGED** 2026-10-21T20:41:21Z,
+  merge commit `b323195`.
+- **Pages deploy**: legacy build from `main:/` → run `39672522068` conclusion `success`;
+  live at **https://karagemop466-tech.github.io/LOLHOTSPAWN3/** (verified by fetching the live page: correct executive
+  summary, 264 fixtures, 9 priced, 186 unresolved, sub-pages `/picks.html`, `/unresolved.html`, `/flagged.html` reachable).
+- **Automation verified on main**: the 6-hourly `refresh.yml` ran on the merge (`run 39672469469`, success) and committed
+  `dab69f3 data: refresh Hotspawn LoL picks 2026-10-21T20:41Z`, which is the commit Pages built. End-to-end loop: collect →
+  build → link check → commit → Pages rebuild.
 
 ## Final dataset of record (regenerated on every run)
 

@@ -23,7 +23,7 @@
 <section class="hero">
   <h1>Every League of Legends match on Hotspawn — with a pick wherever a real betting line exists</h1>
   <p class="lede">Automated collection from the Hotspawn Pick'ems LoL lobby. Probabilities come from external bookmakers
-  (Pinnacle, Thunderpick) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
+  (Pinnacle, Thunderpick, Polymarket) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
   listed separately and are <strong>not</strong> given a made-up number.</p>
   <p class="updated">Last collection: <strong>2026-10-21 20:41 UTC</strong> · refreshes every 6 hours · inventory 264 fixtures / 27 competitions</p>
 </section>
@@ -55,7 +55,7 @@
     <p><strong>What is covered.</strong> 264 fixtures across 27 competitions
     (195 upcoming, 69 already started/completed). 9 upcoming fixtures carry a
     verifiable external moneyline: <strong>Pinnacle</strong> is the primary (sharp) book and every one of those fixtures is
-    cross-checked against <strong>Thunderpick</strong>.</p>
+    cross-checked against <strong>Thunderpick</strong> and <strong>Polymarket</strong>.</p>
 
     <p><strong>What is not covered, and why.</strong> 186 upcoming fixtures are amateur / semi-pro leagues
     (PRM 2nd &amp; 3rd Division, Tunisian Super League, 4 Nations, RIVALS LEAGUE, Komplettligaen, Icelandic Esports League,
@@ -252,7 +252,7 @@
   <h2>Refresh &amp; integrity</h2>
   <div class="card">
     <p>Collector runs on a <strong>6-hour schedule</strong> (GitHub Actions, <code>scripts/collect.mjs</code>) and can be
-    triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle and Thunderpick LoL markets,
+    triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle, Thunderpick and Polymarket LoL markets,
     (3) re-maps prices to fixtures by team name + kick-off time, (4) recomputes no-vig probabilities, (5) rebuilds this site.</p>
     <p class="small">Last run: 2026-10-21 20:41 UTC · collection took 12512 ms ·
     errors this run: 0 · market rows fetched: 27 ·
