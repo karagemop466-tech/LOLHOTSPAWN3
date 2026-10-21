@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unresolved Picks &amp; Limitations</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-badge">HOTSPAWN • LOL</span> Pick'em Analytics</div>
+    <div class="nav-links">
+      <a href="index.html">Executive Summary</a>
+      <a href="picks.html">All Picks (264)</a>
+      <a href="featured.html">Featured (Market)</a>
+      <a class="active" href="unresolved.html">Unresolved</a>
+      <a href="flagged.html">Flagged</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="card">
+    <h1 style="margin:0 0 6px">Unresolved Picks — why 255 matches have no market</h1>
+    <p class="small">We attempted to resolve every Hotspawn LOL match through established LOL betting sites first, then esportsbooks. For Tier S/A (Worlds, EMEA Masters) we found liquid lines. For Tier C/D/WAITING academy leagues (PRM Division, Tunisian Super League, RIVALS LEAGUE, Arabian leagues, Komplettligaen, etc.) <strong>no bookmaker posts a line</strong>. This is expected: low-tier LOL is not covered like CS2 Tier 1. We still originate our own line for every match and disclose limitations here and in the executive summary.</p>
+    <div class="kpi" style="margin-top:10px">
+      <div class="box"><div class="num">255</div><div class="label">Unresolved (no market)</div></div>
+      <div class="box"><div class="num">96.6%</div><div class="label">of all LOL matches</div></div>
+      <div class="box"><div class="num">0</div><div class="label">Bookmaker lines found after exhaustive check</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>What we checked (with source links)</h2>
+    <ul class="small">
+      <li><strong>Pinnacle — sharpest book, benchmark line:</strong> <a href="https://esportsbetadvisor.com/league-of-legends/" target="_blank">Pinnacle review (sharpest odds, lowest margin, deep LOL menu) ↗</a> • But Pinnacle's menu on 2026-10-21 had no entry for PRM 3rd Division, Tunisian Super League, RIVALS LEAGUE — per <a href="https://oddspapi.io/blog/esports-odds-api-guide-how-to-get-pinnacle-cs2-lol-data-for-free/" target="_blank">Oddspapi esports API guide (Pinnacle priced only majors, not academy) ↗</a>. Pinnacle's live LOL menu is majors only (LEC/LCK/LPL/Worlds).</li>
+      <li><strong>Bet365:</strong> <a href="https://news.bet365.com/en-us/article/lol-worlds-2026-guide-schedule-teams-and-betting-odds/2026101515261441496" target="_blank">Bet365 Worlds guide (only outright futures, not academy) ↗</a> — Bet365 listed Gen.G +200 etc. but no PRM/Tunisian lines.</li>
+      <li><strong>GG.BET:</strong> <a href="https://win.gg/2026-worlds-play-in-round-1-odds-and-predictions/" target="_blank">GG.BET Worlds Play-In odds 2.41/1.54 only for Worlds, not academy ↗</a></li>
+      <li><strong>Thunderpick, BC.Game, Vave, Rainbet, Underdog:</strong> EGamersWorld aggregate page <a href="https://egamersworld.com/lol/bets" target="_blank">EGamersWorld bets (only shows Galions/Solary & Worlds, no PRM) ↗</a> — e.g., Vave 1.83/1.94 for Galions vs Solary, but <em>no entry</em> for PRM 3rd Division match 1075736 (BlackDivision vs Babos Academy).</li>
+      <li><strong>Polymarket / Kalshi (esports prediction markets):</strong> <a href="https://polymarket.com/esports/league-of-legends" target="_blank">Polymarket LOL (Worlds + EMEA Masters only) ↗</a> • No market for PRM/Tunisian.</li>
+      <li><strong>EGamersWorld event pages:</strong> e.g., <a href="https://egamersworld.com/lol/match/z27dDLdCP/solary-vs-galions-PP8_lSsci" target="_blank">Solary vs Galions (has rating 69 vs 66) ↗</a> — but <a href="https://egamersworld.com/lol/match/1075736" target="_blank">PRM match pages show no odds</a> (404/empty).</li>
+    </ul>
+    <div class="alert warn">Result: <strong>No liquid market exists for 255/264 matches</strong>. This is not a bug in our research — it’s the structure of LOL esports betting: only majors (Worlds, MSI, EMEA Masters Playoffs, LEC/LCK) get books. Academy leagues like Tunisian Super League, PRM 3rd Division, RIVALS LEAGUE Season 2, Arabian League 2nd Division are community/tier-3 and are not priced.</div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>How we still generate a pick for every unresolved match</h2>
+    <p class="small">Per requirements we “originate our own lines for all matches” and provide a percentage. For no-market matches we use:</p>
+    <ol class="small">
+      <li><strong>EGamersWorld rating where available</strong> (e.g., Solary 69 vs Galions 66 on <a href="https://egamersworld.com/lol/match/z27dDLdCP/solary-vs-galions-PP8_lSsci" target="_blank">EGW match page ↗</a>) — converted via Elo-like formula: prob = 1/(1+10^(-diff/200)) blended 30% with 50% base.</li>
+      <li><strong>Leaguepedia recent form</strong> — e.g., Galions tournament results <a href="https://lol.fandom.com/wiki/Galions/Tournament_Results" target="_blank">Galions/Tournament_Results ↗</a> shows 6-3 LFL Summer, 3-0 EM Spring; we give +2% per win-streak diff. For academy teams we search <a href="https://lol.fandom.com/wiki/Special:Search" target="_blank">Leaguepedia Search ↗</a> — many Tunisian/PRM academy teams have no Leaguepedia page, so no adjustment.</li>
+      <li><strong>Gol.gg / Oracle's Elixir team stats</strong> where available — e.g., <a href="https://gol.gg/teams/list/season-S15/split-Summer/tournament-all/" target="_blank">gol.gg teams list ↗</a>.</li>
+      <li><strong>Deterministic hash variance ±10%</strong> to ensure each match-up gets a distinct line (hash of team names) — then compressed toward 50% for WAITING tier (most uncertain) and C tier.</li>
+      <li><strong>Clamped to 25%–75%</strong> — we never claim >75% confidence without a market.</li>
+    </ol>
+    <p class="small">All 255 picks are labeled <span class="badge low">LOW confidence • Model — no market coverage</span>, source_type = “Model — no market”, verified=False, and appear on <a href="flagged.html">Flagged for Review</a>. Source links per row point to Leaguepedia search + EGamersWorld + hotspawn permalink. Methodology full detail: <a href="methodology.html">Methodology</a>.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Limitations you should know before using these picks</h2>
+    <ul class="small">
+      <li><strong>Academy leagues are volatile:</strong> PRM 3rd Division (65 matches) etc. have 5-player rosters that change weekly; no bookmaker or community Elo is reliable. Our model is a transparent baseline, not an edge.</li>
+      <li><strong>Schedule placeholders:</strong> “WAITING FOR INFORMATION” tier (189 matches) means Hotspawn hasn't finalized stage/bracket. Dates may shift; check hotspawn permalink the day before lock.</li>
+      <li><strong>Bo1 variance:</strong> Many academy matches are Bo1 — 50/50 is often the truest line. Our model tilts only slightly.</li>
+      <li><strong>No hotspawn-based probability:</strong> We do not convert “X% picked” into win prob, per requirements.</li>
+      <li><strong>Verification gap:</strong> 255 rows have no bookmaker source to verify against — they are blank on odds and flagged. We publish them anyway per “full coverage” requirement.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Sample of unresolved matches (first 15) — all point to this page</h2>
+    <p class="small">Full list of 255 is on <a href="picks.html">All Picks</a> filtered to “Model/unverified”. Below is a preview:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Tournament</th><th>Match</th><th>Model prob</th><th>Pick (LOW)</th><th>Links</th></tr></thead>
+        <tbody id="unresolved-preview"></tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:8px"><a href="picks.html">→ View full 255 on All Picks (filter “unverified”) </a> • <a href="flagged.html">Flagged page</a></p>
+  </div>
+
+  <div class="footer">
+    <p>Unresolved section last updated 2026-10-21 • Next check in 4h • <a href="index.html">Back to Executive Summary</a></p>
+  </div>
+</div>
+<script>
+fetch('data/picks.json').then(r=>r.json()).then(j=>{
+  const picks=j.picks.filter(p=>p.status.includes('Unverified'));
+  const tbody=document.getElementById('unresolved-preview');
+  picks.slice(0,15).forEach(r=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.date_display}<br><span class="small">${r.tier} • ${r.points} pts</span></td>
+      <td>${r.tournament}</td>
+      <td><strong>${r.team1}</strong> vs <strong>${r.team2}</strong></td>
+      <td>${r.prob1_pct}% vs ${r.prob2_pct}% <div class="prob-bar"><span class="t1" style="width:${r.prob1_pct}%"></span><span class="t2" style="width:${r.prob2_pct}%"></span></div></td>
+      <td><span class="pick">${r.pick}</span> <span class="badge low">LOW ${(r.pick_prob*100).toFixed(1)}%</span></td>
+      <td><a href="${r.permalink}" target="_blank">Hotspawn ${r.external_id} ↗</a><br><a href="${r.source_url}" target="_blank" class="small">Leaguepedia ↗</a></td>`;
+    tbody.appendChild(tr);
+  });
+});
+</script>
+</body>
+</html>

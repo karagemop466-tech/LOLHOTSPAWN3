@@ -75,6 +75,22 @@ F1 hand-typed previous dataset · F2 broken Pages deploy · F3 Cloudflare blocki
 F5 Pinnacle futures excluded · F6 `best_of` null everywhere · F7 name variance (LØS/LOS) · F8 no URL for completed fixtures ·
 F9 Leaguepedia/Oddspedia unusable · F10 Hotspawn pick % excluded by design.
 
+## Reconciliation with main (second round)
+
+Main moved twice more while this branch was open (`arena/40177473-lolhotspawn3` merged PR #4 and PR #6, adding a second
+`docs/` site, a Python pipeline (`scripts/refresh.py`, `generate_*.py`) and a 4-hourly workflow). Resolution in this branch:
+
+| Item | Decision | Reason |
+|---|---|---|
+| Public site | **this branch's generated pages at the repo root** | Pages serves `main:/`; the root site is directly reachable with no redirect hop (better on mobile), and every value regenerates from the verified dataset |
+| `docs/` site (other session) | archived to `archive/session-40177473/docs/` | preserved for review; removed from the published tree to avoid two competing dashboards |
+| Python pipeline | archived to `archive/session-40177473/scripts/` | superseded by `scripts/collect.mjs`; it sourced probabilities from Hotspawn standings, which the brief excludes |
+| `data/picks.json`, `odds.json`, `seed_fixtures.json`, `verification_register.json` | archived to `archive/session-40177473/data/` | contain the unverifiable `MODEL_STANDINGS` probabilities (flag F11) |
+| `.github/workflows/refresh.yml` | this branch's version (6-hourly, Node) | single owner of the schedule; 6h is inside the required 4–8h window |
+| Root redirect `index.html` → `docs/` | replaced by the real dashboard | redirect removed |
+
+Nothing was deleted: every file from the other session exists under `archive/session-40177473/` and in git history.
+
 ## PR / merge record
 
 - Session branch: `arena/1882cf1a-lolhotspawn3`

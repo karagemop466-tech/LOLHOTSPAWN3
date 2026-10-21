@@ -1,4 +1,9 @@
 {
-  "at": "2026-10-21T20:39:23.341Z",
-  "errors": []
+  "at": "2026-10-21T20:41:06.993Z",
+  "errors": [
+    {
+      "source": "hotspawn",
+      "error": "fetch failed"
+    }
+  ]
 }
