@@ -1,1 +1,6 @@
 __pycache__/
+*.pyc
+.venv/
+research/refresh_receipt.json
+data/raw/*.html
+!data/raw/.gitkeep

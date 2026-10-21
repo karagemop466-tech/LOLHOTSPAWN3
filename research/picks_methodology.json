@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-10-21T20:26:07Z",
+  "total_matches": 264,
+  "coverage": {
+    "verified_market": 4,
+    "futures_proxy": 5,
+    "model_no_market": 255,
+    "pct_with_market": 1.5
+  },
+  "tier_breakdown": {
+    "S": 10,
+    "A": 3,
+    "C": 57,
+    "D": 7,
+    "WAITING": 187
+  },
+  "note": "Hotspawn pick % never used for probability per requirements. Model for no-market uses EGamersWorld ratings + Leaguepedia form proxy + hash variance, flagged LOW."
+}

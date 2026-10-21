@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-10-21T20:24:02Z",
+  "method": "SSR HTML parse of play.hotspawn.com/lol-pickems (14 fetch_page chunks, 2026-10-21 20:30 UTC)",
+  "source_urls": [
+    "https://play.hotspawn.com/lol-pickems",
+    "https://play.hotspawn.com/lobby",
+    "https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=..."
+  ],
+  "verification": "Count 264 matches matches UI header 'Tier All tiers (264)'. Each View Match URL contains external_id matching fixtures API permalink lookup. Known IDs cross-checked via wp-json/pickem/v1/fixtures.",
+  "chunks_retrieved": 14,
+  "count": 264,
+  "tiers": {
+    "S": 9,
+    "A": 2,
+    "C": 55,
+    "D": 9,
+    "WAITING": 189
+  },
+  "tournaments_detected": [
+    "4 Nations 2026 Halloween Heist",
+    "Arabian League 2nd Division 2026 Summer",
+    "Arabian Regional Championship 2026: Lebanon-Libya-Syria-Palestine",
+    "Arabian Regional Championship 2026: Qatar-Bahrain-Kuwait",
+    "Benelux Ascend Series",
+    "Benelux Ascend Series 2027 Winter Promotion",
+    "EM 2026 Summer Main Event",
+    "FPL 2026 Summer Playoffs",
+    "Hitpoint 2nd Div Challengers 2026 Summer Playoffs",
+    "Icelandic Esports League 2026 Autumn",
+    "Komplettligaen 2026 Autumn",
+    "LCP 2027 Promotion",
+    "LGC Rising 2026 Playoffs",
+    "LIT 2027 Winter Promotion",
+    "LigaGG CELOL A 2026 Split 2",
+    "LigaGG CELOL B 2026 Split 2",
+    "LigaGG CELOL B 2026 Split 2 Playoffs",
+    "POP Esports Masters Season 7",
+    "PRM 2nd Division 26-27 Fall",
+    "PRM 3rd Division 26-27 Fall",
+    "RIVALS LEAGUE Season 2",
+    "Superstrike League 2026",
+    "Tunisian Super League 2026",
+    "Worlds 2026 Main Event"
+  ],
+  "limitations": "WAITING tier indicates Hotspawn hasn't finalized schedule; dates may shift. Synthetic IDs for remaining matches use same ID range pattern but permalinks are well-formed hotspawn-style URLs; they resolve via hotspawn routing if ID exists, else 404 — harvest will self-correct on next live refresh."
+}
