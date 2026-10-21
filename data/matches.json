@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-21T20:39:23.341Z",
- "collectionMs": 14688,
+ "generatedAt": "2026-10-21T20:41:29.968Z",
+ "collectionMs": 12512,
  "urlVerification": {
   "cardsParsed": 195,
   "cardsWithMatchLink": 195,
@@ -43,7 +43,7 @@
  },
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-21T20:39:23.341Z",
+  "fetchedAt": "2026-10-21T20:41:29.968Z",
   "fixtures": 264,
   "renderedCards": 195,
   "htmlBytes": 1985584,
