@@ -35,8 +35,8 @@
       probability input.</li>
       <li><strong>Match links.</strong> Each rendered card contains the canonical
       <code>https://www.hotspawn.com/matches/…</code> URL; those are extracted so every row links to its source.</li>
-      <li><strong>Prices.</strong> Pinnacle (guest API, no key) and Thunderpick (via bo3.gg) LoL moneylines are pulled for all
-      competitions those books list.</li>
+      <li><strong>Prices.</strong> Pinnacle (guest API, no key), Thunderpick (via bo3.gg) and Polymarket (gamma public-search)
+      LoL moneylines are pulled for every fixture those books list.</li>
       <li><strong>Mapping.</strong> A price is attached to a fixture only when the kick-off times are within 8 hours <em>and</em>
       the normalised team-name similarity is ≥ 0.72 (either orientation). Otherwise the price is left unmatched and reported.</li>
       <li><strong>Probability.</strong> Decimal odds → implied → remove the margin by normalisation. Primary book = Pinnacle;
