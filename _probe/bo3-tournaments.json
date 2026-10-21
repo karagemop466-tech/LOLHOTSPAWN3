@@ -1,0 +1,215 @@
+{
+ "bo3Tournaments": [
+  {
+   "q": "Prime League",
+   "status": 200,
+   "count": 19,
+   "rows": [
+    {
+     "id": 3375,
+     "name": "Prime League 1st Division Summer 2023",
+     "start": "2023-06-01"
+    },
+    {
+     "id": 3401,
+     "name": "Prime League 1st Division Promotion 2024",
+     "start": "2023-09-12"
+    },
+    {
+     "id": 3424,
+     "name": "Prime League 1st Division Promotion 2025",
+     "start": "2024-09-03"
+    },
+    {
+     "id": 3456,
+     "name": "Prime League 1st Division Summer 2024",
+     "start": "2024-05-22"
+    },
+    {
+     "id": 3487,
+     "name": "Prime League 1st Division Spring 2024",
+     "start": "2024-01-17"
+    },
+    {
+     "id": 3902,
+     "name": "Prime League Winter 2025",
+     "start": "2025-01-20"
+    },
+    {
+     "id": 4074,
+     "name": "Prime League 2. Liga 2025 Spring",
+     "start": "2025-01-30"
+    },
+    {
+     "id": 4076,
+     "name": "Prime League 3. Liga 2025 Spring",
+     "start": "2025-02-02"
+    }
+   ]
+  },
+  {
+   "q": "PRM",
+   "status": 200,
+   "count": 1,
+   "rows": [
+    {
+     "id": 4651,
+     "name": "PRM 1st Division 2025 Summer",
+     "start": "2025-07-15"
+    }
+   ]
+  },
+  {
+   "q": "Komplettligaen",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Tunisian",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "RIVALS",
+   "status": 200,
+   "count": 2,
+   "rows": [
+    {
+     "id": 5189,
+     "name": "RIVALS LEAGUE Season 1",
+     "start": "2026-01-25"
+    },
+    {
+     "id": 5190,
+     "name": "RIVALS LEAGUE Division 2 Season 1",
+     "start": "2026-01-26"
+    }
+   ]
+  },
+  {
+   "q": "4 Nations",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Icelandic",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Arabian League",
+   "status": 200,
+   "count": 9,
+   "rows": [
+    {
+     "id": 3396,
+     "name": "Arabian League Summer 2023",
+     "start": "2023-06-13"
+    },
+    {
+     "id": 3454,
+     "name": "Arabian League Summer 2024",
+     "start": "2024-05-23"
+    },
+    {
+     "id": 3469,
+     "name": "Arabian League Spring 2024",
+     "start": "2024-02-01"
+    },
+    {
+     "id": 4071,
+     "name": "Arabian League Winter 2025",
+     "start": "2025-02-14"
+    },
+    {
+     "id": 4335,
+     "name": "Arabian League 2025 Spring",
+     "start": "2025-04-09"
+    },
+    {
+     "id": 4658,
+     "name": "Arabian League 2025 Summer",
+     "start": "2025-07-14"
+    },
+    {
+     "id": 4954,
+     "name": "Arabian League 2026 Winter",
+     "start": "2026-01-13"
+    },
+    {
+     "id": 5653,
+     "name": "Arabian League 2026 Spring",
+     "start": "2026-04-10"
+    }
+   ]
+  },
+  {
+   "q": "CELOL",
+   "status": 200,
+   "count": 1,
+   "rows": [
+    {
+     "id": 4770,
+     "name": "CELOL Série A 2025 Split 2",
+     "start": "2025-08-16"
+    }
+   ]
+  },
+  {
+   "q": "Benelux",
+   "status": 200,
+   "count": 5,
+   "rows": [
+    {
+     "id": 3417,
+     "name": "Elite Series Benelux Masters Champions Stage 2023",
+     "start": "2023-11-06"
+    },
+    {
+     "id": 3651,
+     "name": "Elite Series Benelux Masters 2024",
+     "start": "2024-11-01"
+    },
+    {
+     "id": 4075,
+     "name": "Benelux Ascend Series Spring 2025",
+     "start": "2025-04-23"
+    },
+    {
+     "id": 5160,
+     "name": "Benelux Ascend Series 2026 Winter - Closed Qualifier",
+     "start": "2026-01-13"
+    },
+    {
+     "id": 5169,
+     "name": "Benelux Ascend Series 2026 Winter",
+     "start": "2026-02-21"
+    }
+   ]
+  }
+ ],
+ "liquipedia": {
+  "Komplettligaen/2026/Autumn": {
+   "len": 7536,
+   "hasMatch": false,
+   "hasGroupTable": false,
+   "head": "{{DISPLAYTITLE:Komplettligaen 2026 Autumn}}\n{{NLC Navbox}}\n{{GGL 2026 Tabs}}\n{{Tournament Tabs}}\n{{Infobox league\n|name=Komplettligaen 2026 Autumn\n|tickername=Komplettligaen 2026 Autumn\n|shortname=2026 Autumn\n|image=Komplettligaen_lightmode.png\n|imagedark=Komplettligaen_darkmode.png\n|icon=Komplettligaen_Icon_allmode.png\n|series=Komplettligaen\n|organizer=Skagerrak Technologies  |organizer-link=https://skagerrak.tech/\n|patch=\n|epatch=\n|type=Online \n|country=Norway \n|sdate=2026-09-06\n|edate=2026-10-22\n|liquipediatier=4\n|website=https://www.goodgameligaen.no/lol\n|bracket=https://www.ggarena.no/competitions/komplettligaen-league-of-legends-hosten-2026/13909\n|instagram=ggligaen\n|facebook=ggligaen\n"
+  },
+  "Prime League/2026/Fall": {
+   "len": 12,
+   "hasMatch": false,
+   "hasGroupTable": false,
+   "head": "missingtitle"
+  },
+  "RIVALS LEAGUE/Season 2": {
+   "len": 8492,
+   "hasMatch": false,
+   "hasGroupTable": false,
+   "head": "{{DISPLAYTITLE:RIVALS LEAGUE Season 2}}\n{{NLC Navbox}}\n{{RIVALS LEAGUE 2026 Tabs}}\n{{Tournament Tabs 4}}\n{{Infobox league\n|name=RIVALS LEAGUE Season 2\n|shortname=Season 2\n|tickername=RIVALS LEAGUE Season 2\n|image=RIVALS_LEAGUE_League_of_Legends_Logo_allmode.png\n|icon=RIVALS_LEAGUE_League_of_Legends_Icon_allmode.png\n|series=RIVALS League\n|organizer=Svenska Onlineligan|organizer-link=https://www.svenskaonlineligan.se\n|organizer2=Rivalerna E-sportförening|organizer2-link=\n|organizer3=PXB|organizer3-link=https://pxb.gg/\n|sponsor=\n|type=Online/Offline\n|country=Sweden\n|city=\n|venue= |venuedesc=Finals\n|prizepool=\n|localcurrency=sek\n|sdate=\n|edate=\n|liquipediatier=4\n|website=https://www.rivalsleague"
+  }
+ }
+}
