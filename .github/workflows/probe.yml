@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["arena/**", "session-*/**"]
-    paths: ["scripts/probe.mjs"]
+    paths: ["scripts/probe*.mjs"]
 permissions:
   contents: write
 jobs:
@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: run probe
-        run: node scripts/probe.mjs
+        run: node scripts/probe-ngstate.mjs
       - name: commit output
         run: |
           git config user.name "hotspawn-bot"
