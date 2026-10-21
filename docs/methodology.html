@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Line Origination & Verification Methodology — LoL Hotspawn</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">⚡ HOTSPAWN <span>LOL PICKS</span></div>
+      <nav>
+        <a href="index.html">Executive Summary</a>
+        <a href="picks.html">All Picks (264)</a>
+        <a href="unresolved.html">Unresolved (85)</a>
+        <a href="methodology.html" class="active">Methodology</a>
+        <a href="flagged.html">Flagged for Review</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Probabilistic Origination Methodology</h1>
+      <p>How we originate our own betting lines and probabilities for every match on Hotspawn without ever using Hotspawn crowd percentages as probability inputs.</p>
+    </div>
+
+    <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:20px;">
+      <h2 style="color:var(--cyan); font-size:1.25rem; margin-bottom:12px;">1. De-Vigged Market Consensus (Tier 1: High Confidence)</h2>
+      <p style="font-size:0.9rem; color:#cbd5e1; margin-bottom:10px;">
+        For featured matches with active markets on sharp sportsbooks (Pinnacle, Bet365, Stake, GG.Bet) and Polymarket contracts, we remove the bookmaker vig (overround) to calculate fair implied probabilities:
+      </p>
+      <div style="background:#0f172a; padding:12px; border-radius:8px; font-family:monospace; font-size:0.9rem; color:#38bdf8; margin-bottom:12px;">
+        P(Team 1) = (1 / Odds_1) / (1 / Odds_1 + 1 / Odds_2)<br>
+        P(Team 2) = (1 / Odds_2) / (1 / Odds_1 + 1 / Odds_2)
+      </div>
+      <p style="font-size:0.85rem; color:#94a3b8;">Probabilities sum to exactly 1.0 (100.0%).</p>
+    </div>
+
+    <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:20px;">
+      <h2 style="color:var(--purple); font-size:1.25rem; margin-bottom:12px;">2. Empirical Bradley-Terry & Elo Model (Tier 2: Medium Confidence)</h2>
+      <p style="font-size:0.9rem; color:#cbd5e1; margin-bottom:10px;">
+        For regional leagues (Prime League 2nd/3rd Div, Komplettligaen, 4 Nations) not covered on major betting sites, we originate lines using empirical win-loss records from official Leaguepedia and organizer standings tables:
+      </p>
+      <div style="background:#0f172a; padding:12px; border-radius:8px; font-family:monospace; font-size:0.9rem; color:#c084fc; margin-bottom:12px;">
+        P_raw = (wA * (1 - wB)) / (wA * (1 - wB) + wB * (1 - wA))<br>
+        Shrinkage = min(N_A, N_B) / (min(N_A, N_B) + 8.0)<br>
+        P_final = 0.5 + (P_raw - 0.5) * Shrinkage
+      </div>
+      <p style="font-size:0.85rem; color:#94a3b8;">
+        Bayesian shrinkage prevents extreme overconfidence when teams have played a small number of games.
+      </p>
+    </div>
+
+    <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px;">
+      <h2 style="color:var(--amber); font-size:1.25rem; margin-bottom:12px;">3. Unresolved Matches Isolation (Tier 3: Unresolved)</h2>
+      <p style="font-size:0.9rem; color:#cbd5e1; margin-bottom:10px;">
+        Matches featuring amateur teams with 0 competitive records and no bookmaker odds are assigned a 50/50 baseline, flagged as unverified, and isolated in the Unresolved section with explicit limitation warnings.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
