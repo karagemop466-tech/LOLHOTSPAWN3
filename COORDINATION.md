@@ -1,15 +1,18 @@
 # Coordination Board
 
-**Session ID**: `arena/40177473-lolhotspawn3`  
+**Current Session ID**: `arena/40177473-lolhotspawn3`  
 **Branch**: `arena/40177473-lolhotspawn3` (active Arena tracking branch)  
 **Target Branch**: `main`  
-**Last Updated**: 2026-10-21
+**Last Updated**: 2026-10-21  
 
-## Task Board
+## Prior Session Handoff
+- **Session arena/a8d3a4de**: Merged PR #1 with 17 sample matches. User requested full coverage of all matches listed on Hotspawn (264+ fixtures in lobby/API across all divisions), an expanded research/origination engine for lower tiers, dedicated mobile executive summary with internal site links, and automatic 4-8h updates. Handed off to `arena/40177473-lolhotspawn3`.
+
+## Active Task Board (arena/40177473-lolhotspawn3)
 
 | Task ID | Task Description | Status | Owner Session | File Scope |
 |---|---|---|---|---|
-| T1 | Hotspawn LoL fixture reverse engineering & complete ingestion (Hotspawn Fixtures API + SSR lobby) | in progress | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `scripts/` |
+| T1 | Hotspawn LoL fixture reverse engineering & complete ingestion (Hotspawn Fixtures API + SSR lobby, 260+ matches) | in progress | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `scripts/fetch_fixtures.py` |
 | T2 | Multi-tier pick & odds origination engine (Polymarket + Sharp Esportsbooks + Leaguepedia Cargo MatchSchedule/Standings Elo + Unresolved isolation) | in progress | arena/40177473-lolhotspawn3 | `scripts/update_picks.py`, `data/` |
 | T3 | Automated 6-hour refresh workflow (`update-picks.yml`, 4–8h cadence) | in progress | arena/40177473-lolhotspawn3 | `.github/workflows/update-picks.yml` |
 | T4 | Mobile-first dashboard & executive summary (Landing page, Picks page, Unresolved section, Methodology) | in progress | arena/40177473-lolhotspawn3 | `index.html`, `picks.html`, `unresolved.html`, `methodology.html`, `docs/`, `assets/` |
