@@ -77,6 +77,23 @@ F9 Leaguepedia/Oddspedia unusable · F10 Hotspawn pick % excluded by design.
 
 ## PR / merge record
 
-- PR: _(recorded after creation — see PR #4)_
+- Session branch: `arena/1882cf1a-lolhotspawn3`
+- PR: _(recorded after creation)_
 - Merge result: _(recorded after merge)_
 - Pages deploy: _(recorded after verification)_
+
+## Final dataset of record (regenerated on every run)
+
+| Metric | Value |
+|---|---|
+| Hotspawn LoL fixtures | 264 (27 competitions) |
+| Upcoming | 195 |
+| Started / completed | 69 |
+| Upcoming with a verified external line | 9 |
+| Upcoming unresolved (documented, no fabricated values) | 186 |
+| Pinnacle LoL moneylines | 9 |
+| Thunderpick LoL moneylines | 9 |
+| Polymarket per-match LoL markets | 9 |
+| External price rows attached to a fixture | 25 unique |
+| Canonical match links from Hotspawn HTML | 195 / 195 upcoming |
+| Collector errors (last run) | 0 |
