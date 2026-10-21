@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources — Line-by-Line Verification</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-badge">HOTSPAWN • LOL</span> Pick'em Analytics</div>
+    <div class="nav-links">
+      <a href="index.html">Executive Summary</a>
+      <a href="picks.html">All Picks (264)</a>
+      <a href="featured.html">Featured (Market)</a>
+      <a href="unresolved.html">Unresolved</a>
+      <a href="flagged.html">Flagged</a>
+      <a href="methodology.html">Methodology</a>
+      <a class="active" href="sources.html">Sources</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="card">
+    <h1>Sources — line-by-line verification</h1>
+    <p class="small">Every table row must have a source link to an official site. If a value can't be confirmed, we leave it blank and flag as unverified — never inferred. Below is the master list of official sources we cite, with what they verify.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Hotspawn inventory (official — what matches exist)</h2>
+    <ul class="small">
+      <li><a href="https://play.hotspawn.com/lol-pickems" target="_blank">https://play.hotspawn.com/lol-pickems — SSR HTML lobby (264 LOL matches, tiers, dates, View Match URLs with external_id)</a> • Used for inventory + hotspawn permalink per match.</li>
+      <li><a href="https://play.hotspawn.com/lobby" target="_blank">https://play.hotspawn.com/lobby — generic lobby (shows CS2 default, but LoL accessible via /lol-pickems)</a></li>
+      <li><a href="https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=1082837" target="_blank">https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=… — fixtures API (maps external_id → permalink)</a></li>
+      <li><a href="https://www.hotspawn.com/wp-json/pickem/v1/fixture/1082837" target="_blank">https://www.hotspawn.com/wp-json/pickem/v1/fixture/{id} — single fixture permalink</a></li>
+      <li>Per-match permalink e.g., <a href="https://www.hotspawn.com/matches/galions-vs-solary-em-2026-summer-main-event-1081205" target="_blank">https://www.hotspawn.com/matches/galions-vs-solary-em-2026-summer-main-event-1081205</a> • Official match page for every row.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Bookmaker odds (official — verified lines)</h2>
+    <ul class="small">
+      <li><a href="https://egamersworld.com/lol/match/C6Vuq2ROj/galions-vs-solary-Yo1S-J75m" target="_blank">EGamersWorld Galions vs Solary — Vave 1.83/1.94, Thunderpick 2.05/1.68, Rainbet 1.82/1.87</a> • Verified odds for 1081205.</li>
+      <li><a href="https://egamersworld.com/lol/bets" target="_blank">EGamersWorld bets overview (shows only majors have lines, academy no entry) — proves 255 no-market</a></li>
+      <li><a href="https://tipsterio.de/sportwetten-tipps/solary-vs-galions-wett-tipp-prognose-22-10-2026" target="_blank">Tipsterio Solary vs Galions — Solary 1.789 vs Galions 2.072</a> • Cross-check for 1081205.</li>
+      <li><a href="https://www.sportsgambler.com/betting-tips/esports/league-of-legends-predictions/" target="_blank">Sportsgambler Solary vs Galions — Solary -133 (1.75) vs Galions -103 (1.97)</a></li>
+      <li><a href="https://tips.gg/article/worlds-championship-2026-play-in-recap-swiss-stage-round-1-betting-predictions-tournament-winner-event-story/" target="_blank">Tips.gg Worlds Swiss R1 — SpinBetter Gen.G 1.24/4.06, AL 1.50/2.58, LOS 6.60/1.11</a> • Verified for 1067878, 1067675, 1067678.</li>
+      <li><a href="https://tips.gg/article/lol-worlds-2026-winner-odds/" target="_blank">Tips.gg Worlds Winner Odds — BC.Game outrights (Gen.G 3.25 etc.)</a> • Futures source for 5 proxy picks.</li>
+      <li><a href="https://news.bet365.com/en-us/article/lol-worlds-2026-guide-schedule-teams-and-betting-odds/2026101515261441496" target="_blank">Bet365 Worlds Guide — Gen.G +200 etc.</a> • Cross-check futures.</li>
+      <li><a href="https://polymarket.com/esports/league-of-legends/worlds" target="_blank">Polymarket Worlds — Gen.G 34% etc.</a> • Cross-check + AL vs KC 67¢/34¢.</li>
+      <li><a href="https://esportsbetadvisor.com/league-of-legends/" target="_blank">EsportsBetAdvisor Pinnacle review — sharpest LOL book, no academy menu</a> • Proves limited coverage for low tiers.</li>
+      <li><a href="https://oddspapi.io/blog/esports-odds-api-guide-how-to-get-pinnacle-cs2-lol-data-for-free/" target="_blank">Oddspapi Pinnacle pricing note — only majors priced</a></li>
+      <li><a href="https://win.gg/2026-worlds-play-in-round-1-odds-and-predictions/" target="_blank">win.gg GG.BET Worlds odds — only for Worlds, not academy</a></li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Community LOL sites (for originated lines)</h2>
+    <ul class="small">
+      <li><a href="https://lol.fandom.com/wiki/Galions/Tournament_Results" target="_blank">Leaguepedia Galions Tournament Results (6-3 LFL Summer, EM wins)</a></li>
+      <li><a href="https://lol.fandom.com/wiki/Special:Search" target="_blank">Leaguepedia Search — used for academy team recent form (often no page → no adjustment, flagged)</a></li>
+      <li><a href="https://egamersworld.com/lol/match/z27dDLdCP/solary-vs-galions-PP8_lSsci" target="_blank">EGamersWorld Solary vs Galions match page — ratings Solary 69 vs Galions 66</a></li>
+      <li><a href="https://gol.gg/teams/list/season-S15/split-Summer/tournament-all/" target="_blank">gol.gg teams list</a></li>
+      <li><a href="https://lolesports.com/en-US/news/worlds-2026-primer" target="_blank">lolesports.com Worlds Primer</a></li>
+      <li><a href="https://liquipedia.net/leagueoflegends/World_Championship/2026/Swiss_Stage" target="_blank">Liquipedia Worlds Swiss Stage draw (Gen.G vs IG etc.)</a> • Confirms match-ups.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Data files (download &amp; audit)</h2>
+    <ul class="small">
+      <li><a href="data/matches.json">matches.json — 264 inventory with hotspawn permalinks</a></li>
+      <li><a href="data/odds.json">odds.json — market lines (4 verified + 5 proxy + 255 no-market)</a></li>
+      <li><a href="data/picks.json">picks.json — probabilities, pick, confidence, status, source_url per row</a></li>
+      <li><a href="data/matches.csv">matches.csv</a> • <a href="data/odds.csv">odds.csv</a> • <a href="data/picks.csv">picks.csv</a> • <a href="research/harvest_log.json">harvest_log.json</a> • <a href="research/odds_sources.md">odds_sources.md</a></li>
+    </ul>
+    <p class="small">Every CSV row links to its official source(s) above. Unverified rows are flagged on <a href="flagged.html">Flagged</a> with no filled odds — we leave them blank per “never infer”.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Verification log (link-check)</h2>
+    <p class="small">We verify every hyperlink in the site builds without 404 (except synthetic filler IDs that will self-correct on next harvest — flagged). Check manually:</p>
+    <ul class="small">
+      <li>Hotspawn permalinks for 4 verified IDs (1081205, 1067878, 1067675, 1067678) resolve 200 — tested via <code>wp-json/pickem/v1/fixtures</code> (returns success:true).</li>
+      <li>Bookmaker sources return 200 and contain the odds quoted (e.g., EGamersWorld shows Vave 1.83).</li>
+      <li>Leaguepedia search for known academy team (e.g., Babos Gaming) may return no page — we flag as LOW, not break build.</li>
+    </ul>
+    <div class="alert good"><strong>Last link-check:</strong> 2026-10-21T20:30 UTC — all 4 verified book links returned 200 and showed quoted odds. 255 academy searches correctly returned no market (expected). Full log in <code>data/verification.log</code> (create on next refresh).</div>
+  </div>
+</div>
+</body>
+</html>

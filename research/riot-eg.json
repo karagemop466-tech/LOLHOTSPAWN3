@@ -1,0 +1,369 @@
+{
+ "riotLeaguesStatus": 200,
+ "riotLeagues": [
+  {
+   "id": "98767975604431411",
+   "name": "Worlds",
+   "slug": "worlds",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "98767991325878492",
+   "name": "MSI",
+   "slug": "msi",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "113464388705111224",
+   "name": "First Stand",
+   "slug": "first_stand",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "98767991299243165",
+   "name": "LCS",
+   "slug": "lcs",
+   "region": "NORTH AMERICA"
+  },
+  {
+   "id": "98767991332355509",
+   "name": "CBLOL",
+   "slug": "cblol-brazil",
+   "region": "BRAZIL"
+  },
+  {
+   "id": "117370069134032321",
+   "name": "LCS Promotion",
+   "slug": "lcs_promotion",
+   "region": "NORTH AMERICA"
+  },
+  {
+   "id": "117370077081924460",
+   "name": "CBLOL Promotion",
+   "slug": "cblol_promotion",
+   "region": "BRAZIL"
+  },
+  {
+   "id": "116096325848746167",
+   "name": "Americas Cup",
+   "slug": "americas_cup",
+   "region": "AMERICAS"
+  },
+  {
+   "id": "98767991302996019",
+   "name": "LEC",
+   "slug": "lec",
+   "region": "EMEA"
+  },
+  {
+   "id": "117126995932274206",
+   "name": "DCGI",
+   "slug": "demacia_cup",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "117126993152114070",
+   "name": "WSCI",
+   "slug": "wsci",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "117228885404001005",
+   "name": "Asian Games",
+   "slug": "asian_games",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "98767991310872058",
+   "name": "LCK",
+   "slug": "lck",
+   "region": "KOREA"
+  },
+  {
+   "id": "98767991314006698",
+   "name": "LPL",
+   "slug": "lpl",
+   "region": "CHINA"
+  },
+  {
+   "id": "113476371197627891",
+   "name": "LCP",
+   "slug": "lcp",
+   "region": "PACIFIC"
+  },
+  {
+   "id": "117393366911740182",
+   "name": "LCP P&R",
+   "slug": "lcp_promotion",
+   "region": "PACIFIC"
+  },
+  {
+   "id": "109511549831443335",
+   "name": "NACL",
+   "slug": "nacl",
+   "region": "NORTH AMERICA"
+  },
+  {
+   "id": "100695891328981122",
+   "name": "EMEA Masters",
+   "slug": "emea_masters",
+   "region": "EMEA"
+  },
+  {
+   "id": "98767991349978712",
+   "name": "LJL",
+   "slug": "ljl-japan",
+   "region": "JAPAN"
+  },
+  {
+   "id": "98767991343597634",
+   "name": "TCL",
+   "slug": "turkiye-sampiyonluk-ligi",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266098308571975",
+   "name": "NLC",
+   "slug": "nlc",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266103462388553",
+   "name": "La Ligue Française",
+   "slug": "lfl",
+   "region": "EMEA"
+  },
+  {
+   "id": "107407335299756365",
+   "name": "Road of Legends",
+   "slug": "roadoflegends",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266101075764040",
+   "name": "Liga Portuguesa",
+   "slug": "liga_portuguesa",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266094998946936",
+   "name": "LoL Italian Tournament",
+   "slug": "lit",
+   "region": "EMEA"
+  },
+  {
+   "id": "113673877956508505",
+   "name": "Rift Legends",
+   "slug": "rift_legends",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266074488398661",
+   "name": "LES",
+   "slug": "les",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266091639104326",
+   "name": "Prime League",
+   "slug": "primeleague",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266106309666619",
+   "name": "Hitpoint Masters",
+   "slug": "hitpoint_masters",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266111679554379",
+   "name": "Esports Balkan League",
+   "slug": "esports_balkan_league",
+   "region": "EMEA"
+  },
+  {
+   "id": "105266108767593290",
+   "name": "Hellenic Legends League",
+   "slug": "hellenic_legends_league",
+   "region": "EMEA"
+  },
+  {
+   "id": "109545772895506419",
+   "name": "Arabian League",
+   "slug": "arabian_league",
+   "region": "EMEA"
+  },
+  {
+   "id": "98767991335774713",
+   "name": "LCK Challengers",
+   "slug": "lck_challengers_league",
+   "region": "KOREA"
+  },
+  {
+   "id": "105549980953490846",
+   "name": "Circuito Desafiante",
+   "slug": "cd",
+   "region": "BRAZIL"
+  },
+  {
+   "id": "104366947889790212",
+   "name": "PCS",
+   "slug": "pcs",
+   "region": "HONG KONG, MACAU, TAIWAN"
+  },
+  {
+   "id": "107213827295848783",
+   "name": "VCS",
+   "slug": "vcs",
+   "region": "VIETNAM"
+  },
+  {
+   "id": "110371976858004491",
+   "name": "LRN",
+   "slug": "north_regional_league",
+   "region": "LATIN AMERICA NORTH"
+  },
+  {
+   "id": "110372322609949919",
+   "name": "LRS",
+   "slug": "south_regional_league",
+   "region": "LATIN AMERICA SOUTH"
+  },
+  {
+   "id": "116952231246253880",
+   "name": "FLS",
+   "slug": "fls",
+   "region": "OCEANIA"
+  },
+  {
+   "id": "116929044967296666",
+   "name": "KeSPA Cup",
+   "slug": "kespa_cup",
+   "region": "KOREA"
+  },
+  {
+   "id": "116838530616006090",
+   "name": "Esports World Cup",
+   "slug": "ewc_lol",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "108001239847565215",
+   "name": "TFT Esports ",
+   "slug": "tft_esports",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "113475149040947852",
+   "name": "LTA Cross-Conference",
+   "slug": "lta_cross",
+   "region": "AMERICAS"
+  },
+  {
+   "id": "101382741235120470",
+   "name": "LLA",
+   "slug": "lla",
+   "region": "LATIN AMERICA"
+  },
+  {
+   "id": "117047308800576646",
+   "name": "CACG",
+   "slug": "cacg",
+   "region": "AMERICAS"
+  },
+  {
+   "id": "105709090213554609",
+   "name": "LCO",
+   "slug": "lco",
+   "region": "OCEANIA"
+  },
+  {
+   "id": "110988878756156222",
+   "name": "Worlds Qualifying Series",
+   "slug": "wqs",
+   "region": "INTERNATIONAL"
+  },
+  {
+   "id": "111102022734849553",
+   "name": "King's Duel",
+   "slug": "duelo_de_reyes",
+   "region": "LATIN AMERICA"
+  },
+  {
+   "id": "113470291645289904",
+   "name": "LTA North",
+   "slug": "lta_n",
+   "region": "AMERICAS"
+  },
+  {
+   "id": "113475181634818701",
+   "name": "LTA South",
+   "slug": "lta_s",
+   "region": "AMERICAS"
+  },
+  {
+   "id": "98767991355908944",
+   "name": "LCL",
+   "slug": "lcl",
+   "region": "COMMONWEALTH OF INDEPENDENT STATES"
+  }
+ ],
+ "riotScheduleStatus": 200,
+ "riotSchedule": {
+  "n": 80,
+  "leagues": [
+   "EMEA Masters",
+   "CBLOL Promotion",
+   "LCS Promotion",
+   "DCGI",
+   "CBLOL",
+   "VCS",
+   "Worlds"
+  ],
+  "sample": [
+   {
+    "start": "2026-10-06T16:00:00Z",
+    "league": "EMEA Masters",
+    "block": "Playoffs",
+    "teams": [
+     "Bushido Wildcats",
+     "TLN Pirates"
+    ],
+    "state": "completed"
+   },
+   {
+    "start": "2026-10-06T16:00:00Z",
+    "league": "EMEA Masters",
+    "block": "Playoffs",
+    "teams": [
+     "Berlin International Gaming",
+     "Galions"
+    ],
+    "state": "completed"
+   },
+   {
+    "start": "2026-10-06T21:00:00Z",
+    "league": "CBLOL Promotion",
+    "block": "Regional Qualifier",
+    "teams": [
+     "Estral Esports",
+     "KaBuM! Eports"
+    ],
+    "state": "completed"
+   }
+  ]
+ },
+ "egamersworld": {
+  "status": 403,
+  "bytes": 5599,
+  "uniqEvents": [],
+  "eventCount": 0,
+  "hasOddsDecimal": false,
+  "otherUrls": []
+ },
+ "hotspawnMatchPage": {
+  "status": 403,
+  "bytes": 5936,
+  "cloudflare": true
+ }
+}

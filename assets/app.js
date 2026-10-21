@@ -1,43 +1,35 @@
-// Instant search and filter for picks
-function filterPicks(category, btn) {
-  if (btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+// time-zone rendering + client-side filtering (progressive enhancement only)
+(function () {
+  var tzSel = document.getElementById('fTz');
+  function fmt(iso) {
+    var d = new Date(iso);
+    return d.toLocaleString(undefined, { weekday: 'short', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false });
   }
-  const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
-  const cards = document.querySelectorAll('.match-card');
-  const rows = document.querySelectorAll('.match-row');
-
-  function matchesFilter(method, text) {
-    const textMatch = !q || text.includes(q);
-    if (!textMatch) return false;
-    if (category === 'all') return true;
-    if (category === 'market') return method.startsWith('MARKET_');
-    if (category === 'model') return method.startsWith('MODEL_');
-    if (category === 'unresolved') return method === 'UNRESOLVED';
-    return true;
-  }
-
-  cards.forEach(card => {
-    const method = card.getAttribute('data-method') || '';
-    const text = card.textContent.toLowerCase();
-    card.style.display = matchesFilter(method, text) ? '' : 'none';
-  });
-
-  rows.forEach(row => {
-    const method = row.getAttribute('data-method') || '';
-    const text = row.textContent.toLowerCase();
-    row.style.display = matchesFilter(method, text) ? '' : 'none';
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('searchInput');
-  if (input) {
-    input.addEventListener('input', () => {
-      const activeBtn = document.querySelector('.filter-btn.active');
-      const cat = activeBtn ? activeBtn.getAttribute('data-cat') : 'all';
-      filterPicks(cat);
+  function applyTz(mode) {
+    document.querySelectorAll('.when[data-fmt="utc"]').forEach(function (el) {
+      var card = el.closest('[data-utc]');
+      if (!card) return;
+      if (mode === 'local') { el.textContent = fmt(card.dataset.utc) + ' local'; }
+      else { el.textContent = el.dataset.orig || el.textContent; }
     });
   }
-});
+  document.querySelectorAll('.when').forEach(function (el) { el.dataset.orig = el.textContent; });
+  if (tzSel) tzSel.addEventListener('change', function () { applyTz(tzSel.value); });
+
+  var q = document.getElementById('q'), fComp = document.getElementById('fComp'), fRes = document.getElementById('fRes');
+  var list = document.getElementById('list'), count = document.getElementById('count');
+  function filter() {
+    if (!list) return;
+    var term = (q && q.value || '').toLowerCase().trim();
+    var comp = fComp && fComp.value, res = fRes && fRes.value, shown = 0;
+    list.querySelectorAll('.match').forEach(function (el) {
+      var ok = (!term || el.dataset.search.indexOf(term) > -1)
+        && (!comp || el.dataset.comp === comp)
+        && (!res || el.dataset.res === res);
+      el.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    if (count) count.textContent = 'Showing ' + shown + ' matches';
+  }
+  [q, fComp, fRes].forEach(function (el) { if (el) el.addEventListener('input', filter); });
+})();

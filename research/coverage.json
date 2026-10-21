@@ -1,0 +1,225 @@
+{
+ "nameSearch": [
+  {
+   "q": "BlackDivision",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Babos Gaming Academy",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Ascent Gaming",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Turbo Gaming",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "El Menzah Esports",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Team VDS",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Galions",
+   "status": 200,
+   "count": 3,
+   "rows": [
+    {
+     "id": 18886,
+     "name": "Galions",
+     "rank": 34
+    },
+    {
+     "id": 21096,
+     "name": "Galions Pearl",
+     "rank": null
+    },
+    {
+     "id": 22372,
+     "name": "Galions Sharks",
+     "rank": 175
+    }
+   ]
+  },
+  {
+   "q": "Gen.G",
+   "status": 200,
+   "count": 3,
+   "rows": [
+    {
+     "id": 17266,
+     "name": "Gen.G Global Academy",
+     "rank": 66
+    },
+    {
+     "id": 17752,
+     "name": "Gen.G Esports",
+     "rank": 15
+    },
+    {
+     "id": 20149,
+     "name": "Gen.G Academy",
+     "rank": null
+    }
+   ]
+  },
+  {
+   "q": "G2",
+   "status": 200,
+   "count": 6,
+   "rows": [
+    {
+     "id": 16982,
+     "name": "G2 Academy",
+     "rank": null
+    },
+    {
+     "id": 17429,
+     "name": "G2 Arctic",
+     "rank": null
+    },
+    {
+     "id": 17562,
+     "name": "G2 Heretics",
+     "rank": null
+    }
+   ]
+  },
+  {
+   "q": "Socken und Sandalen",
+   "status": 200,
+   "count": 0,
+   "rows": []
+  },
+  {
+   "q": "Karolinerna",
+   "status": 200,
+   "count": 2,
+   "rows": [
+    {
+     "id": 23915,
+     "name": "Karolinerna Black",
+     "rank": null
+    },
+    {
+     "id": 24268,
+     "name": "Karolinerna",
+     "rank": null
+    }
+   ]
+  },
+  {
+   "q": "Absolved",
+   "status": 200,
+   "count": 1,
+   "rows": [
+    {
+     "id": 20111,
+     "name": "Absolved",
+     "rank": null
+    }
+   ]
+  }
+ ],
+ "history": [
+  {
+   "url": "/teams/17873/matches?page[limit]=5",
+   "status": 404,
+   "count": null,
+   "n": null,
+   "keys": null,
+   "msg": 404
+  },
+  {
+   "url": "/matches?filter[matches.team1_id][eq]=17873&page[limit]=5",
+   "status": 200,
+   "count": 0,
+   "n": 0,
+   "keys": null
+  },
+  {
+   "url": "/matches?filter[matches.teams][eq]=17873&page[limit]=5",
+   "status": 200,
+   "count": 82390,
+   "n": 5,
+   "keys": [
+    "id",
+    "slug",
+    "round_id",
+    "team1_id",
+    "team2_id",
+    "winner_team_id",
+    "loser_team_id",
+    "tournament_id",
+    "team1_score",
+    "team2_score",
+    "status",
+    "bo_type",
+    "start_date",
+    "end_date",
+    "stage_id",
+    "maps_score",
+    "parsed_status",
+    "tier",
+    "tier_rank",
+    "position"
+   ]
+  },
+  {
+   "url": "/matches?filter[matches.team_ids][contains]=17873&page[limit]=5",
+   "status": 200,
+   "count": 0,
+   "n": 0,
+   "keys": null
+  }
+ ],
+ "rankSample": [
+  {
+   "page": 0,
+   "n": 100,
+   "withRank": 10,
+   "sample": [
+    [
+     "Lynch Esports",
+     null
+    ],
+    [
+     "Chasing Haze 07",
+     null
+    ]
+   ]
+  },
+  {
+   "page": 1,
+   "n": 100,
+   "withRank": 9,
+   "sample": [
+    [
+     "NORD Esports",
+     null
+    ],
+    [
+     "Team Robo",
+     null
+    ]
+   ]
+  }
+ ]
+}

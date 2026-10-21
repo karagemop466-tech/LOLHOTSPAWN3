@@ -1,0 +1,1004 @@
+{
+ "bo3": {
+  "teams": {
+   "status": 200,
+   "total": {
+    "count": 2824,
+    "pages": 942,
+    "offset": 0,
+    "limit": 3
+   },
+   "sample": {
+    "id": 16778,
+    "slug": "lynch-esports",
+    "name": "Lynch Esports",
+    "image_url": "https://files.bo3.gg/uploads/team/16778/image/webp-21989964a28afe1aa69a615d7424387b.webp",
+    "facebook": null,
+    "twitter": null,
+    "rank": null,
+    "created_at": "2024-09-18T07:11:47.796+00:00",
+    "updated_at": "2025-09-01T18:34:44.706+00:00",
+    "country_id": 47,
+    "ps_id": null,
+    "image_data": "{\"id\":\"team/16778/image/01b89e924b96a715f298e22b5bd4fd8a.png\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"lynch_esportslogo_square.png\",\"size\":198068,\"mime_type\":\"image/png\",\"width\":500,\"height\":500},\"derivatives\":{\"webp\":{\"id\":\"team/16778/image/webp-21989964a28afe1aa69a615d7424387b.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20240918-1-9t4k6c.webp\",\"size\":25816,\"mime_type\":null,\"width\":500,\"height\":500}},\"20x20\":{\"id\":\"team/16778/image/20x20-4d2e2edee1cfddf5a3965d1a110df527.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20240918-1-1l4x9ut.webp\",\"size\":1346,\"mime_type\":null,\"width\":20,\"height\":20}},\"50x50\":{\"id\":\"team/16778/image/50x50-6625cb9ee8f319e3cbff5b55b3fe8cdd.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20240918-1-1e9kv1v.webp\",\"size\":2502,\"mime_type\":null,\"width\":50,\"height\":50}},\"150x150\":{\"id\":\"team/16778/image/150x150-838f665523f34427bb5867328b7c4aa8.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20240918-1-yae6hb.webp\",\"size\":7260,\"mime_type\":null,\"width\":150,\"height\":150}},\"400x400\":{\"id\":\"team/16778/image/400x400-58ca407a2d179ab6a48ee3d0669d9163.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20240918-1-1y685uh.webp\",\"size\":19798,\"mime_type\":null,\"width\":400,\"height\":400}}}}",
+    "image_versions": {
+     "webp": "https://files.bo3.gg/uploads/team/16778/image/webp-21989964a28afe1aa69a615d7424387b.webp",
+     "20x20": "https://files.bo3.gg/uploads/team/16778/image/20x20-4d2e2edee1cfddf5a3965d1a110df527.webp",
+     "50x50": "https://files.bo3.gg/uploads/team/16778/image/50x50-6625cb9ee8f319e3cbff5b55b3fe8cdd.webp",
+     "150x150": "https://files.bo3.gg/uploads/team/16778/image/150x150-838f665523f34427bb5867328b7c4aa8.webp",
+     "400x400": "https://files.bo3.gg/uploads/team/16778/image/400x400-58ca407a2d179ab6a48ee3d0669d9163.webp",
+     "original": "https://files.bo3.gg/uploads/team/16778/image/01b89e924b96a715f298e22b5bd4fd8a.png"
+    },
+    "avg_views": null,
+    "est_date": null,
+    "tshirt_image_url": null,
+    "tshirt_image_data": null,
+    "tshirt_image_versions": null,
+    "icon_url": null,
+    "icon_data": null,
+    "icon_versions": null,
+    "email": null,
+    "twitch_url": null,
+    "youtube_url": null,
+    "instagram_url": null,
+    "website_url": null,
+    "discipline_id": 3,
+    "six_month_earned": null,
+    "acronym": null,
+    "gallery_presence": false
+   }
+  },
+  "teamByName": {
+   "status": 200,
+   "total": {
+    "count": 3,
+    "pages": 1,
+    "offset": 0,
+    "limit": 3
+   },
+   "sample": {
+    "id": 17873,
+    "slug": "solary-lol",
+    "name": "Solary",
+    "image_url": "https://files.bo3.gg/uploads/team/17873/image/webp-a6742d2c85704c67343708118974ab77.webp",
+    "facebook": null,
+    "twitter": null,
+    "rank": 32,
+    "created_at": "2024-09-18T07:12:08.766+00:00",
+    "updated_at": "2026-10-21T18:30:21.034+00:00",
+    "country_id": 29,
+    "ps_id": null,
+    "image_data": "{\"id\":\"team/17873/image/1ca4b89fe24bbfd97a5f9502bad96d0e.png\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"Solary.png\",\"size\":21209,\"mime_type\":\"image/png\",\"width\":258,\"height\":263},\"derivatives\":{\"webp\":{\"id\":\"team/17873/image/webp-a6742d2c85704c67343708118974ab77.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20241014-1-197axw8.webp\",\"size\":9696,\"mime_type\":null,\"width\":258,\"height\":263}},\"20x20\":{\"id\":\"team/17873/image/20x20-c1a4452500e6649a97d6599e18e6185c.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20241014-1-5o6t0v.webp\",\"size\":606,\"mime_type\":null,\"width\":20,\"height\":20}},\"50x50\":{\"id\":\"team/17873/image/50x50-b9fb39ea6457b34299a445d5f62b33df.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20241014-1-1b4m3ui.webp\",\"size\":1734,\"mime_type\":null,\"width\":49,\"height\":50}},\"150x150\":{\"id\":\"team/17873/image/150x150-951fd4e3abc037e6d16f9a106f83c876.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20241014-1-13dgyh.webp\",\"size\":5436,\"mime_type\":null,\"width\":147,\"height\":150}},\"400x400\":{\"id\":\"team/17873/image/400x400-ad619816fe21c75daf7282cc9b7f04d7.webp\",\"storage\":\"store_pub\",\"metadata\":{\"filename\":\"image_processing20241014-1-1o8cw4.webp\",\"size\":9468,\"mime_type\":null,\"width\":258,\"height\":263}}}}",
+    "image_versions": {
+     "webp": "https://files.bo3.gg/uploads/team/17873/image/webp-a6742d2c85704c67343708118974ab77.webp",
+     "20x20": "https://files.bo3.gg/uploads/team/17873/image/20x20-c1a4452500e6649a97d6599e18e6185c.webp",
+     "50x50": "https://files.bo3.gg/uploads/team/17873/image/50x50-b9fb39ea6457b34299a445d5f62b33df.webp",
+     "150x150": "https://files.bo3.gg/uploads/team/17873/image/150x150-951fd4e3abc037e6d16f9a106f83c876.webp",
+     "400x400": "https://files.bo3.gg/uploads/team/17873/image/400x400-ad619816fe21c75daf7282cc9b7f04d7.webp",
+     "original": "https://files.bo3.gg/uploads/team/17873/image/1ca4b89fe24bbfd97a5f9502bad96d0e.png"
+    },
+    "avg_views": null,
+    "est_date": null,
+    "tshirt_image_url": null,
+    "tshirt_image_data": null,
+    "tshirt_image_versions": null,
+    "icon_url": null,
+    "icon_data": null,
+    "icon_versions": null,
+    "email": null,
+    "twitch_url": null,
+    "youtube_url": null,
+    "instagram_url": null,
+    "website_url": null,
+    "discipline_id": 3,
+    "six_month_earned": 10000,
+    "acronym": null,
+    "gallery_presence": false
+   }
+  },
+  "tournaments": {
+   "status": 200,
+   "total": {
+    "count": 497,
+    "pages": 166,
+    "offset": 0,
+    "limit": 3
+   },
+   "sample": {
+    "id": 3342,
+    "slug": "ignis-cup-split-2-2024",
+    "name": "Ignis Cup Split 2 2024",
+    "description": "",
+    "image_url": "https://files.bo3.gg/uploads/tournament/3342/image/webp-57a5437f83e57ff0252a19c8d78f0c46.webp",
+    "start_date": "2024-08-29T16:00:00.000+00:00",
+    "end_date": "2024-09-21T21:00:00.000+00:00",
+    "prize": 15520,
+    "players_prize": null,
+    "teams_prize": null,
+    "event_type": "online",
+    "tier": "b",
+    "tier_rank": 3,
+    "status": "finished",
+    "parsing_allowed": false,
+    "pickem_presence": false,
+    "pickem_status": null,
+    "series_id": 728,
+    "venue_id": null,
+    "country_id": 14,
+    "region_id": 2,
+    "city_id": null,
+    "pickem_points": null,
+    "last_match_date": "2024-09-22T16:00:00.000+00:00",
+    "live_coverage": false,
+    "live_coverage_advantage": false,
+    "discipline_id": 3,
+    "game_version": null,
+    "tournament_group_id": null,
+    "predicted_for_gold": null,
+    "predicted_for_silver": null,
+    "predicted_for_bronze": null,
+    "pickem_name": null,
+    "short_name": null,
+    "pickem_participants_count": null,
+    "banner_image_url": null,
+    "banner_image_versions": null,
+    "comments_count": 0,
+    "event_scope": null,
+    "event_level": "regular"
+   }
+  },
+  "matchDetail": {
+   "status": 404,
+   "keys": [
+    "status",
+    "message"
+   ],
+   "hasOdds": false
+  },
+  "upcomingCount": 42,
+  "upcoming": [
+   {
+    "id": 130167,
+    "slug": "galions-vs-solary-lol-22-10-2026",
+    "start": "2026-10-22T12:00:00.000+00:00",
+    "tournament_id": 6031,
+    "tier": "a",
+    "bo": 5,
+    "t1": 17873,
+    "t2": 18886,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2829674",
+     "t1": {
+      "name": "Solary",
+      "coeff": 1.82
+     },
+     "t2": {
+      "name": "Galions",
+      "coeff": 1.88
+     }
+    }
+   },
+   {
+    "id": 130794,
+    "slug": "gen-g-vs-invictus-gaming-lol-23-10-2026",
+    "start": "2026-10-23T17:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 17752,
+    "t2": 17955,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849415",
+     "t1": {
+      "name": "Gen.G Esports",
+      "coeff": 1.17
+     },
+     "t2": {
+      "name": "Invictus Gaming",
+      "coeff": 4.4
+     }
+    }
+   },
+   {
+    "id": 130795,
+    "slug": "team-liquid-lol-vs-ctbc-flying-oyster-23-10-2026",
+    "start": "2026-10-23T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 17972,
+    "t2": 17098,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849419",
+     "t1": {
+      "name": "Team Liquid",
+      "coeff": 1.32
+     },
+     "t2": {
+      "name": "CTBC Flying Oyster",
+      "coeff": 3.1
+     }
+    }
+   },
+   {
+    "id": 130796,
+    "slug": "anyones-legend-vs-karmine-corp-lol-23-10-2026",
+    "start": "2026-10-23T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 17162,
+    "t2": 18342,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849420",
+     "t1": {
+      "name": "Anyone's Legend",
+      "coeff": 1.4
+     },
+     "t2": {
+      "name": "Karmine Corp",
+      "coeff": 2.7
+     }
+    }
+   },
+   {
+    "id": 130797,
+    "slug": "g2-esports-lol-vs-dplus-kia-23-10-2026",
+    "start": "2026-10-23T21:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 18141,
+    "t2": 16873,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849422",
+     "t1": {
+      "name": "G2 Esports",
+      "coeff": 2.15
+     },
+     "t2": {
+      "name": "Dplus KIA",
+      "coeff": 1.62
+     }
+    }
+   },
+   {
+    "id": 130798,
+    "slug": "hanwha-life-esports-vs-top-esports-lol-23-10-2026",
+    "start": "2026-10-23T18:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 17751,
+    "t2": 17530,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849424",
+     "t1": {
+      "name": "Hanwha Life Esports",
+      "coeff": 1.2
+     },
+     "t2": {
+      "name": "Top Esports",
+      "coeff": 4
+     }
+    }
+   },
+   {
+    "id": 130799,
+    "slug": "los-vs-t1-lol-23-10-2026",
+    "start": "2026-10-23T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 16923,
+    "t2": 17529,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849431",
+     "t1": {
+      "name": "LOS",
+      "coeff": 6.3
+     },
+     "t2": {
+      "name": "T1",
+      "coeff": 1.08
+     }
+    }
+   },
+   {
+    "id": 130800,
+    "slug": "team-secret-whales-vs-lyon-gaming-24-10-2026",
+    "start": "2026-10-24T00:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 18975,
+    "t2": 17950,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849432",
+     "t1": {
+      "name": "Team Secret Whales",
+      "coeff": 2.2
+     },
+     "t2": {
+      "name": "LYON",
+      "coeff": 1.58
+     }
+    }
+   },
+   {
+    "id": 130801,
+    "slug": "bilibili-gaming-lol-vs-koi-lol-23-10-2026",
+    "start": "2026-10-23T19:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": 17842,
+    "t2": 17163,
+    "odds": {
+     "provider": "thunderpick",
+     "path": "https://thunderpick.io/match/2849435",
+     "t1": {
+      "name": "Bilibili Gaming",
+      "coeff": 1.15
+     },
+     "t2": {
+      "name": "Movistar KOI",
+      "coeff": 4.8
+     }
+    }
+   },
+   {
+    "id": 130802,
+    "slug": "c5ed932568-vs-b99b299875-24-10-2026",
+    "start": "2026-10-24T17:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130803,
+    "slug": "5e25fcd187-vs-110a6827e8-24-10-2026",
+    "start": "2026-10-24T18:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130804,
+    "slug": "c3186f1c1e-vs-0aa2b10ce5-24-10-2026",
+    "start": "2026-10-24T19:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130805,
+    "slug": "b5eb9ed3b7-vs-85cd8fcc52-24-10-2026",
+    "start": "2026-10-24T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130806,
+    "slug": "0a01ea94ad-vs-6708068e94-24-10-2026",
+    "start": "2026-10-24T21:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130807,
+    "slug": "4598d4cab6-vs-1883a3e2a5-24-10-2026",
+    "start": "2026-10-24T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130808,
+    "slug": "d99cdce7e5-vs-72d18d1d72-24-10-2026",
+    "start": "2026-10-24T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130809,
+    "slug": "222a0d5085-vs-4c262a2a44-25-10-2026",
+    "start": "2026-10-25T00:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130810,
+    "slug": "6998930f39-vs-a6528f6d37-25-10-2026",
+    "start": "2026-10-25T17:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130811,
+    "slug": "304ebd6697-vs-bb4eba2d3a-25-10-2026",
+    "start": "2026-10-25T18:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130812,
+    "slug": "6ae24c75ac-vs-054d5e5ded-25-10-2026",
+    "start": "2026-10-25T19:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130813,
+    "slug": "46a3a12692-vs-b7ec1048d7-25-10-2026",
+    "start": "2026-10-25T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130814,
+    "slug": "172bfb154c-vs-06866bc7c6-26-10-2026",
+    "start": "2026-10-26T17:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130815,
+    "slug": "f2860c4601-vs-ea730bb4aa-26-10-2026",
+    "start": "2026-10-26T18:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 1,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130816,
+    "slug": "6dda7ea583-vs-6ac2f12dfa-26-10-2026",
+    "start": "2026-10-26T19:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130817,
+    "slug": "6e01c4ff98-vs-1ef60a258c-26-10-2026",
+    "start": "2026-10-26T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130818,
+    "slug": "f58588978a-vs-88017f0d30-28-10-2026",
+    "start": "2026-10-28T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130819,
+    "slug": "facdda0c85-vs-cb9eb708aa-28-10-2026",
+    "start": "2026-10-28T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130820,
+    "slug": "0facbdcd1a-vs-bdd4410966-29-10-2026",
+    "start": "2026-10-29T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130821,
+    "slug": "1dfe808fbc-vs-1c7da05a0a-29-10-2026",
+    "start": "2026-10-29T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130822,
+    "slug": "89adf6c2be-vs-7d7a9877da-30-10-2026",
+    "start": "2026-10-30T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130823,
+    "slug": "22a3fd6460-vs-4c84febf3d-30-10-2026",
+    "start": "2026-10-30T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130824,
+    "slug": "827eb3eabb-vs-f1b529f70d-31-10-2026",
+    "start": "2026-10-31T17:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130825,
+    "slug": "9b8c3102d9-vs-d2c2cb6d6b-31-10-2026",
+    "start": "2026-10-31T20:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130826,
+    "slug": "332ea8f33a-vs-f6849be3da-31-10-2026",
+    "start": "2026-10-31T23:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 3,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130827,
+    "slug": "6d78232dbc-vs-6d8be63fac-03-11-2026",
+    "start": "2026-11-03T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130828,
+    "slug": "1816dce937-vs-0cb711cde5-04-11-2026",
+    "start": "2026-11-04T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130829,
+    "slug": "d8250aaafe-vs-7b720049b2-05-11-2026",
+    "start": "2026-11-05T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130830,
+    "slug": "fd6d22de62-vs-f11f57cbab-06-11-2026",
+    "start": "2026-11-06T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130831,
+    "slug": "f37f16a4ec-vs-24df17f3dc-07-11-2026",
+    "start": "2026-11-07T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130832,
+    "slug": "1c55a0cd33-vs-68a5c32759-08-11-2026",
+    "start": "2026-11-08T22:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 130833,
+    "slug": "25a94bddc5-vs-c9391b4139-14-11-2026",
+    "start": "2026-11-14T19:00:00.000+00:00",
+    "tournament_id": 4693,
+    "tier": "s",
+    "bo": 5,
+    "t1": null,
+    "t2": null,
+    "odds": null
+   },
+   {
+    "id": 131716,
+    "slug": "mental-rush-vs-rising-bees-27-10-2026",
+    "start": "2026-10-27T16:00:00.000+00:00",
+    "tournament_id": 5850,
+    "tier": "a",
+    "bo": 5,
+    "t1": 21548,
+    "t2": 22007,
+    "odds": null
+   }
+  ]
+ },
+ "pinnacle": {
+  "lolLeagues": [
+   {
+    "id": 9587,
+    "name": "League of Legends - World Championship",
+    "group": "World",
+    "matchupCount": 10
+   },
+   {
+    "id": 225201,
+    "name": "League of Legends - EMEA Masters",
+    "group": "Europe",
+    "matchupCount": 1
+   }
+  ],
+  "leagueSample": {
+   "ageLimit": 0,
+   "featureOrder": 0,
+   "group": "World",
+   "id": 9587,
+   "isFeatured": true,
+   "isHidden": false,
+   "isPromoted": false,
+   "isSticky": false,
+   "matchupCount": 10,
+   "matchupCountSE": 10,
+   "name": "League of Legends - World Championship",
+   "sequence": 301,
+   "sport": {
+    "featureOrder": 1,
+    "id": 12,
+    "isFeatured": true,
+    "isHidden": false,
+    "isSticky": false,
+    "matchupCount": 43,
+    "matchupCountSE": 39,
+    "name": "E Sports",
+    "primaryMarketType": "moneyline"
+   }
+  },
+  "matchups": [
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638750815,
+    "startTime": "2026-10-23T20:00:00Z",
+    "home": "G2",
+    "away": "Dplus KIA",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": 130
+     },
+     {
+      "d": "away",
+      "price": -153
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638750902,
+    "startTime": "2026-10-23T19:00:00Z",
+    "home": "Anyone's Legend",
+    "away": "Karmine Corp",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -200
+     },
+     {
+      "d": "away",
+      "price": 167
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638748205,
+    "startTime": "2026-10-23T22:00:00Z",
+    "home": "LOS",
+    "away": "T1",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": 516
+     },
+     {
+      "d": "away",
+      "price": -800
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638754606,
+    "startTime": "2026-10-23T23:00:00Z",
+    "home": "Secret Whales",
+    "away": "LYON",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": 123
+     },
+     {
+      "d": "away",
+      "price": -145
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638748203,
+    "startTime": "2026-10-23T21:00:00Z",
+    "home": "Hanwha Life",
+    "away": "Top Esports",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -490
+     },
+     {
+      "d": "away",
+      "price": 355
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638755459,
+    "startTime": "2026-10-24T00:00:00Z",
+    "home": "Bilibili",
+    "away": "Movistar KOI",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -512
+     },
+     {
+      "d": "away",
+      "price": 368
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638748200,
+    "startTime": "2026-10-23T17:00:00Z",
+    "home": "Gen.G",
+    "away": "Invictus",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -434
+     },
+     {
+      "d": "away",
+      "price": 323
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - World Championship",
+    "id": 1638750814,
+    "startTime": "2026-10-23T18:00:00Z",
+    "home": "Liquid",
+    "away": "CTBC Flying Oyster",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -285
+     },
+     {
+      "d": "away",
+      "price": 228
+     }
+    ],
+    "nMarkets": 2
+   },
+   {
+    "league": "League of Legends - EMEA Masters",
+    "id": 1638709103,
+    "startTime": "2026-10-22T16:00:00Z",
+    "home": "Solary",
+    "away": "Galions",
+    "moneyline": [
+     {
+      "d": "home",
+      "price": -103
+     },
+     {
+      "d": "away",
+      "price": -117
+     }
+    ],
+    "nMarkets": 11
+   }
+  ]
+ },
+ "leaguepedia": {
+  "rate": {
+   "status": 200,
+   "body": {
+    "error": {
+     "code": "ratelimited",
+     "info": "You've exceeded your rate limit. Please wait some time and try again.",
+     "*": "See https://lol.fandom.com/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes."
+    }
+   }
+  }
+ },
+ "liquipedia": {
+  "search": {
+   "status": 200,
+   "body": {
+    "batchcomplete": "",
+    "continue": {
+     "sroffset": 5,
+     "continue": "-||"
+    },
+    "query": {
+     "searchinfo": {
+      "totalhits": 39
+     },
+     "search": [
+      {
+       "ns": 0,
+       "title": "Prime League/2023/Pokal",
+       "pageid": 79234,
+       "size": 11445,
+       "wordcount": 1527,
+       "snippet": "Qualified <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> <span class=\"searchmatch\">Division</span> <span class=\"searchmatch\">3</span>.2 Player roster <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> <span class=\"searchmatch\">Division</span> <span class=\"searchmatch\">3</span>.2 Emperor Mokwaii Lind Remix Lotus eSports Cologne eSports Cologne Qualified <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> Division",
+       "timestamp": "2026-06-03T14:21:06Z"
+      },
+      {
+       "ns": 0,
+       "title": "Prime League/2024/Pokal",
+       "pageid": 90139,
+       "size": 11322,
+       "wordcount": 1482,
+       "snippet": "Qualified <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> <span class=\"searchmatch\">Division</span> Player roster <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> <span class=\"searchmatch\">Division</span> Kamon Autophil Bladeshow Sola Kutcher RNL ROAR RNL ROAR Qualified <span class=\"searchmatch\">PRM</span> <span class=\"searchmatch\">3rd</span> <span class=\"searchmatch\">Division</span> Player roster",
+       "timestamp": "2026-06-03T14:45:27Z"
+      },
+      {
+       "ns": 0,
+       "title": "Prime League/2024/1st Division/Championship Points",
+       "pageid": 83364,
+       "size": 2776,
+       "wordcount": 0,
+       "snippet": "Ranking Team Total Points <span class=\"searchmatch\">PRM</span> Spring 2024 <span class=\"searchmatch\">PRM</span> Summer 2024 1. Eintracht Spandau 240 180 60 2. SK Gaming Prime 240 135 105 <span class=\"searchmatch\">3</span>. Unicorns of Love SE 240 60",
+       "timestamp": "2025-01-24T19:01:31Z"
+      },
+      {
+       "ns": 0,
+       "title": "DizL",
+       "pageid": 62775,
+       "size": 314,
+       "wordcount": 115,
+       "snippet": "15, 2026 - 18:00 CEST MT1 0:<span class=\"searchmatch\">3</span>(Bo5) DKB <span class=\"searchmatch\">PRM</span> 2. Liga 2026 Finals + Add details August 9, 2026 - 18:00 CEST MT1 <span class=\"searchmatch\">3</span>:1(Bo5) RVM <span class=\"searchmatch\">PRM</span> 2. Liga 2026 Finals + Add details",
+       "timestamp": "2025-06-14T18:20:30Z"
+      },
+      {
+       "ns": 0,
+       "title": "Kaymin",
+       "pageid": 62061,
+       "size": 490,
+       "wordcount": 126,
+       "snippet": "CEST NNO 1:<span class=\"searchmatch\">3</span>(Bo5) LOOK <span class=\"searchmatch\">PRM</span> 2. Liga Spring Promotion - Last Chance Qualifier + Add details April 12, 2026 - 14:00 CEST NNO 1:<span class=\"searchmatch\">3</span>(Bo5) PvB <span class=\"searchmatch\">PRM</span> 2. Liga Spring",
+       "timestamp": "2026-05-19T07:55:49Z"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

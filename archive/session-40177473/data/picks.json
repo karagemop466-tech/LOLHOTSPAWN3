@@ -1,6 +1,10 @@
 {
   "generated_at": "2026-10-21T20:26:07Z",
   "count": 264,
+  "verified_count": 4,
+  "futures_count": 5,
+  "unverified_count": 255,
+  "methodology_url": "docs/methodology.html",
   "picks": [
     {
       "external_id": "1075158",

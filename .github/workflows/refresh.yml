@@ -1,63 +1,76 @@
-name: Refresh Hotspawn LOL Picks (every 4h)
+name: Refresh Hotspawn LoL picks (every 6h)
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # every 4 hours
+    - cron: "17 */6 * * *"   # 00:17, 06:17, 12:17, 18:17 UTC
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/collect.mjs"
+      - "scripts/build.mjs"
+      - "scripts/site/**"
+      - ".github/workflows/refresh.yml"
 
 permissions:
   contents: write
 
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: "22"
 
-      - name: Run refresh pipeline
-        run: |
-          python3 scripts/refresh.py
-          # Also ensure site builds (link check)
-          python3 -c "import json; j=json.load(open('data/picks.json')); assert j['count']==264, 'count mismatch'"
-          echo "Refresh completed"
+      - name: Collect Hotspawn inventory + external market lines
+        run: node scripts/collect.mjs
 
-      - name: Check for changes
-        id: changes
+      - name: Rebuild static site
+        run: node scripts/build.mjs
+
+      - name: Verify site (no broken links)
+        run: node scripts/check-links.mjs
+
+      - name: Report
+        if: always()
         run: |
-          git status --porcelain
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
+          node -e '
+            const d = JSON.parse(require("fs").readFileSync("data/matches.json", "utf8"));
+            const c = d.counts, s = d.sources;
+            console.log(`fixtures=${c.total} upcoming=${c.upcoming} priced=${c.upcomingResolved} unresolved=${c.upcomingUnresolved}`);
+            console.log(`pinnacle=${s.pinnacle.matchups} thunderpick=${s.thunderpick.matchups} attached=${d.mapping.marketRowsAttached}/${d.mapping.marketRowsFetched}`);
+            console.log(`errors=${d.errors.length}`);
+            require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
+              "### Hotspawn LoL refresh",
+              `- Fixtures tracked: **${c.total}** (upcoming **${c.upcoming}**)`,
+              `- Priced by an external book: **${c.upcomingResolved}**`,
+              `- Unresolved (no external line): **${c.upcomingUnresolved}**`,
+              `- Prices attached: **${d.mapping.marketRowsAttached}/${d.mapping.marketRowsFetched}**`,
+              `- Collection errors: **${d.errors.length}**`,
+              `- Generated: ${d.generatedAt}`,
+              ""
+            ].join("\n"));
+          '
+
+      - name: Commit refreshed data + site
+        run: |
+          git config user.name "hotspawn-picks-bot"
+          git config user.email "hotspawn-picks-bot@users.noreply.github.com"
+          git add data index.html picks.html markets.html unresolved.html method.html flagged.html assets .nojekyll
+          if git diff --cached --quiet; then
+            echo "No changes this run."
+            exit 0
           fi
-
-      - name: Commit & push if changed
-        if: steps.changes.outputs.has_changes == 'true'
-        run: |
-          git config user.name "hotspawn-bot"
-          git config user.email "bot@hotspawn.local"
-          git add data/ docs/data/ research/ data/raw/ || true
-          git commit -m "refresh: update picks $(date -u +%Y-%m-%dT%H:%M:%SZ) [skip ci]" || echo "no commit"
-          git pull --rebase || true
-          git push
-
-      - name: Deploy to GitHub Pages
-        if: steps.changes.outputs.has_changes == 'true'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
-          force_orphan: true
-
-      - name: Summary
-        run: |
-          echo "### Refresh completed $(date -u)" >> $GITHUB_STEP_SUMMARY
-          cat research/refresh_receipt.json 2>/dev/null | head -n 40 >> $GITHUB_STEP_SUMMARY || echo "no receipt yet"
+          git commit -m "data: refresh Hotspawn LoL picks $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase origin main
+          git push origin HEAD:main

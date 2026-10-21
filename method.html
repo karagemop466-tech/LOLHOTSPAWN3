@@ -1,18 +1,152 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Method & Sources</title><style>*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1020;color:#eef1ff;line-height:1.45;padding-bottom:76px}
-a{color:#7dd3fc}.wrap{max-width:820px;margin:0 auto;padding:14px}h1{font-size:1.55rem;line-height:1.15;margin:.2em 0}h2{font-size:1.15rem;margin-top:1.4em}
-.card{background:#151c33;border:1px solid #2a3560;border-radius:14px;padding:14px;margin:12px 0}.pick{font-size:1.35rem;font-weight:800}.pct{font-size:2rem;font-weight:900;color:#4ade80}
-.bar{height:14px;background:#26305a;border-radius:99px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:#4ade80}
-.badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:.75rem;font-weight:700}.A{background:#14532d}.B{background:#1e3a8a}.C{background:#713f12;color:#fde68a}.D{background:#7f1d1d;color:#fecaca}
-.btn{display:block;text-align:center;background:#2563eb;color:#fff;padding:16px;border-radius:12px;font-weight:800;font-size:1.05rem;margin:10px 0;text-decoration:none;min-height:52px}
-.btn2{background:#1e293b;border:1px solid #475569}.small{font-size:.85rem;color:#aab3d6}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{border-bottom:1px solid #2a3560;padding:9px 6px;text-align:left;vertical-align:top}
-nav{position:fixed;bottom:0;left:0;right:0;background:#0f1730;border-top:1px solid #2a3560;display:flex;z-index:9}nav a{flex:1;text-align:center;padding:14px 4px;color:#eef1ff;text-decoration:none;font-weight:700;font-size:.85rem;min-height:56px}
-.exec{background:linear-gradient(135deg,#14532d,#1e3a8a);border-radius:14px;padding:16px}.warn{background:#451a1a;border:1px solid #b91c1c;border-radius:12px;padding:12px}
-details{margin:6px 0}summary{cursor:pointer;font-weight:700;padding:8px 0}</style></head><body><div class="wrap"><h1>📐 Method &amp; Sources</h1><h2>Probability ladder (applied in order)</h2><ol>
-<li><b>Tier A — Multi-book consensus:</b> average/no-vig across ≥3 books (Stake, Betway, GG.Bet, bet365, 1xBet via esports-news.co.uk) cross-checked vs Polymarket.</li>
-<li><b>Tier B — Single-book line:</b> no-vig: p = (1/odds) normalised so both sides sum to 100% (removes bookmaker margin).</li>
-<li><b>Tier C — Own line:</b> no book exists → standings points, recent form, head-to-head, roster pedigree from Liquipedia/Leaguepedia/event coverage. Deliberately kept near 50% unless evidence is one-sided.</li>
-<li><b>Tier D — No verifiable edge:</b> 50/50, flagged red. Never dressed up as analysis.</li></ol>
-<p><b>Hotspawn pick-% is NEVER used</b> as a probability input (per requirements) — it's sentiment, not a line.</p>
-<h2>Sources searched for every unresolved match</h2><p>Established books &amp; esportsbooks: Polymarket (LoL section), Stake, GG.Bet, Betway, bet365, SpinBetter, Thunderpick listings · Aggregators: esports-news.co.uk (5-book tables), EGamersWorld, Tips.GG, SportsGambler, LineCrush · Fixtures/form: Liquipedia, Leaguepedia (lol.fandom.com), LoLEsports.com, Sheep Esports, Strafe, SofaScore, DPM.LOL.</p>
-<h2>Hotspawn reverse-engineering notes</h2><p>play.hotspawn.com/lobby is a JS app: server HTML only contains the default CS2 tab (138 matches/week, weekly reset, points/tier/multiplier per match, "View Match" → hotspawn.com/matches/&lt;slug-id&gt;). The LoL tab loads client-side, so automated checks use Liquipedia's fixture feed as the universe (Hotspawn mirrors the same pro calendar) and verify featured events against LoLEsports. Each refresh re-checks for newly listed matches and newly published odds.</p>
-<h2>Update cadence</h2><p>GitHub Action runs every 6 hours (within your 4–8h requirement): rebuilds data, timestamps the page, commits. Manual verification links are on every card.</p><p><a class="btn" href="index.html">← Picks</a></p></div><nav><a href="index.html">🏠 Picks</a><a href="unresolved.html">⚠️ Unresolved</a><a href="method.html">📐 Method</a><a href="flagged.html">🚩 Review</a></nav></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Method · Hotspawn LoL Picks</title>
+<meta name="description" content="Data pipeline, formulas, source audit and verification rules.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237c6cff'/><text x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>L</text></svg>">
+</head>
+<body>
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><span class="dot"></span> Hotspawn LoL Picks</a>
+    <nav class="main">
+      <a href="index.html">Summary</a><a href="picks.html">Picks</a><a href="markets.html">Market lines</a><a href="unresolved.html">Unresolved</a><a href="method.html" class="active">Method</a><a href="flagged.html">Flagged</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <h1>Method &amp; source audit</h1>
+  <p class="lede">How every number on this site is produced, and what was checked when it could not be.</p>
+</section>
+
+<section>
+  <h2>Pipeline</h2>
+  <div class="card">
+    <ol>
+      <li><strong>Inventory.</strong> <code>GET https://play.hotspawn.com/lol-pickems</code> — the page is Angular SSR and embeds its
+      fixture list in <code>&lt;script id="ng-state"&gt;</code>. All 264 LoL fixtures are read from that JSON
+      (id, competition, teams, kick-off, tier, stage, points). Hotspawn's crowd-pick percentages are captured but never used as a
+      probability input.</li>
+      <li><strong>Match links.</strong> Each rendered card contains the canonical
+      <code>https://www.hotspawn.com/matches/…</code> URL; those are extracted so every row links to its source.</li>
+      <li><strong>Prices.</strong> Pinnacle (guest API, no key) and Thunderpick (via bo3.gg) LoL moneylines are pulled for all
+      competitions those books list.</li>
+      <li><strong>Mapping.</strong> A price is attached to a fixture only when the kick-off times are within 8 hours <em>and</em>
+      the normalised team-name similarity is ≥ 0.72 (either orientation). Otherwise the price is left unmatched and reported.</li>
+      <li><strong>Probability.</strong> Decimal odds → implied → remove the margin by normalisation. Primary book = Pinnacle;
+      Thunderpick is the cross-check.</li>
+      <li><strong>Unresolved.</strong> No attached price ⇒ no probability. The fixture is published on
+      <a href="unresolved.html">Unresolved</a> with the sources that were checked.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2 id="audit">Source audit (what each source actually returned)</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Source</th><th>Outcome</th><th>Link</th></tr></thead>
+    <tbody><tr>
+      <td><strong>Hotspawn Pick'ems LoL lobby</strong><div class="small">inventory source (not a probability source)</div></td>
+      <td>HTTP 200. Angular SSR page; 264 LoL fixtures in &lt;script id=&quot;ng-state&quot;&gt;, 195 upcoming. Rendered 195 match cards with canonical match URLs. Used ONLY for which matches exist, team names, kick-off times and match links. Hotspawn pick percentages are stored but never used in any probability.</td>
+      <td><a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Hotspawn wp-json (pickem/v1/fixtures)</strong><div class="small">Hotspawn API</div></td>
+      <td>Works from a browser/manual call, but returns Cloudflare HTTP 403 &quot;Just a moment...&quot; to GitHub Actions egress, so the collector does not depend on it. Match URLs are taken from the lobby HTML instead.</td>
+      <td><a href="https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=1081205" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Pinnacle (guest API)</strong><div class="small">established sportsbook / sharp market</div></td>
+      <td>HTTP 200, no key required. Lists exactly two League of Legends competitions: 'League of Legends - World Championship' (id 9587) and 'League of Legends - EMEA Masters' (id 225201). 9 matchups with moneyline prices were available; all 9 map to Hotspawn fixtures. No PRM / Nordic / Tunisian / Arabian / Benelux LoL markets exist.</td>
+      <td><a href="https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Thunderpick (prices exposed via bo3.gg)</strong><div class="small">esports bookmaker / esports betting lines</div></td>
+      <td>HTTP 200. 42 upcoming LoL matches listed, of which 10 carry Thunderpick moneyline prices (bet_updates): the 9 Worlds/EMEA Masters fixtures plus one TBD high-tier fixture not in the Hotspawn LoL lobby. Amateur competitions from Hotspawn are absent.</td>
+      <td><a href="https://api.bo3.gg/api/v1/matches?filter[matches.discipline_id][eq]=3&amp;filter[matches.status][eq]=upcoming" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>bo3.gg team database</strong><div class="small">esports data aggregator</div></td>
+      <td>2,824 LoL teams. Name lookups for PRM 3rd Division, Norwegian, Tunisian and RIVALS LEAGUE teams returned 0 results (e.g. BlackDivision, Babos Gaming Academy, Ascent Gaming, Turbo Gaming, El Menzah Esports, Team VDS). No rating or match record exists there for these rosters, so it cannot be used to originate a line.</td>
+      <td><a href="https://api.bo3.gg/api/v1/teams?filter[teams.discipline_id][eq]=3" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Liquipedia (League of Legends)</strong><div class="small">community esports wiki</div></td>
+      <td>HTTP 200. Tournament pages exist for Komplettligaen 2026 Autumn, RIVALS LEAGUE Season 2, Arabian League, Benelux Ascend Series, CELOL, Finnish Pro League, EMEA Masters and Worlds. No page for PRM 2nd/3rd Division 2026, 4 Nations 2026, Tunisian Super League 2026, Superstrike League, POP Esports Masters, Legends Academy or Hitpoint 2nd Division. The pages that do exist carry no per-match score data in wikitext (Komplettligaen page = 7.5 KB stub, RIVALS page = 8.5 KB stub), so no rating can be derived.</td>
+      <td><a href="https://liquipedia.net/leagueoflegends/" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Riot official LoL Esports API</strong><div class="small">official publisher data</div></td>
+      <td>HTTP 200 with the public web key. 51 leagues including Worlds, MSI, LEC, LCK, LPL, LCS, CBLOL, LCP, EMEA Masters, Prime League, Arabian League, NLC. It does NOT carry PRM 2nd/3rd Division, Komplettligaen, Tunisian Super League, 4 Nations, RIVALS LEAGUE or Icelandic Esports League, and it contains no betting prices.</td>
+      <td><a href="https://esports-api.lolesports.com/persisted/gw/getLeagues?hl=en-US" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Leaguepedia (lol.fandom.com Cargo API)</strong><div class="small">community stats database</div></td>
+      <td>Returns {&quot;error&quot;:{&quot;code&quot;:&quot;ratelimited&quot;}} both from a browser origin and from GitHub Actions egress. Not usable for automated collection; not used anywhere in this dataset.</td>
+      <td><a href="https://lol.fandom.com/api.php?action=cargoquery" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Polymarket</strong><div class="small">prediction market</div></td>
+      <td>HTTP 200 via gamma-api. Per-match LoL markets DO exist but are not enumerable through the `tag_slug` listing (that returns tournament futures only, e.g. 'Worlds 2026 Winning Region'). The collector therefore queries `public-search` for each fixture that already carries a bookmaker line and reads the series 'Moneyline' market (e.g. Galions 51.5c / Solary 48.5c for the EMEA Masters final). Coverage equals the bookmaker set: the 8 Worlds Swiss fixtures + the EMEA Masters final. No amateur league has a Polymarket market.</td>
+      <td><a href="https://gamma-api.polymarket.com/events?tag_slug=league-of-legends" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>Oddspedia</strong><div class="small">odds comparison site</div></td>
+      <td>HTTP 410 Gone — the LoL esports page has been permanently removed. No data available.</td>
+      <td><a href="https://oddspedia.com/esports/league-of-legends" target="_blank" rel="noopener">open ↗</a></td>
+    </tr><tr>
+      <td><strong>EGamersWorld</strong><div class="small">esports odds/aggregator</div></td>
+      <td>Renders prices for Worlds/EMEA Masters only (same fixtures already covered by Pinnacle and Thunderpick) and blocks automated access with HTTP 403. Not used as a data source.</td>
+      <td><a href="https://egamersworld.com/lol/matches" target="_blank" rel="noopener">open ↗</a></td>
+    </tr></tbody>
+  </table></div>
+  <p class="small">Audited 2026-10-21 20:5x UTC (live requests made by this project's collector and probes). Outcomes are recorded from live requests made by this project's collector and
+  probes; nothing here is assumed.</p>
+</section>
+
+<section>
+  <h2>Verification rules applied</h2>
+  <div class="card">
+    <ul>
+      <li>Every match row links to its Hotspawn match page (or the lobby, where Hotspawn renders no card).</li>
+      <li>Every probability row links to the exact external price it came from.</li>
+      <li>No value is filled in by inference. Missing ⇒ blank + flagged.</li>
+      <li>Name matching is logged with a score; low-confidence links are rejected, not published.</li>
+      <li>If the Hotspawn lobby cannot be read, the last good dataset is kept and the failure recorded in
+      <code>data/collect-errors.json</code> rather than publishing an empty site.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Refresh</h2>
+  <div class="card">
+    <p>GitHub Actions runs the collector every 6 hours (<code>17 */6 * * *</code> UTC) and on demand, then rebuilds this site.
+    Cadence target from the brief: every 4–8 hours.</p>
+    <p class="small">This build: 2026-10-21 20:39 UTC · runtime 14688 ms · errors 0.</p>
+    <div class="note"><strong>No errors in the last collection run.</strong></div>
+  </div>
+</section>
+
+<section>
+  <h2>Known limitations</h2>
+  <div class="card">
+    <ul>
+      <li>Hotspawn's own site is Cloudflare-protected for automated clients on <code>www.hotspawn.com</code>; the collector uses
+      <code>play.hotspawn.com</code>, which serves the same fixture data.</li>
+      <li>Best-of format is <code>null</code> for every fixture in Hotspawn's transfer state, so the site does not display it.</li>
+      <li>Completed fixtures are listed but not graded; the project reports probabilities at collection time only.</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Hotspawn LoL Picks</strong> — automated inventory of every League of Legends fixture listed in the
+    <a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">Hotspawn Pick'ems LoL lobby</a>, with win probabilities only where an external
+    betting market provides a verifiable price. Refreshed every 6 hours by GitHub Actions.</p>
+    <p class="small">Data: <a href="data/matches.json">matches.json</a> · <a href="data/matches.csv">matches.csv</a> ·
+    Last collection: 2026-10-21 20:39 UTC ·
+    Sources are linked on every row. Unverified items are listed on the <a href="flagged.html">Flagged</a> page.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+</body>
+</html>
