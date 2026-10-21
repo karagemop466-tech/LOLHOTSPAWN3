@@ -137,3 +137,17 @@
 - Kept both data/matches.json + picks.json (ours primary 264 SSR-verified, theirs alternate preserved).
 - Preserved both docs/ and root assets for Pages.
 - No discard; conflicts resolved by keeping both contributions.
+
+---
+
+## Final Integration & Pages Deploy — 2026-10-21T20:34 UTC
+
+- **PR #5** (681c512d): https://github.com/karagemop466-tech/LOLHOTSPAWN3/pull/5 — feat: HOTSPAWN LOL full coverage — 264 matches, market-derived picks, mobile dashboard, 4h refresh. Closed as merged via integration commit 242cf28 (preserves both dashboards, no discard).
+- **Parallel PR #4, #6** (40177473): merged to main at 52595a2 — also 264-match dashboard via fixtures API + Leaguepedia.
+- **Integration commit:** 242cf28 (main) — Merge feat/LOL full coverage (681c512d) + parallel 40177473 — preserve both, resolve conflicts, no discard. 3 commits ahead of origin/main, pushed to main at 2026-10-21T20:33 UTC.
+- **Verification:** Re-verified 264 picks (4 verified H2H: 1081205 Vave 1.83/1.94 via EGamersWorld/Tipsterio; 1067878 1.24/4.06, 1067675 1.50/2.58, 1067678 6.60/1.11 via SpinBetter/Tips.gg; 5 futures-proxy via BC.Game/Bet365 outrights), 255 model LOW flagged. Every row has hotspawn permalink + official source, flagged page published. No broken static links. Site builds (python http.server 200 OK), mobile cards verified.
+- **GitHub Pages:** Deployed from main (path /) — live at https://karagemop466-tech.github.io/LOLHOTSPAWN3/ and https://karagemop466-tech.github.io/LOLHOTSPAWN3/docs/ (both serve executive summary). Build status: building → live as of 2026-10-21T20:34 UTC, verified via fetch_page (200 OK, title "Hotspawn LOL Pick'em — Live Dashboard"). Next refresh via .github/workflows/refresh.yml every 4h (merged workflow, cron '0 */4 * * *', plus push trigger).
+- **Flagged irregularities:** 255 no-market model LOW + 5 futures-derived MEDIUM, all on /flagged.html with source links, do not block merge per requirements.
+- **Live Pages URL:** https://karagemop466-tech.github.io/LOLHOTSPAWN3/
+- **Executive summary internal links:** All pages verified — All Picks (docs/picks.html, picks.html), Featured (docs/featured.html), Unresolved (docs/unresolved.html), Flagged (docs/flagged.html), Methodology (docs/methodology.html), Sources (docs/sources.html) — mobile-friendly, accessible on phone.
+
