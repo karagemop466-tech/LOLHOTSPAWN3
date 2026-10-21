@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - arena/40177473-lolhotspawn3
     paths:
       - "scripts/**"
       - ".github/workflows/refresh.yml"
@@ -54,4 +53,10 @@ jobs:
           git config user.name "picks-bot"
           git config user.email "actions@github.com"
           git add -A
-          git diff --cached --quiet || (git commit -m "picks: scheduled update $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }})
+          if ! git diff --cached --quiet; then
+            git commit -m "picks: scheduled update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }} || true
+          else
+            echo "No data changes to commit."
+          fi
