@@ -1,19 +1,57 @@
-name: Refresh picks (every 6h)
+name: Refresh LoL Hotspawn Picks (Every 6h)
+
 on:
-  schedule: [{cron: "17 */6 * * *"}]
+  schedule:
+    - cron: "0 */6 * * *" # Every 6 hours (within the 4-8 hour cadence)
+  push:
+    branches:
+      - main
+      - arena/40177473-lolhotspawn3
+    paths:
+      - "scripts/**"
+      - ".github/workflows/refresh.yml"
   workflow_dispatch:
-permissions: {contents: write}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: picks-refresh
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.12"}
-      - name: Rebuild + timestamp (fixtures/odds re-verified by editors between runs; see COORDINATION.md)
-        run: python3 scripts/build.py
-      - name: Commit if changed
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Pick Origination Engine
+        env:
+          ODDSPAPI_KEY: "${{ secrets.ODDSPAPI_KEY }}"
+        run: python3 scripts/update_picks.py
+
+      - name: Verify Data & Line Integrity
         run: |
-          git config user.name "picks-bot"; git config user.email "bot@users.noreply.github.com"
-          git add -A; git diff --cached --quiet || git commit -m "Auto-refresh picks $(date -u +%FT%TZ)"
-          git push
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open('data/picks.json'))
+          assert d['count'] > 0, "No matches found"
+          for m in d['matches']:
+              assert m.get('pick'), f"Missing pick in {m}"
+              assert abs(m['prob_team1'] + m['prob_team2'] - 1.0) < 0.01, f"Probabilities do not sum to 1.0 in {m}"
+              assert m['method'] in ('MARKET_BOOKS', 'MARKET_POLYMARKET', 'MODEL_STANDINGS', 'MODEL_ELO', 'UNRESOLVED'), f"Invalid method in {m}"
+          print(f"Verified {d['count']} matches successfully! Counts: {d['counts_by_method']}")
+          PY
+
+      - name: Commit and Push Updated Picks
+        run: |
+          git config user.name "picks-bot"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "picks: scheduled update $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }})

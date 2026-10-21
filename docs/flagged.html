@@ -1,17 +1,192 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flagged for Review</title><style>*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0b1020;color:#eef1ff;line-height:1.45;padding-bottom:76px}
-a{color:#7dd3fc}.wrap{max-width:820px;margin:0 auto;padding:14px}h1{font-size:1.55rem;line-height:1.15;margin:.2em 0}h2{font-size:1.15rem;margin-top:1.4em}
-.card{background:#151c33;border:1px solid #2a3560;border-radius:14px;padding:14px;margin:12px 0}.pick{font-size:1.35rem;font-weight:800}.pct{font-size:2rem;font-weight:900;color:#4ade80}
-.bar{height:14px;background:#26305a;border-radius:99px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:#4ade80}
-.badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:.75rem;font-weight:700}.A{background:#14532d}.B{background:#1e3a8a}.C{background:#713f12;color:#fde68a}.D{background:#7f1d1d;color:#fecaca}
-.btn{display:block;text-align:center;background:#2563eb;color:#fff;padding:16px;border-radius:12px;font-weight:800;font-size:1.05rem;margin:10px 0;text-decoration:none;min-height:52px}
-.btn2{background:#1e293b;border:1px solid #475569}.small{font-size:.85rem;color:#aab3d6}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{border-bottom:1px solid #2a3560;padding:9px 6px;text-align:left;vertical-align:top}
-nav{position:fixed;bottom:0;left:0;right:0;background:#0f1730;border-top:1px solid #2a3560;display:flex;z-index:9}nav a{flex:1;text-align:center;padding:14px 4px;color:#eef1ff;text-decoration:none;font-weight:700;font-size:.85rem;min-height:56px}
-.exec{background:linear-gradient(135deg,#14532d,#1e3a8a);border-radius:14px;padding:16px}.warn{background:#451a1a;border:1px solid #b91c1c;border-radius:12px;padding:12px}
-details{margin:6px 0}summary{cursor:pointer;font-weight:700;padding:8px 0}</style></head><body><div class="wrap"><h1>🚩 Flagged for Review</h1><p>Irregularities don't block publishing — review here after the fact.</p><table><tr><th>#</th><th>Item</th><th>Detail / source</th></tr>
-<tr><td>F1</td><td>Hotspawn LoL list not server-verifiable</td><td>LoL tab is client-rendered; lobby HTML shows CS2 only. Fixture universe taken from Liquipedia upcoming feed (same calendar Hotspawn lists). A Hotspawn-only obscure fixture could theoretically be missed between refreshes. <a href="https://play.hotspawn.com/lobby">Lobby ↗</a></td></tr>
-<tr><td>F2</td><td>G2 vs Dplus: pundit ≠ market</td><td>Market favours DK 1.65; Tips.GG expert picks G2 at 2.25. Our pick follows market per method; disagreement disclosed on card.</td></tr>
-<tr><td>F3</td><td>Solary–Galions books disagree on favourite</td><td>bet-at-home/SportsGambler favour Solary (~57%); Polymarket snapshot showed Galions 53¢. Near coin-flip — confidence set MEDIUM.</td></tr>
-<tr><td>F4</td><td>Worlds Swiss R2+ fixtures unknown</td><td>Oct 24 pairings depend on R1 results (TBD on Liquipedia). They will appear here at next refresh after the draw — cannot pick TBD vs TBD honestly.</td></tr>
-<tr><td>F5</td><td>Tier D matches (2)</td><td>Nine Lives–DeathMark, Rising Bees–Mental Rush: no odds/form found anywhere searched. 50/50 placeholders only.</td></tr>
-<tr><td>F6</td><td>k4sen Bo2 format</td><td>Bo2 can draw 1–1; Hotspawn asks "who will win" — our % is series-win probability excluding draw handling, which Hotspawn may score differently.</td></tr>
-<tr><td>F7</td><td>Odds timestamp</td><td>All lines captured 2026-10-21 16:15 UTC (verified live); books move lines. Each card links its source for a pre-lock re-check.</td></tr></table><p><a class="btn" href="index.html">← Picks</a></p></div><nav><a href="index.html">🏠 Picks</a><a href="unresolved.html">⚠️ Unresolved</a><a href="method.html">📐 Method</a><a href="flagged.html">🚩 Review</a></nav></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Flagged for Review & Verification Register — LoL Hotspawn</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">⚡ HOTSPAWN <span>LOL PICKS</span></div>
+      <nav>
+        <a href="index.html">Executive Summary</a>
+        <a href="picks.html">All Picks (195)</a>
+        <a href="unresolved.html">Unresolved (32)</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="flagged.html" class="active">Flagged for Review</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h1 style="color:#f43f5e;">🚩 Flagged for Review & Manual Audit Register</h1>
+      <p>Official verification log documenting unverified values, edge cases, and research limitations for manual review.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Flag Code</th>
+            <th>Tournament</th>
+            <th>Matchup</th>
+            <th>Method</th>
+            <th>Finding & Anomaly Note</th>
+            <th>Audit Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>4 Nations 2026 Halloween Heist</td>
+          <td>Rich Gang UK vs Abyssal Randoms</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/rich-gang-uk-vs-abyssal-randoms-4-nations-2026-halloween-heist-1081655" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>4 Nations 2026 Halloween Heist</td>
+          <td>Team Vertex vs Glorp Cat</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/team-vertex-vs-glorp-cat-4-nations-2026-halloween-heist-1081656" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>Arabian Regional Championship 2026: Lebanon-Libya-Syria-Palestine</td>
+          <td>Levelers vs MTN ESPORTS TEAM</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/levelers-vs-mtn-esports-team-arabian-regional-championship-2026-lebanon-libya-syria-palestine-1082839" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>Worlds 2026 Main Event</td>
+          <td>Hanwha Life Esports vs Top Esports</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/hanwha-life-esports-vs-top-esports-worlds-2026-main-event-1067677" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>Worlds 2026 Main Event</td>
+          <td>LØS vs T1</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/los-vs-t1-worlds-2026-main-event-1067678" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>LigaGG CELOL B 2026 Split 2 Playoffs</td>
+          <td>BaronX vs Marere Academy</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/baronx-vs-marere-academy-ligagg-celol-b-2026-split-2-playoffs-1081085" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>LigaGG CELOL B 2026 Split 2 Playoffs</td>
+          <td>Final Level eSports Academy vs Infinity Gaming</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/final-level-esports-academy-vs-infinity-gaming-ligagg-celol-b-2026-split-2-playoffs-1081086" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>RIVALS LEAGUE Season 2</td>
+          <td>FlameHard vs B2U</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/flamehard-vs-b2u-rivals-league-season-2-1074654" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>RIVALS LEAGUE Season 2</td>
+          <td>OnlyWinByFF vs Rich Gang Sweden</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/onlywinbyff-vs-rich-gang-sweden-rivals-league-season-2-1074657" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>RIVALS LEAGUE Season 2</td>
+          <td>Team cd vs Tung Sahur Mid</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/team-cd-vs-tung-sahur-mid-rivals-league-season-2-1074658" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>Arabian League 2nd Division 2026 Summer</td>
+          <td>JSK Academy vs New Era Team</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/jsk-academy-vs-new-era-team-arabian-league-2nd-division-2026-summer-1079141" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>Arabian League 2nd Division 2026 Summer</td>
+          <td>Void Walkers vs Slam Dunk</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/void-walkers-vs-slam-dunk-arabian-league-2nd-division-2026-summer-1079142" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>LigaGG CELOL B 2026 Split 2 Playoffs</td>
+          <td>Docta Esports Club vs Clã NKZ Revengers</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/docta-esports-club-vs-cla-nkz-revengers-ligagg-celol-b-2026-split-2-playoffs-1081083" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>LigaGG CELOL B 2026 Split 2 Playoffs</td>
+          <td>Maze GG vs Viktus</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/maze-gg-vs-viktus-ligagg-celol-b-2026-split-2-playoffs-1081084" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+        <tr>
+          <td>FLAG-UNRES</td>
+          <td>PRM 3rd Division 26-27 Fall</td>
+          <td>Second Time Alive Revival vs Berlin 5</td>
+          <td><span class="badge-method badge-unresolved">UNRESOLVED</span></td>
+          <td>Zero competitive history in Leaguepedia / Liquipedia; no open market lines</td>
+          <td><a href="https://www.hotspawn.com/matches/second-time-alive-revival-vs-berlin-5-prm-3rd-division-26-27-fall-1075759" target="_blank" rel="noopener">Hotspawn Link ↗</a></td>
+        </tr>
+        
+    <tr>
+      <td>FLAG-DIVERGENCE</td>
+      <td>Worlds 2026 Main Event</td>
+      <td>Dplus KIA vs G2 Esports</td>
+      <td><span class="badge-method badge-market">MARKET_BOOKS</span></td>
+      <td>Sharp market lines favor Dplus KIA (57.7%) while pundit commentary favors G2 Esports. Line follows sharp market.</td>
+      <td><a href="https://liquipedia.net/leagueoflegends/World_Championship/2026" target="_blank" rel="noopener">Liquipedia Worlds 2026 ↗</a></td>
+    </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
