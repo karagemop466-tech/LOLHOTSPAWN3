@@ -79,6 +79,22 @@
       "detail": "The lobby exposes a crowd-pick percentage per team. The brief forbids using Hotspawn as a probability indicator, so the collector stores the figure for transparency only (<code>hotspawnPickedA/B</code> in the JSON) and no code path reads it. It is not displayed as a probability anywhere on the site.",
       "evidence": "<code>scripts/collect.mjs</code> — fields captured, never referenced by the model or the site build",
       "status": "By design."
+    },
+    {
+      "id": "F11",
+      "title": "Parallel session's MODEL_STANDINGS probabilities are not reproducible",
+      "severity": "high",
+      "detail": "Branch <code>arena/40177473-lolhotspawn3</code> (merged to main as PR #4) published 171 of 264 fixtures with a probability whose evidence string is of the form <em>\"Official Komplettligaen 2026 Autumn Standings: 7-4 (64%) vs unranked\"</em>. Those standings could not be found in any source reachable by automation: the Liquipedia pages for Komplettligaen 2026 Autumn (7.5 KB) and RIVALS LEAGUE Season 2 (8.5 KB) are infobox-only stubs with no match rows, bo3.gg has no such tournaments and no team records, and the Riot esports API does not carry these leagues. The only site that renders these standings is Hotspawn's own tournament pages — which are Cloudflare-blocked to automation and are excluded as a probability input by the brief. The numbers therefore cannot be verified or reproduced, so they are not published in this dataset.",
+      "evidence": "<code>archive/data/picks.json</code> (preserved, not used) · <code>archive/pages/methodology.html</code> · Liquipedia/bo3/Riot probes in <code>research/</code>",
+      "status": "Withheld pending verification. Preserved in <code>archive/</code> so nothing is lost; the live site shows these fixtures as unresolved instead."
+    },
+    {
+      "id": "F12",
+      "title": "Correction: Polymarket per-match LoL markets were initially missed",
+      "severity": "low",
+      "detail": "The first audit queried <code>gamma-api.polymarket.com/events?tag_slug=league-of-legends</code>, which returns only tournament futures ('Worlds 2026 Winning Region'), and concluded that Polymarket had no per-match markets. That was wrong: 9 per-match LoL markets exist (8 Worlds + 1 EMEA Masters) and are readable through <code>/public-search</code> and <code>/events?slug=</code>. The collector now pulls Polymarket as a third independent cross-check, and the audit text was corrected.",
+      "evidence": "<code>https://gamma-api.polymarket.com/public-search?q=Galions%20Solary</code> → Galions 0.515 / Solary 0.485",
+      "status": "Corrected; Polymarket added as a source."
     }
   ]
 }

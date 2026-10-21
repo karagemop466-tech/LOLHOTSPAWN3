@@ -17,6 +17,8 @@ Status values: `unclaimed` · `in progress` · `done` · `needs review`.
 | T7 | Fix Pages deployment (broken since PR #1) | done | `1882cf1a` | Pages settings, `.github/workflows/pages.yml` (removed) |
 | T8 | Repo review + irregularity log | done → **needs review** | `1882cf1a` | `data/flags.json`, `flagged.html` |
 | T9 | PR → merge → verify live site | in progress | `1882cf1a` | — |
+| T10 | Integrate parallel session `40177473` (archive, no deletion) | done | `1882cf1a` | `archive/**`, `COORDINATION.md` |
+| T11 | Add Polymarket as third market source | done | `1882cf1a` | `scripts/collect.mjs`, `data/source-audit.json` |
 
 ## Hand-off log
 
@@ -30,6 +32,17 @@ Status values: `unclaimed` · `in progress` · `done` · `needs review`.
   Flagged page rather than silently deleted.
 - **2026-10-21 20:2x UTC** — two additional workflow runs appeared from `arena/a8d3a4de-lolhotspawn3` after its PR was merged
   (runs 39669259401, 39669471096). The branch no longer exists on the remote; no files were touched by those runs.
+- **2026-10-21 ~20:35 UTC — session `40177473`** merged PR #4 with a full 264-fixture dataset and a root-level site built by
+  `scripts/build.py` + `scripts/update_picks.py`. It originated probabilities for 171 fixtures via `MODEL_STANDINGS`
+  (see flag **F11**): the cited standings records could not be reproduced from any source reachable by automation, so those
+  numbers are **not published** here. Its work is preserved verbatim under `archive/data/` and `archive/pages/` and was
+  not deleted.
+- **2026-10-21 ~20:45 UTC — session `1882cf1a` (integration)** resolved the merge without discarding anything:
+  created files (`index.html`, `picks.html`, `markets.html`, `unresolved.html`, `method.html`, `flagged.html`, `assets/*`,
+  `data/matches.json`) resolved in favour of this branch because they are generated from the verified dataset and regenerate
+  on every run; the duplicate `docs/` build was removed because Pages serves `main:/`; the parallel session's scripts and
+  datasets were moved to `archive/`; their `methodology.html` was archived to `archive/pages/methodology.html`.
+  **No conflict remains open.**
 
 ## Verification performed by `1882cf1a`
 
@@ -40,7 +53,7 @@ Sources are only "used" if a live request returned the data (all links re-checka
 | `play.hotspawn.com/lol-pickems` | HTTP 200, 264 fixtures in `ng-state`, 195 rendered cards | inventory + match URLs |
 | Pinnacle guest API | HTTP 200; 2 LoL leagues, 9 moneylines | primary probabilities |
 | bo3.gg / Thunderpick | HTTP 200; 42 upcoming LoL, 10 with prices | cross-check probabilities |
-| Polymarket gamma API | HTTP 200; LoL = tournament futures only | coverage proof |
+| Polymarket gamma API | HTTP 200; 9 per-match LoL markets (8 Worlds + 1 EMEA) via `public-search` | third cross-check |
 | Liquipedia API | HTTP 200; stub pages, no per-match data | coverage proof |
 | Riot esports API | HTTP 200; 51 leagues, no PRM 2nd/3rd, no prices | coverage proof |
 | Leaguepedia Cargo | `ratelimited` error | excluded |
@@ -51,7 +64,8 @@ Sources are only "used" if a live request returned the data (all links re-checka
 Cross-checks run on the published dataset:
 - 195 rendered lobby cards == 195 upcoming fixtures in the transfer state.
 - 195/195 upcoming fixtures have a canonical match URL taken from Hotspawn's own HTML.
-- 18 external price rows fetched → 18 attached to a fixture (0 unmatched).
+- 36 external price rows fetched → 25 unique attached to a fixture (duplicates are the same Polymarket event reached
+  from both the Pinnacle and Thunderpick seeds; unmatched rows are logged, not hidden).
 - 9 upcoming fixtures priced; 186 explicitly unresolved (no fabricated values).
 
 ## Irregularities / needs review
