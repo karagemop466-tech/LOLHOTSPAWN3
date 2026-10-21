@@ -119,43 +119,6 @@ function buildMatchUrl(f) {
   )}-${slugPart(f.competition_name)}-${f.id}`;
 }
 
-/* ------------------------------------------------------------------ *
- * 2b. Legacy permalink helper (kept for reference; endpoint is blocked)
- * ------------------------------------------------------------------ */
-async function collectPermalinks(ids, diag) {
-  const out = {};
-  async function tryBatch(batch) {
-    const r = await getJson(
-      `https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=${batch.join(",")}`,
-      { accept: "application/json" },
-      2
-    );
-    const links = r.body?.permalinks;
-    if (links && typeof links === "object") {
-      Object.assign(out, links);
-      return true;
-    }
-    if (diag.firstFailure === undefined) {
-      diag.firstFailure = { status: r.status, bodyHead: JSON.stringify(r.body ?? r.raw ?? "").slice(0, 400), batch: batch.slice(0, 3) };
-    }
-    return false;
-  }
-  for (let i = 0; i < ids.length; i += 40) {
-    const batch = ids.slice(i, i + 40);
-    const ok = await tryBatch(batch);
-    if (!ok) {
-      // fall back to small batches, then singles
-      for (let j = 0; j < batch.length; j += 5) {
-        const small = batch.slice(j, j + 5);
-        const ok2 = await tryBatch(small);
-        if (!ok2) for (const id of small) await tryBatch([id]);
-        await sleep(150);
-      }
-    }
-    await sleep(200);
-  }
-  return out;
-}
 
 /* ------------------------------------------------------------------ *
  * 3. Pinnacle moneyline

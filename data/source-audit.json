@@ -1,0 +1,133 @@
+{
+  "auditedAt": "2026-10-21 20:5x UTC (live requests made by this project's collector and probes)",
+  "sources": [
+    {
+      "name": "Hotspawn Pick'ems LoL lobby",
+      "type": "inventory source (not a probability source)",
+      "url": "https://play.hotspawn.com/lol-pickems",
+      "outcome": "HTTP 200. Angular SSR page; 264 LoL fixtures in <script id=\"ng-state\">, 195 upcoming. Rendered 195 match cards with canonical match URLs. Used ONLY for which matches exist, team names, kick-off times and match links. Hotspawn pick percentages are stored but never used in any probability."
+    },
+    {
+      "name": "Hotspawn wp-json (pickem/v1/fixtures)",
+      "type": "Hotspawn API",
+      "url": "https://www.hotspawn.com/wp-json/pickem/v1/fixtures?ids=1081205",
+      "outcome": "Works from a browser/manual call, but returns Cloudflare HTTP 403 \"Just a moment...\" to GitHub Actions egress, so the collector does not depend on it. Match URLs are taken from the lobby HTML instead."
+    },
+    {
+      "name": "Pinnacle (guest API)",
+      "type": "established sportsbook / sharp market",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues",
+      "outcome": "HTTP 200, no key required. Lists exactly two League of Legends competitions: 'League of Legends - World Championship' (id 9587) and 'League of Legends - EMEA Masters' (id 225201). 9 matchups with moneyline prices were available; all 9 map to Hotspawn fixtures. No PRM / Nordic / Tunisian / Arabian / Benelux LoL markets exist."
+    },
+    {
+      "name": "Thunderpick (prices exposed via bo3.gg)",
+      "type": "esports bookmaker / esports betting lines",
+      "url": "https://api.bo3.gg/api/v1/matches?filter[matches.discipline_id][eq]=3&filter[matches.status][eq]=upcoming",
+      "outcome": "HTTP 200. 42 upcoming LoL matches listed, of which 10 carry Thunderpick moneyline prices (bet_updates): the 9 Worlds/EMEA Masters fixtures plus one TBD high-tier fixture not in the Hotspawn LoL lobby. Amateur competitions from Hotspawn are absent."
+    },
+    {
+      "name": "bo3.gg team database",
+      "type": "esports data aggregator",
+      "url": "https://api.bo3.gg/api/v1/teams?filter[teams.discipline_id][eq]=3",
+      "outcome": "2,824 LoL teams. Name lookups for PRM 3rd Division, Norwegian, Tunisian and RIVALS LEAGUE teams returned 0 results (e.g. BlackDivision, Babos Gaming Academy, Ascent Gaming, Turbo Gaming, El Menzah Esports, Team VDS). No rating or match record exists there for these rosters, so it cannot be used to originate a line."
+    },
+    {
+      "name": "Liquipedia (League of Legends)",
+      "type": "community esports wiki",
+      "url": "https://liquipedia.net/leagueoflegends/",
+      "outcome": "HTTP 200. Tournament pages exist for Komplettligaen 2026 Autumn, RIVALS LEAGUE Season 2, Arabian League, Benelux Ascend Series, CELOL, Finnish Pro League, EMEA Masters and Worlds. No page for PRM 2nd/3rd Division 2026, 4 Nations 2026, Tunisian Super League 2026, Superstrike League, POP Esports Masters, Legends Academy or Hitpoint 2nd Division. The pages that do exist carry no per-match score data in wikitext (Komplettligaen page = 7.5 KB stub, RIVALS page = 8.5 KB stub), so no rating can be derived."
+    },
+    {
+      "name": "Riot official LoL Esports API",
+      "type": "official publisher data",
+      "url": "https://esports-api.lolesports.com/persisted/gw/getLeagues?hl=en-US",
+      "outcome": "HTTP 200 with the public web key. 51 leagues including Worlds, MSI, LEC, LCK, LPL, LCS, CBLOL, LCP, EMEA Masters, Prime League, Arabian League, NLC. It does NOT carry PRM 2nd/3rd Division, Komplettligaen, Tunisian Super League, 4 Nations, RIVALS LEAGUE or Icelandic Esports League, and it contains no betting prices."
+    },
+    {
+      "name": "Leaguepedia (lol.fandom.com Cargo API)",
+      "type": "community stats database",
+      "url": "https://lol.fandom.com/api.php?action=cargoquery",
+      "outcome": "Returns {\"error\":{\"code\":\"ratelimited\"}} both from a browser origin and from GitHub Actions egress. Not usable for automated collection; not used anywhere in this dataset."
+    },
+    {
+      "name": "Polymarket",
+      "type": "prediction market",
+      "url": "https://gamma-api.polymarket.com/events?tag_slug=league-of-legends",
+      "outcome": "HTTP 200. LoL markets are tournament futures only (e.g. 'Worlds 2026 Winning Region', LCK/LPL to win Worlds). No per-match market exists for any of the 195 upcoming Hotspawn fixtures."
+    },
+    {
+      "name": "Oddspedia",
+      "type": "odds comparison site",
+      "url": "https://oddspedia.com/esports/league-of-legends",
+      "outcome": "HTTP 410 Gone — the LoL esports page has been permanently removed. No data available."
+    },
+    {
+      "name": "EGamersWorld",
+      "type": "esports odds/aggregator",
+      "url": "https://egamersworld.com/lol/matches",
+      "outcome": "Renders prices for Worlds/EMEA Masters only (same fixtures already covered by Pinnacle and Thunderpick) and blocks automated access with HTTP 403. Not used as a data source."
+    }
+  ],
+  "defaultNote": {
+    "why": "No external bookmaker or data provider lists this fixture: no price exists to convert into a probability, and no machine-readable match record exists for these rosters.",
+    "checked": "Pinnacle (no LoL market outside Worlds/EMEA Masters), Thunderpick/bo3.gg (fixture absent), Liquipedia (no per-match data), Riot esports API (league not carried), Polymarket (futures only).",
+    "resolve": "A bookmaker opening a moneyline on this competition, or a results feed (e.g. Liquipedia match logs) becoming available. Both are outside this project's control."
+  },
+  "perCompetition": {
+    "PRM 3rd Division 26-27 Fall": {
+      "why": "Germany's third-tier Prime League division. No bookmaker prices it and neither Liquipedia nor the Riot esports API carries it — there is no fixture list or score data to model from.",
+      "checked": "Pinnacle (only Worlds + EMEA Masters for LoL), Thunderpick/bo3.gg (no such tournament, no team records for BlackDivision, Babos Gaming Academy, etc.), Liquipedia search 'PRM 3rd Division' returned no league page, Riot getLeagues has 'Prime League' but not its 2nd/3rd divisions.",
+      "resolve": "A bookmaker line on PRM 3rd Division, or Liquipedia publishing match results for the 2026 Fall season."
+    },
+    "PRM 2nd Division 26-27 Fall": {
+      "why": "Germany's second-tier Prime League division. Same gap as the 3rd Division: no market, no published match data feed.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (no 2026 2nd Division page), Riot esports API (Prime League top division only).",
+      "resolve": "A bookmaker line, or a results feed for Prime League 2nd Division."
+    },
+    "Tunisian Super League 2026": {
+      "why": "Regional Tunisian league. Not covered by any bookmaker, aggregator or wiki that exposes match data.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia search 'Tunisian Super League 2026' (no league page), Riot esports API (not carried), Polymarket (no markets).",
+      "resolve": "Any bookmaker or stats provider beginning coverage of the Tunisian league."
+    },
+    "4 Nations 2026 Halloween Heist": {
+      "why": "Small invitational event. Liquipedia search returns 0 results and no book lists it.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (0 hits), Riot esports API (not carried).",
+      "resolve": "Tournament coverage by a bookmaker or esports data provider."
+    },
+    "RIVALS LEAGUE Season 2": {
+      "why": "Liquipedia has a RIVALS LEAGUE Season 2 page but it is an 8.5 KB stub with no match results in wikitext; no bookmaker prices the league.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg (only 'RIVALS LEAGUE Season 1' and 'Division 2 Season 1' exist in its tournament DB), Liquipedia (page exists, no score data), Riot esports API (not carried).",
+      "resolve": "Liquipedia publishing RIVALS LEAGUE match logs, or a bookmaker opening the league."
+    },
+    "Komplettligaen 2026 Autumn": {
+      "why": "Norwegian league. Liquipedia has a 7.5 KB stub page (infobox only, no match data) and no bookmaker prices it.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg (no such tournament), Liquipedia (stub page, no matches), Riot esports API (not carried).",
+      "resolve": "Liquipedia adding match results for the season, or a bookmaker line."
+    },
+    "Icelandic Esports League 2026 Autumn": {
+      "why": "No external coverage: Liquipedia only has the 2026 Spring page, no bookmaker prices the league.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (Spring only), Riot esports API (not carried).",
+      "resolve": "Autumn-season coverage by a stats provider."
+    },
+    "Arabian League 2nd Division 2026 Summer": {
+      "why": "The Riot esports API and Liquipedia cover the Arabian League top division, not its 2nd Division, and no bookmaker prices it.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (Arabian League top division pages only), Riot esports API (Arabian League = top division).",
+      "resolve": "Coverage of the 2nd Division by Riot's feed or a bookmaker."
+    },
+    "Arabian Regional Championship 2026: Lebanon-Libya-Syria-Palestine": {
+      "why": "Liquipedia has a page for this championship but the fixtures are not in a machine-readable match log, and no bookmaker prices it.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (page exists, no score data), Riot esports API (not carried).",
+      "resolve": "Match-level data from Liquipedia or a bookmaker line."
+    },
+    "LigaGG CELOL B 2026 Split 2 Playoffs": {
+      "why": "Brazilian LigaGG CELOL B. bo3.gg has only the 2025 Série A tournament and no bookmaker prices the B division.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (CELOL 2025 pages only), Riot esports API (not carried).",
+      "resolve": "Coverage of CELOL B by a bookmaker or data provider."
+    },
+    "LGC Rising 2026 Playoffs": {
+      "why": "No bookmaker or data provider covers this event.",
+      "checked": "Pinnacle, Thunderpick/bo3.gg, Liquipedia (no event page), Riot esports API (not carried).",
+      "resolve": "Any market or match-log coverage."
+    }
+  }
+}
