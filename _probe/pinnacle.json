@@ -1,0 +1,205 @@
+{
+ "lolLeagues": [
+  {
+   "id": 9587,
+   "name": "League of Legends - World Championship",
+   "group": "World",
+   "matchupCount": 10
+  },
+  {
+   "id": 225201,
+   "name": "League of Legends - EMEA Masters",
+   "group": "Europe",
+   "matchupCount": 1
+  }
+ ],
+ "leagueSample": {
+  "ageLimit": 0,
+  "featureOrder": 0,
+  "group": "World",
+  "id": 9587,
+  "isFeatured": true,
+  "isHidden": false,
+  "isPromoted": false,
+  "isSticky": false,
+  "matchupCount": 10,
+  "matchupCountSE": 10,
+  "name": "League of Legends - World Championship",
+  "sequence": 301,
+  "sport": {
+   "featureOrder": 1,
+   "id": 12,
+   "isFeatured": true,
+   "isHidden": false,
+   "isSticky": false,
+   "matchupCount": 43,
+   "matchupCountSE": 39,
+   "name": "E Sports",
+   "primaryMarketType": "moneyline"
+  }
+ },
+ "matchups": [
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638750815,
+   "startTime": "2026-10-23T20:00:00Z",
+   "home": "G2",
+   "away": "Dplus KIA",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": 130
+    },
+    {
+     "d": "away",
+     "price": -153
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638750902,
+   "startTime": "2026-10-23T19:00:00Z",
+   "home": "Anyone's Legend",
+   "away": "Karmine Corp",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -200
+    },
+    {
+     "d": "away",
+     "price": 167
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638748205,
+   "startTime": "2026-10-23T22:00:00Z",
+   "home": "LOS",
+   "away": "T1",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": 516
+    },
+    {
+     "d": "away",
+     "price": -800
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638754606,
+   "startTime": "2026-10-23T23:00:00Z",
+   "home": "Secret Whales",
+   "away": "LYON",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": 123
+    },
+    {
+     "d": "away",
+     "price": -145
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638748203,
+   "startTime": "2026-10-23T21:00:00Z",
+   "home": "Hanwha Life",
+   "away": "Top Esports",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -490
+    },
+    {
+     "d": "away",
+     "price": 355
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638755459,
+   "startTime": "2026-10-24T00:00:00Z",
+   "home": "Bilibili",
+   "away": "Movistar KOI",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -512
+    },
+    {
+     "d": "away",
+     "price": 368
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638748200,
+   "startTime": "2026-10-23T17:00:00Z",
+   "home": "Gen.G",
+   "away": "Invictus",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -434
+    },
+    {
+     "d": "away",
+     "price": 323
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - World Championship",
+   "id": 1638750814,
+   "startTime": "2026-10-23T18:00:00Z",
+   "home": "Liquid",
+   "away": "CTBC Flying Oyster",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -285
+    },
+    {
+     "d": "away",
+     "price": 228
+    }
+   ],
+   "nMarkets": 2
+  },
+  {
+   "league": "League of Legends - EMEA Masters",
+   "id": 1638709103,
+   "startTime": "2026-10-22T16:00:00Z",
+   "home": "Solary",
+   "away": "Galions",
+   "moneyline": [
+    {
+     "d": "home",
+     "price": -103
+    },
+    {
+     "d": "away",
+     "price": -117
+    }
+   ],
+   "nMarkets": 11
+  }
+ ]
+}
