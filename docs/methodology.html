@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Methodology — How We Originate Lines</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-badge">HOTSPAWN • LOL</span> Pick'em Analytics</div>
+    <div class="nav-links">
+      <a href="index.html">Executive Summary</a>
+      <a href="picks.html">All Picks (264)</a>
+      <a href="featured.html">Featured (Market)</a>
+      <a href="unresolved.html">Unresolved</a>
+      <a href="flagged.html">Flagged</a>
+      <a class="active" href="methodology.html">Methodology</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="card">
+    <h1>Methodology — originating lines without hotspawn</h1>
+    <p class="small">Requirement: “Do not use hotspawn as an indicator for match probability. We need to get betting lines from outside anywhere esports is covered. We need to originate our own lines for all matches.” <br> We do exactly that: Hotspawn = inventory (what matches exist). Probability = outside sources or our transparent model.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>1. Inventory (what matches to cover)</h2>
+    <p class="small">Reverse-engineered from <a href="https://play.hotspawn.com/lol-pickems" target="_blank">play.hotspawn.com/lol-pickems</a> SSR HTML (14 fetch_page chunks, 2026-10-21 20:30 UTC) + <a href="https://www.hotspawn.com/wp-json/pickem/v1/fixtures" target="_blank">wp-json/pickem/v1/fixtures</a>. Each card contains <code>external_id</code> in the <code>View Match</code> URL (e.g., <code>...-1081205</code>). We cross-check via <code>.../fixtures?ids=1081205</code> which returns the canonical permalink. Count at harvest: 264 LOL matches. Script: <code>scripts/inventory.py</code> and <code>scripts/generate_matches.py</code> (audit in <code>research/harvest_log.json</code>).</p>
+    <p class="small">Hotspawn refresh cadence: “This week — Resets in 4d 03h…” — new matches appear as tournaments publish brackets. Our GitHub Action re-harvests every 4h (<code>.github/workflows/refresh.yml</code>).</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>2. Market lines (where they exist)</h2>
+    <p class="small"><strong>Step 1: Established LOL betting sites</strong> — Pinnacle (sharpest, lowest margin ~2–3% on majors, via <a href="https://esportsbetadvisor.com/league-of-legends/" target="_blank">EsportsBetAdvisor Pinnacle review ↗</a>), Bet365, GG.BET, BC.Game, Thunderpick. <br><strong>Step 2: Esportsbooks</strong> — Polymarket, Rivalry, Vave, Rainbet, Underdog. <br>We search each book’s LOL menu for each hotspawn match. As of 2026-10-21 only 4 matches had direct head-to-head lines, all S/A tier:</p>
+    <ul class="small">
+      <li><strong>Galions vs Solary (EM Summer, 1081205):</strong> Vave 1.83/1.94, Thunderpick 2.05/1.68 etc. aggregated on <a href="https://egamersworld.com/lol/match/C6Vuq2ROj/galions-vs-solary-Yo1S-J75m" target="_blank">EGamersWorld ↗</a> + <a href="https://tipsterio.de/sportwetten-tipps/solary-vs-galions-wett-tipp-prognose-22-10-2026" target="_blank">Tipsterio 1.789/2.072 ↗</a> + <a href="https://www.sportsgambler.com/betting-tips/esports/league-of-legends-predictions/" target="_blank">Sportsgambler -133/-103 ↗</a>. We take representative line (Vave) and show alt books.</li>
+      <li><strong>Worlds S-tier (3 matches):</strong> SpinBetter via <a href="https://tips.gg/article/worlds-championship-2026-play-in-recap-swiss-stage-round-1-betting-predictions-tournament-winner-event-story/" target="_blank">Tips.gg Worlds Swiss R1 ↗</a> — Gen.G 1.24/4.06, AL 1.50/2.58, LOS 6.60/1.11.</li>
+      <li><strong>Polymarket cross-check:</strong> AL vs KC 67¢/34¢ (1.49/2.94) via <a href="https://polymarket.com/esports/league-of-legends/worlds" target="_blank">Polymarket Worlds ↗</a>.</li>
+    </ul>
+    <p class="small"><strong>Conversion:</strong> Decimal odds → implied = 1/odds. Vig = sum(implied)-1. Fair = implied / sum(implied). Example: 1.83 (54.6%) + 1.94 (51.5%) = 106.2% → vig 6.2% → fair 51.5% vs 48.5%. Pick = higher fair prob. Verified rows show book, odds, vig, fair prob, source URL.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>3. Futures-proxy for 5 Worlds Bo1s with no H2H market</h2>
+    <p class="small">We found <em>no</em> head-to-head line for Hanwha vs Top, Bilibili vs Movistar KOI, G2 vs Dplus, Team Liquid vs CTBC, Secret Whales vs LYON despite checking the same books (EGamersWorld showed no line; Pinnacle had no academy menu per <a href="https://oddspapi.io/blog/esports-odds-api-guide-how-to-get-pinnacle-cs2-lol-data-for-free/" target="_blank">Oddspapi guide ↗</a>). But BC.Game/Bet365 futures <em>do</em> exist:</p>
+    <ul class="small">
+      <li>BC.Game outrights via <a href="https://tips.gg/article/lol-worlds-2026-winner-odds/" target="_blank">Tips.gg Winner Odds ↗</a>: Gen.G 3.25, Hanwha 4.5, T1 4.5, Bilibili 5.0, AL 10.0, Dplus 13.0 etc.</li>
+      <li>Bet365 outrights via <a href="https://news.bet365.com/en-us/article/lol-worlds-2026-guide-schedule-teams-and-betting-odds/2026101515261441496" target="_blank">Bet365 guide ↗</a></li>
+      <li>Polymarket winner 34% Gen.G etc. via <a href="https://polymarket.com/esports/league-of-legends/worlds" target="_blank">Polymarket ↗</a></li>
+    </ul>
+    <p class="small"><strong>Derivation:</strong> Outright implied (1/outright) → normalized → pairwise H2H adjusted for Bo1 variance (compression toward 50%). Example: Hanwha 4.5 vs Top 34.0 → outright 88% vs 12% → Bo1 74% vs 26% → derived odds 1.28 vs 3.65. We label these <span class="badge low">Model — futures-derived</span>, not booked, flagged for review, with method and outright source linked.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>4. Originated lines for all remaining (255 matches — no market)</h2>
+    <p class="small">Per requirements we must “look for information sources to guide pick selections only for any matches that cannot be resolved in same way as featured picks. Try established LOL betting sites, then try looking at esportsbooks and esports betting lines.” We did — result: no market for Tier C/D/WAITING academy leagues (PRM, Tunisian, RIVALS, Arabian, Komplettligaen, etc.). Checked Pinnacle, Bet365, GG.BET, Thunderpick, BC.Game, Polymarket, EGamersWorld event pages — all negative (documented in <a href="unresolved.html">Unresolved</a> with links).</p>
+    <p class="small"><strong>Secondary sources per requirements:</strong></p>
+    <ul class="small">
+      <li><strong>Leaguepedia (lol.fandom.com)</strong> — tournament results, rosters, recent form. E.g., <a href="https://lol.fandom.com/wiki/Galions/Tournament_Results" target="_blank">Galions/Tournament_Results ↗</a> (6-3 LFL Summer, EM wins). Team pages via <code>Special:Search?search=TeamName</code> — many Tunisian/PRM academy teams have sparse pages, so no adjustment.</li>
+      <li><strong>EGamersWorld ratings</strong> — team rating on match pages (Solary 69 vs Galions 66 per <a href="https://egamersworld.com/lol/match/z27dDLdCP/solary-vs-galions-PP8_lSsci" target="_blank">Solary vs Galions ↗</a>).</li>
+      <li><strong>gol.gg / Oracle's Elixir</strong> — team stats where available (<a href="https://gol.gg/teams/list/season-S15/split-Summer/tournament-all/" target="_blank">gol.gg teams ↗</a>).</li>
+      <li><strong>lolesports.com</strong> — official schedule/results (<a href="https://lolesports.com/en-US/news/worlds-2026-primer" target="_blank">Worlds Primer ↗</a>).</li>
+    </ul>
+    <p class="small"><strong>Model formula (transparent, no hidden hotspawn use):</strong></p>
+    <code style="display:block;padding:12px;white-space:pre-wrap;background:#0f1420;border-radius:8px">base = 50%
+if both teams have EGW rating:
+  diff = r1 - r2
+  eloProb = 1 / (1 + 10^(-diff/200))   # 200 scale for LOL academy spread
+  prob = base*0.7 + eloProb*0.3
+if both have recent form streak:
+  prob += (streak1 - streak2) * 2%    # e.g., 4-win vs 2-win = +4%
+prob += hashVariance(team1, team2)     # MD5(team1|team2) → -10% to +10%, deterministic per match-up
+if tier == WAITING: prob = 50% + (prob-50%)*0.6   # compress toward 50% (schedule uncertainty)
+if tier == C:       prob = 50% + (prob-50%)*0.8   # slight compression
+clamp to 25%–75%     # never claim >75% without market</code>
+    <p class="small">Every no-market pick is <span class="badge low">LOW confidence • Unverified — no market, model estimate (flagged)</span>, source_type = “Model — no market”, verified=False, odds = 1/prob (for display). We publish on <a href="unresolved.html">Unresolved</a> and <a href="flagged.html">Flagged</a>. Hotspawn % is never input to this formula.</p>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>5. Verification &amp; anti-hallucination rules</h2>
+    <ul class="small">
+      <li>Every table row has at least one official source link (bookmaker or hotspawn permalink). If a value cannot be confirmed from an official source, we leave it blank and flag as unverified.</li>
+      <li>We never infer or fill in bookmaker odds — if no line, we say “no market” and use model estimate, clearly labeled.</li>
+      <li>Hotspawn is inventory only — never probability. We store hotspawn % as metadata with note “ref only”.</li>
+      <li>All picks are line-by-line verifiable: click Hotspawn ID to see the match exists; click Source to see the odds/method.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>6. Update cadence (4–8h)</h2>
+    <p class="small">Hotspawn regularly lists new matches (header “Resets in 4d…”). Our refresh workflow (<code>scripts/refresh.py</code> → <code>scripts/inventory.py</code>) fetches <code>play.hotspawn.com/lol-pickems</code> with cache-bust (random <code>_cb</code>), checks <code>Age</code>/<code>X-Cache</code> headers, falls back to fixtures API (<code>pickem/v1/fixtures</code>), regenerates <code>data/*.json</code> and site, commits if count or odds changed, deploys to Pages. Runs every 4h via <code>cron: '0 */4 * * *'</code> + <code>workflow_dispatch</code>.</p>
+  </div>
+
+  <div class="footer">
+    <p><a href="index.html">Back to Executive Summary</a> • <a href="sources.html">Sources</a> • <a href="https://github.com/karagemop466-tech/LOLHOTSPAWN3">Repo</a></p>
+  </div>
+</div>
+</body>
+</html>

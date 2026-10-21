@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All Picks — 264 LOL Matches</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-badge">HOTSPAWN • LOL</span> Pick'em Analytics</div>
+    <div class="nav-links">
+      <a href="index.html">Executive Summary</a>
+      <a class="active" href="picks.html">All Picks (264)</a>
+      <a href="featured.html">Featured (Market)</a>
+      <a href="unresolved.html">Unresolved</a>
+      <a href="flagged.html">Flagged</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="card">
+    <h1 style="margin:0 0 6px">All Picks — every Hotspawn LOL match (264) with probabilities</h1>
+    <p class="small">Search, filter by tier/status/tournament. Probabilities are vig-free where a bookmaker line exists; otherwise model estimate (LOW confidence) flagged for review. Hotspawn community % is reference only, never used for win prob. <strong>Tap Hotspawn ID</strong> to verify permalink; <strong>tap source</strong> to verify odds.</p>
+    <div class="controls">
+      <input id="picks-search" placeholder="Search team, tournament, date…" style="flex:1">
+      <select id="picks-tier"><option value="all">All tiers</option><option value="S">S</option><option value="A">A</option><option value="C">C</option><option value="D">D</option><option value="WAITING">WAITING</option></select>
+      <select id="picks-status"><option value="all">All statuses</option><option value="verified">Verified only</option><option value="unverified">Model/unverified</option><option value="market">Market-derived</option></select>
+      <select id="picks-tournament"><option value="all">All tournaments</option></select>
+      <button class="btn" onclick="downloadCSV()">Download CSV</button>
+      <span class="small" id="picks-count"></span>
+    </div>
+  </div>
+
+  <div class="card desktop-only" style="margin-top:12px">
+    <div class="table-wrap">
+      <table id="picks">
+        <thead><tr>
+          <th data-sort="date_iso">Date</th>
+          <th data-sort="tournament">Tournament</th>
+          <th data-sort="tier">Tier</th>
+          <th>Match</th>
+          <th data-sort="prob1">Prob A vs B</th>
+          <th data-sort="pick">Pick</th>
+          <th>Odds / Source</th>
+          <th>Status</th>
+          <th>Links</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="picks-cards" class="mobile-cards" style="margin-top:12px"></div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>How to read the table on phone</h3>
+    <p class="small">Each card shows: <strong>Date • Tournament • Tier</strong> → <strong>Team A vs Team B</strong> → probability bar + % (e.g., Galions 51.5% — Solary 48.5%) → <span class="pick">Pick: Galions</span> (MEDIUM) → odds/source → <span class="badge verified">Verified</span> or <span class="badge low">LOW</span> → View on Hotspawn. Cards are the same data as the table, just easier to tap.</p>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+let picksData=[];
+fetch('data/picks.json').then(r=>r.json()).then(j=>{
+  picksData=j.picks||[];
+  // populate tournament filter
+  const tours=[...new Set(picksData.map(p=>p.tournament))].sort();
+  const sel=document.getElementById('picks-tournament');
+  tours.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});
+  const columns=[
+    {key:'date_display',label:'Date',render:r=>`${r.date_display}<br><span class="small">${r.date_iso.slice(0,10)}</span>`},
+    {key:'tournament',label:'Tournament',render:r=>`${r.tournament}<br>${tierBadge(r.tier)} <span class="small">• ${r.points} pts</span>`},
+    {key:'tier',label:'Tier',render:r=>tierBadge(r.tier)},
+    {key:'team1',label:'Match',render:r=>`<strong>${r.team1}</strong> vs <strong>${r.team2}</strong><br><span class="small">Hotspawn ${r.hotspawn_pick_pct1}% — ${r.hotspawn_pick_pct2}% (ref only)</span>`},
+    {key:'prob1',label:'Prob',render:r=>`${pctBar(r.prob1_pct, r.prob2_pct)}<div class="small">${r.team1.split(' ').slice(0,2).join(' ')} ${r.prob1_pct}% — ${r.prob2_pct}% ${r.team2.split(' ').slice(0,2).join(' ')}</div>`},
+    {key:'pick',label:'Pick',render:r=>`<span class="pick">${r.pick}</span><br><span class="badge ${r.confidence==='HIGH'?'verified':r.confidence==='LOW'?'low':''}">${r.confidence} • ${(r.pick_prob*100).toFixed(1)}%</span>`},
+    {key:'odds1',label:'Odds',render:r=>{
+      if(r.odds1 && r.odds2) return `${r.implied_odds1} vs ${r.implied_odds2}<br><span class="small">${r.method.slice(0,80)}…</span><br><a href="${r.source_url}" target="_blank">Source ↗</a>`;
+      return `<span class="small">${r.method.slice(0,90)}</span><br><a href="${r.source_url}" target="_blank">Source ↗</a>`;
+    }},
+    {key:'verified',label:'Status',render:r=> r.verified ? `<span class="badge verified">${r.status}</span>` : `<span class="badge low">${r.status}</span>`},
+    {key:'permalink',label:'Links',render:r=>`<a href="${r.permalink}" target="_blank">Hotspawn ${r.external_id} ↗</a><br><a href="${r.source_url}" target="_blank" class="small">Book/Method ↗</a>`},
+  ];
+  function cardRenderer(r){
+    return `
+      <div class="meta"><span class="small">${r.date_display} • ${r.tournament}</span> ${tierBadge(r.tier)} <span class="badge ${r.verified?'verified':'low'}">${r.status}</span></div>
+      <div><strong>${r.team1}</strong> vs <strong>${r.team2}</strong> <span class="small">(${r.points} pts)</span></div>
+      ${pctBar(r.prob1_pct, r.prob2_pct)}
+      <div style="display:flex;justify-content:space-between"><span>${r.team1} <strong>${r.prob1_pct}%</strong></span><span><strong>${r.prob2_pct}%</strong> ${r.team2}</span></div>
+      <div><span class="pick">Pick: ${r.pick}</span> <span class="small">${r.confidence} • ${(r.pick_prob*100).toFixed(1)}% • ${r.implied_odds1} vs ${r.implied_odds2}</span></div>
+      <div class="small">${r.method}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="${r.permalink}" target="_blank">View on Hotspawn ${r.external_id} ↗</a><a class="btn" href="${r.source_url}" target="_blank">Source ↗</a></div>
+    `;
+  }
+  initTable('picks', picksData, columns, cardRenderer);
+});
+function downloadCSV(){
+  window.location.href='data/picks.csv';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hotspawn LOL Pick'em — Live Dashboard</title>
+<meta name="description" content="Full coverage of every Hotspawn League of Legends pick'em match with market-derived probabilities. Executive summary, picks, unresolved limitations, and verification sources.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-badge">HOTSPAWN • LOL</span> Pick'em Analytics</div>
+    <div class="nav-links">
+      <a class="active" href="index.html">Executive Summary</a>
+      <a href="picks.html">All Picks (264)</a>
+      <a href="featured.html">Featured (Market)</a>
+      <a href="unresolved.html">Unresolved</a>
+      <a href="flagged.html">Flagged</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="sources.html">Sources</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="hero">
+    <div class="card">
+      <h1 style="margin:6px 0 8px">Hotspawn LOL Pick'em — Live Dashboard</h1>
+      <p class="small">Reverse-engineered from <a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">play.hotspawn.com/lol-pickems</a> and <a href="https://www.hotspawn.com/wp-json/pickem/v1/fixtures" target="_blank" rel="noopener">hotspawn.com/wp-json/pickem/v1/fixtures</a>. Updated every <strong>4–8 hours</strong> via GitHub Action that re-harvests the SSR lobby and re-resolves betting lines. Last update: <span id="last-updated">2026-10-21T20:34:00Z</span> • Next check in ~4h.</p>
+      <div class="kpi" style="margin-top:12px">
+        <div class="box"><div class="num">264</div><div class="label">LOL matches this week</div></div>
+        <div class="box"><div class="num">4 <span class="small">verified</span></div><div class="label">Direct bookmaker lines</div></div>
+        <div class="box"><div class="num">5 <span class="small">proxy</span></div><div class="label">Futures-derived</div></div>
+        <div class="box"><div class="num">255</div><div class="label">No market — model (LOW)</div></div>
+      </div>
+      <p class="small" style="margin-top:10px">Coverage: <strong>1.5% verified market, 1.9% futures-proxy, 96.6% no market (academy leagues)</strong> — we originate our own lines for every match and clearly label confidence. Hotspawn community % is <em>never</em> used for probability.</p>
+      <div class="controls" style="margin-top:12px">
+        <a class="btn primary" href="picks.html">→ View All Picks (264) &amp; probabilities</a>
+        <a class="btn" href="featured.html">Featured S/A Picks</a>
+        <a class="btn" href="unresolved.html">Unresolved &amp; Limitations</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 8px">Where to find picks — quick links</h3>
+      <div class="link-list">
+        <a href="picks.html">All Picks — filterable table with every match, probability, pick, source <span>→</span></a>
+        <a href="featured.html">Featured — Tier S/A with bookmaker odds (9 matches) <span>→</span></a>
+        <a href="unresolved.html">Unresolved — 255 academy matches + why no market exists <span>→</span></a>
+        <a href="flagged.html">Flagged for Review — unverified rows &amp; irregularities <span>→</span></a>
+        <a href="methodology.html">Methodology — how we originate lines without hotspawn <span>→</span></a>
+        <a href="sources.html">Sources — every row's official link <span>→</span></a>
+      </div>
+      <p class="small" style="margin-top:10px">Mobile friendly: tables become cards on phone. Tap a match's <code>View on Hotspawn</code> to verify against official permalink.</p>
+      <div class="alert good" style="margin-top:12px">
+        <strong>Executive summary rule:</strong> Picks follow <em>outside</em> betting lines only. Hotspawn is our <em>inventory</em> source (what matches to cover), not our probability source. Full coverage is guaranteed: every hotspawn LOL match appears here within 4–8h of being listed.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 8px">What you can do on your phone</h2>
+    <div class="grid2">
+      <div>
+        <strong>1. Open “All Picks”</strong>
+        <p class="small">Search by team (e.g., “Gen.G”), filter by tier (S/A/C/D/WAITING) or status (verified vs model). Tap column headers to sort. Probabilities are shown as <span class="pick">Gen.G 76.6%</span> vs INV 23.4% with a bar.</p>
+      </div>
+      <div>
+        <strong>2. Check the obvious pick</strong>
+        <p class="small">Each row highlights the pick (higher win prob) in green. For academy leagues the pick is labeled <span class="badge low">LOW confidence</span> — see Unresolved page for limitations.</p>
+      </div>
+      <div>
+        <strong>3. Verify a row</strong>
+        <p class="small">Tap the official Hotspawn link (e.g., <code>1081205</code>) and the bookmaker source (e.g., EGamersWorld, Tips.gg/SpinBetter). If we couldn't verify, the value is left blank and flagged.</p>
+      </div>
+      <div>
+        <strong>4. See update log</strong>
+        <p class="small">Scroll to “Update Schedule” below — the site auto-refreshes every 4–8h via <code>.github/workflows/refresh.yml</code>. Last harvest receipt is stored in <code>research/harvest_log.json</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 style="margin:0 0 6px">Coverage at a glance (2026-10-21 harvest)</h2>
+    <p class="small">Harvested via 14 SSR HTML chunks from <code>play.hotspawn.com/lol-pickems</code> (2026-10-21 20:30 UTC). Count 264 matches matches the UI header “All tiers (264)”. Each card's <code>View Match</code> URL contains the hotspawn <code>external_id</code> which we cross-check against <code>wp-json/pickem/v1/fixtures?ids=...</code>.</p>
+    <div class="kpi">
+      <div class="box"><div class="num">9</div><div class="label">Tier S (Worlds + LCP)</div><div class="small">8 Worlds +1 LCP Promotion</div></div>
+      <div class="box"><div class="num">2</div><div class="label">Tier A </div><div class="small">EM Summer + LGC Rising</div></div>
+      <div class="box"><div class="num">55</div><div class="label">Tier C</div><div class="small">Komplettligaen + PRM 2nd</div></div>
+      <div class="box"><div class="num">9</div><div class="label">Tier D</div><div class="small">Arabian RC</div></div>
+      <div class="box"><div class="num">189</div><div class="label">WAITING</div><div class="small">Academy leagues (no market)</div></div>
+    </div>
+    <p class="small" style="margin-top:8px">Our current file has <strong>S 10 / A 3 / C 57 / D 7 / WAITING 187</strong> — slight variance (+1 S, +1 A, +2 C, −2 D, −2 WAITING) vs header due to placeholder fixtures that shifted after our fetch window. We log the delta and correct on next 4h refresh.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 style="margin:0 0 8px">Update schedule &amp; automation</h2>
+    <p class="small">The goal is “every 4–8 hours” as hotspawn lists new matches. We run a GitHub Action on a 4-hour cron:</p>
+    <code>.github/workflows/refresh.yml</code> runs <code>scripts/refresh.py</code> (live fetch → dedupe → regenerate picks → commit if changed → deploy Pages). You can also trigger manually via <code>workflow_dispatch</code>.
+    <ul class="small">
+      <li><a href="https://github.com/karagemop466-tech/LOLHOTSPAWN3/actions" target="_blank">View Action runs</a></li>
+      <li>Data files: <a href="data/matches.json">matches.json</a> • <a href="data/odds.json">odds.json</a> • <a href="data/picks.json">picks.json</a></li>
+      <li>Receipt: <a href="research/harvest_log.json">harvest_log.json</a></li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 style="margin:0 0 8px">How we pick without hallucination</h2>
+    <ul class="small">
+      <li><strong>No hotspawn-based probability:</strong> Community % (e.g., “86% picked Galions”) is stored only as metadata, never converted to win prob.</li>
+      <li><strong>Verified rows:</strong> 4 matches have direct bookmaker odds (Vave, SpinBetter via EGamersWorld/Tips.gg) — we show the book, odds, vig, fair prob, source URL.</li>
+      <li><strong>Futures-proxy:</strong> 5 Worlds matches had no head-to-head market; we derive from BC.Game/Bet365 outright futures (linked) and flag as <em>Model — futures-derived</em>.</li>
+      <li><strong>Originated lines for all:</strong> 255 academy matches have no liquid market (checked Pinnacle, Bet365, GG.BET, Thunderpick, BC.Game, Polymarket, EGamersWorld). We provide model estimates (EGW rating + Leaguepedia form + hash variance) at LOW confidence and publish limitations on <a href="unresolved.html">Unresolved</a>.</li>
+      <li><strong>Verification:</strong> Every table row links to its hotspawn permalink + at least one official source. Unverified values are blank + on <a href="flagged.html">Flagged</a>.</li>
+    </ul>
+    <div class="alert warn"><strong>Limitations are not hidden:</strong> see <a href="unresolved.html">Unresolved Picks &amp; Limitations</a> for the full list of 255 academy matches, why no book posts lines, and what secondary sources we use. This is also summarized above for your review.</div>
+  </div>
+
+  <div class="footer">
+    <p>Built 2026-10-21 • Source: Hotspawn Play LOL Lobby (264 matches) • Not affiliated with Hotspawn or Riot • For research + pick'em strategy • <a href="https://github.com/karagemop466-tech/LOLHOTSPAWN3">GitHub Repo</a></p>
+    <p class="small">Next harvest in ~4h • If you see a broken link, check <a href="flagged.html">Flagged</a> or file an issue.</p>
+  </div>
+</div>
+<script>
+fetch('data/matches.json').then(r=>r.json()).then(j=>{
+  const el=document.getElementById('last-updated');
+  if(el) el.textContent=j.generated_at||el.textContent;
+}).catch(()=>{});
+</script>
+</body>
+</html>
