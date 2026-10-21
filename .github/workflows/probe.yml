@@ -16,10 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: collect
-        run: node scripts/collect.mjs
+        run: node scripts/probe-riot.mjs
       - name: diag
         if: always()
-        run: node scripts/diag.mjs || true
+        run: true || true
       - name: commit output
         if: always()
         run: |
