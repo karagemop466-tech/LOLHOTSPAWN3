@@ -30,7 +30,7 @@
   <div class="card">
     <ol>
       <li><strong>Inventory.</strong> <code>GET https://play.hotspawn.com/lol-pickems</code> — the page is Angular SSR and embeds its
-      fixture list in <code>&lt;script id="ng-state"&gt;</code>. All 264 LoL fixtures are read from that JSON
+      fixture list in <code>&lt;script id="ng-state"&gt;</code>. All 262 LoL fixtures are read from that JSON
       (id, competition, teams, kick-off, tier, stage, points). Hotspawn's crowd-pick percentages are captured but never used as a
       probability input.</li>
       <li><strong>Match links.</strong> Each rendered card contains the canonical
@@ -120,7 +120,7 @@
   <div class="card">
     <p>GitHub Actions runs the collector every 6 hours (<code>17 */6 * * *</code> UTC) and on demand, then rebuilds this site.
     Cadence target from the brief: every 4–8 hours.</p>
-    <p class="small">This build: 2026-10-22 04:37 UTC · runtime 13883 ms · errors 0.</p>
+    <p class="small">This build: 2026-10-22 17:06 UTC · runtime 11227 ms · errors 0.</p>
     <div class="note"><strong>No errors in the last collection run.</strong></div>
   </div>
 </section>
@@ -143,7 +143,7 @@
     <a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">Hotspawn Pick'ems LoL lobby</a>, with win probabilities only where an external
     betting market provides a verifiable price. Refreshed every 6 hours by GitHub Actions.</p>
     <p class="small">Data: <a href="data/matches.json">matches.json</a> · <a href="data/matches.csv">matches.csv</a> ·
-    Last collection: 2026-10-22 04:37 UTC ·
+    Last collection: 2026-10-22 17:06 UTC ·
     Sources are linked on every row. Unverified items are listed on the <a href="flagged.html">Flagged</a> page.</p>
   </div>
 </footer>
