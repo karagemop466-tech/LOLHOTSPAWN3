@@ -25,7 +25,7 @@
   <p class="lede">Automated collection from the Hotspawn Pick'ems LoL lobby. Probabilities come from external bookmakers
   (Pinnacle, Thunderpick, Polymarket) — never from Hotspawn's own pick percentages. Matches with no verifiable external line are
   listed separately and are <strong>not</strong> given a made-up number.</p>
-  <p class="updated">Last collection: <strong>2026-10-21 20:43 UTC</strong> · refreshes every 6 hours · inventory 264 fixtures / 27 competitions</p>
+  <p class="updated">Last collection: <strong>2026-10-22 04:37 UTC</strong> · refreshes every 6 hours · inventory 264 fixtures / 27 competitions</p>
 </section>
 
 <div class="quick">
@@ -78,17 +78,17 @@
 
 <section>
   <h2>Next picks with a verified line</h2>
-  <div class="matches"><article class="match pick-med" data-comp="EM 2026 Summer Main Event" data-res="market" data-search="galions solary em 2026 summer main event" data-utc="2026-10-22T12:00:00.000Z">
+  <div class="matches"><article class="match pick-high" data-comp="EM 2026 Summer Main Event" data-res="market" data-search="galions solary em 2026 summer main event" data-utc="2026-10-22T12:00:00.000Z">
   <div class="mhead"><span class="comp">EM 2026 Summer Main Event</span><span class="when" data-fmt="utc">22 Oct, 12:00 UTC</span></div>
   <div class="teams">
-    <div class="team a win">Galions<span class="p">51.5%</span></div>
+    <div class="team a win">Galions<span class="p">51.1%</span></div>
     <div class="vs">vs</div>
-    <div class="team b">Solary<span class="p">48.5%</span></div>
+    <div class="team b">Solary<span class="p">48.9%</span></div>
   </div>
-  <div class="bar" aria-hidden="true"><span class="a" style="width:51.5%"></span><span class="b" style="width:48.5%"></span></div>
+  <div class="bar" aria-hidden="true"><span class="a" style="width:51.1%"></span><span class="b" style="width:48.9%"></span></div>
   <div class="pickrow">
     <span class="pick">Pick: Galions <span class="tag market">Pinnacle</span></span>
-    <span><span class="pill warn">low</span></span>
+    <span><span class="pill ok">high</span></span>
   </div>
   <div class="pickrow small"><span class="src"><a href="https://www.hotspawn.com/matches/galions-vs-solary-em-2026-summer-main-event-1081205" target="_blank" rel="noopener">Hotspawn match ↗</a>  · <a href="https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638709103/markets/related/straight" target="_blank" rel="noopener">Pinnacle line ↗</a></span><span>tier A</span></div>
 </article><article class="match pick-high" data-comp="Worlds 2026 Main Event" data-res="market" data-search="gen.g invictus gaming worlds 2026 main event" data-utc="2026-10-23T17:00:00.000Z">
@@ -254,8 +254,8 @@
     <p>Collector runs on a <strong>6-hour schedule</strong> (GitHub Actions, <code>scripts/collect.mjs</code>) and can be
     triggered manually. Each run: (1) re-reads the Hotspawn LoL lobby, (2) re-pulls Pinnacle, Thunderpick and Polymarket LoL markets,
     (3) re-maps prices to fixtures by team name + kick-off time, (4) recomputes no-vig probabilities, (5) rebuilds this site.</p>
-    <p class="small">Last run: 2026-10-21 20:43 UTC · collection took 14116 ms ·
-    errors this run: 0 · market rows fetched: 27 ·
+    <p class="small">Last run: 2026-10-22 04:37 UTC · collection took 13883 ms ·
+    errors this run: 0 · market rows fetched: 28 ·
     rows attached to a fixture: 27.</p>
     <p class="small">Integrity checks: lobby rendered 195 match cards vs 195 upcoming fixtures in the
     transfer state; slug builder reproduced 183/195 live match URLs.</p>
@@ -268,7 +268,7 @@
     <a href="https://play.hotspawn.com/lol-pickems" target="_blank" rel="noopener">Hotspawn Pick'ems LoL lobby</a>, with win probabilities only where an external
     betting market provides a verifiable price. Refreshed every 6 hours by GitHub Actions.</p>
     <p class="small">Data: <a href="data/matches.json">matches.json</a> · <a href="data/matches.csv">matches.csv</a> ·
-    Last collection: 2026-10-21 20:43 UTC ·
+    Last collection: 2026-10-22 04:37 UTC ·
     Sources are linked on every row. Unverified items are listed on the <a href="flagged.html">Flagged</a> page.</p>
   </div>
 </footer>
