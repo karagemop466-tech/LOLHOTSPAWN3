@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T21:32:05.153Z",
- "collectionMs": 12763,
+ "generatedAt": "2026-10-23T04:43:39.669Z",
+ "collectionMs": 26278,
  "urlVerification": {
-  "cardsParsed": 171,
-  "cardsWithMatchLink": 169,
-  "slugBuilderChecked": 169,
-  "slugBuilderExactMatches": 157,
+  "cardsParsed": 173,
+  "cardsWithMatchLink": 171,
+  "slugBuilderChecked": 171,
+  "slugBuilderExactMatches": 159,
   "slugBuilderMismatchSamples": [
    {
     "real": "https://www.hotspawn.com/matches/docta-esports-club-vs-cla-nkz-revengers-ligagg-celol-b-2026-split-2-playoffs-1081083",
@@ -43,20 +43,20 @@
  },
  "inventory": {
   "source": "https://play.hotspawn.com/lol-pickems",
-  "fetchedAt": "2026-10-22T21:32:05.153Z",
-  "fixtures": 261,
-  "renderedCards": 171,
-  "htmlBytes": 1779038,
+  "fetchedAt": "2026-10-23T04:43:39.669Z",
+  "fixtures": 262,
+  "renderedCards": 173,
+  "htmlBytes": 1796993,
   "competitions": 27,
-  "matchLinksFromLobbyHtml": 169,
-  "matchLinksLobbyFallback": 92
+  "matchLinksFromLobbyHtml": 171,
+  "matchLinksLobbyFallback": 91
  },
  "counts": {
-  "total": 261,
-  "upcoming": 171,
-  "started": 90,
+  "total": 262,
+  "upcoming": 173,
+  "started": 89,
   "upcomingResolved": 8,
-  "upcomingUnresolved": 163,
+  "upcomingUnresolved": 165,
   "upcomingHighConfidence": 8
  },
  "sources": {
@@ -68,20 +68,20 @@
      "matchups": 10
     }
    ],
-   "matchups": 8
+   "matchups": 16
   },
   "thunderpick": {
    "matchups": 8
   },
   "polymarket": {
    "matchups": 8,
-   "queries": 16,
-   "eventsSeen": 96
+   "queries": 24,
+   "eventsSeen": 139
   },
   "checkedSources": [
    {
     "name": "Pinnacle",
-    "detail": "8 LoL matchups with moneyline (League of Legends - World Championship)",
+    "detail": "16 LoL matchups with moneyline (League of Legends - World Championship)",
     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
    },
    {
@@ -154,6 +154,14 @@
    "market": 0
   },
   {
+   "name": "LCP 2027 Promotion",
+   "total": 3,
+   "upcoming": 3,
+   "resolved": 0,
+   "unresolved": 3,
+   "market": 0
+  },
+  {
    "name": "LigaGG CELOL A 2026 Split 2 Playoffs",
    "total": 2,
    "upcoming": 2,
@@ -163,7 +171,7 @@
   },
   {
    "name": "Komplettligaen 2026 Autumn",
-   "total": 12,
+   "total": 11,
    "upcoming": 1,
    "resolved": 0,
    "unresolved": 1,
@@ -179,14 +187,6 @@
   },
   {
    "name": "LGC Rising 2026 Playoffs",
-   "total": 1,
-   "upcoming": 1,
-   "resolved": 0,
-   "unresolved": 1,
-   "market": 0
-  },
-  {
-   "name": "LCP 2027 Promotion",
    "total": 1,
    "upcoming": 1,
    "resolved": 0,
@@ -316,9 +316,58 @@
  ],
  "errors": [],
  "mapping": {
-  "marketRowsFetched": 24,
+  "marketRowsFetched": 32,
   "marketRowsAttached": 24,
-  "unmatchedMarkets": []
+  "unmatchedMarkets": [
+   {
+    "source": "Pinnacle",
+    "match": "Secret Whales (Kills) vs LYON (Kills)",
+    "startTime": "2026-10-23T23:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758897/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "Hanwha Life (Kills) vs Top Esports (Kills)",
+    "startTime": "2026-10-23T21:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758879/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "Bilibili (Kills) vs Movistar KOI (Kills)",
+    "startTime": "2026-10-24T00:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638759091/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "Liquid (Kills) vs CTBC Flying Oyster (Kills)",
+    "startTime": "2026-10-23T18:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758870/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "G2 (Kills) vs Dplus KIA (Kills)",
+    "startTime": "2026-10-23T20:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758878/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "Gen.G (Kills) vs Invictus (Kills)",
+    "startTime": "2026-10-23T17:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758865/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "LOS (Kills) vs T1 (Kills)",
+    "startTime": "2026-10-23T22:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758886/markets/related/straight"
+   },
+   {
+    "source": "Pinnacle",
+    "match": "Anyone's Legend (Kills) vs Karmine Corp (Kills)",
+    "startTime": "2026-10-23T19:00:00Z",
+    "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638758874/markets/related/straight"
+   }
+  ]
  },
  "matches": [
   {
@@ -2207,35 +2256,6 @@
    "pickSide": null
   },
   {
-   "id": "1071216",
-   "competition": "Komplettligaen 2026 Autumn",
-   "competitionId": "36279",
-   "teamA": "Solid Gaming",
-   "teamB": "DMG Esports Norway",
-   "teamAId": "263521",
-   "teamBId": "126628",
-   "startUtc": "2026-10-22T15:00:00.000Z",
-   "startMs": 1792681200000,
-   "tier": "c",
-   "stage": "waiting for information",
-   "points": 10,
-   "lockTime": "2026-10-22T14:55:00.000Z",
-   "status": "completed-or-started",
-   "hotspawnUrl": null,
-   "hotspawnUrlSource": "lobby-fallback",
-   "hotspawnUrlUnverifiedGuess": "https://www.hotspawn.com/matches/solid-gaming-vs-dmg-esports-norway-komplettligaen-2026-autumn-1071216",
-   "hotspawnPickedA": 72,
-   "hotspawnPickedB": 28,
-   "resolution": "unresolved",
-   "probA": null,
-   "probB": null,
-   "basis": null,
-   "confidence": "none",
-   "pick": null,
-   "pickProb": null,
-   "pickSide": null
-  },
-  {
    "id": "1071218",
    "competition": "Komplettligaen 2026 Autumn",
    "competitionId": "36279",
@@ -3007,8 +3027,8 @@
    "hotspawnUrl": "https://www.hotspawn.com/matches/levelers-vs-mtn-esports-team-arabian-regional-championship-2026-lebanon-libya-syria-palestine-1082839",
    "hotspawnUrlSource": "lobby-card",
    "hotspawnUrlUnverifiedGuess": null,
-   "hotspawnPickedA": 57,
-   "hotspawnPickedB": 43,
+   "hotspawnPickedA": 63,
+   "hotspawnPickedB": 38,
    "resolution": "unresolved",
    "probA": null,
    "probB": null,
@@ -3073,11 +3093,11 @@
      {
       "source": "Pinnacle",
       "matchName": "Gen.G vs Invictus",
-      "oddsA": 1.2262443438914028,
-      "oddsB": 4.279999999999999,
-      "probA": 0.7772993228584577,
-      "probB": 0.22270067714154235,
-      "overround": 4.91430147946339,
+      "oddsA": 1.2375296912114013,
+      "oddsB": 4.15,
+      "probA": 0.7702973789211472,
+      "probB": 0.22970262107885275,
+      "overround": 4.90252757671763,
       "startTime": "2026-10-23T17:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748200/markets/related/straight",
@@ -3119,25 +3139,25 @@
       "swapped": false
      }
     ],
-    "oddsA": 1.2262443438914028,
-    "oddsB": 4.279999999999999,
-    "probA": 0.7772993228584577,
-    "probB": 0.22270067714154235,
+    "oddsA": 1.2375296912114013,
+    "oddsB": 4.15,
+    "probA": 0.7702973789211472,
+    "probB": 0.22970262107885275,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748200/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 2,
+     "spreadPts": 1.8,
      "nBooks": 3
     }
    },
    "resolution": "market",
-   "probA": 0.7772993228584577,
-   "probB": 0.22270067714154235,
-   "basis": "Pinnacle moneyline, vig removed (overround 4.91%)",
+   "probA": 0.7702973789211472,
+   "probB": 0.22970262107885275,
+   "basis": "Pinnacle moneyline, vig removed (overround 4.90%)",
    "confidence": "high",
    "pick": "Gen.G",
-   "pickProb": 0.7772993228584577,
+   "pickProb": 0.7702973789211472,
    "pickSide": "A"
   },
   {
@@ -3195,11 +3215,11 @@
      {
       "source": "Pinnacle",
       "matchName": "Hanwha Life vs Top Esports",
-      "oddsA": 1.2272727272727273,
-      "oddsB": 4.26,
-      "probA": 0.7763419483101391,
-      "probB": 0.22365805168986086,
-      "overround": 4.95565988523734,
+      "oddsA": 1.2232142857142858,
+      "oddsB": 4.3100000000000005,
+      "probA": 0.778932421093397,
+      "probB": 0.22106757890660295,
+      "overround": 4.953680966010121,
       "startTime": "2026-10-23T21:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748203/markets/related/straight",
@@ -3241,10 +3261,10 @@
       "swapped": false
      }
     ],
-    "oddsA": 1.2272727272727273,
-    "oddsB": 4.26,
-    "probA": 0.7763419483101391,
-    "probB": 0.22365805168986086,
+    "oddsA": 1.2232142857142858,
+    "oddsB": 4.3100000000000005,
+    "probA": 0.778932421093397,
+    "probB": 0.22106757890660295,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748203/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
@@ -3254,12 +3274,12 @@
     }
    },
    "resolution": "market",
-   "probA": 0.7763419483101391,
-   "probB": 0.22365805168986086,
-   "basis": "Pinnacle moneyline, vig removed (overround 4.96%)",
+   "probA": 0.778932421093397,
+   "probB": 0.22106757890660295,
+   "basis": "Pinnacle moneyline, vig removed (overround 4.95%)",
    "confidence": "high",
    "pick": "Hanwha Life Esports",
-   "pickProb": 0.7763419483101391,
+   "pickProb": 0.778932421093397,
    "pickSide": "A"
   },
   {
@@ -3412,7 +3432,7 @@
       "probA": 0.815,
       "probB": 0.185,
       "overround": 0,
-      "startTime": "2026-10-24T00:00:00Z",
+      "startTime": "2026-10-23T19:00:00Z",
       "bestOf": null,
       "sourceUrl": "https://polymarket.com/event/lol-blg-mkoi-2026-10-23",
       "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-blg-mkoi-2026-10-23",
@@ -3468,11 +3488,11 @@
      {
       "source": "Pinnacle",
       "matchName": "Anyone's Legend vs Karmine Corp",
-      "oddsA": 1.4901960784313726,
-      "oddsB": 2.7,
-      "probA": 0.6443612540945252,
-      "probB": 0.355638745905475,
-      "overround": 4.142300194931758,
+      "oddsA": 1.4926108374384237,
+      "oddsB": 2.52,
+      "probA": 0.6280200353565115,
+      "probB": 0.37197996464348854,
+      "overround": 6.679239352506672,
       "startTime": "2026-10-23T19:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638750902/markets/related/straight",
@@ -3514,25 +3534,25 @@
       "swapped": false
      }
     ],
-    "oddsA": 1.4901960784313726,
-    "oddsB": 2.7,
-    "probA": 0.6443612540945252,
-    "probB": 0.355638745905475,
+    "oddsA": 1.4926108374384237,
+    "oddsB": 2.52,
+    "probA": 0.6280200353565115,
+    "probB": 0.37197996464348854,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638750902/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 1.4,
+     "spreadPts": 3.1,
      "nBooks": 3
     }
    },
    "resolution": "market",
-   "probA": 0.6443612540945252,
-   "probB": 0.355638745905475,
-   "basis": "Pinnacle moneyline, vig removed (overround 4.14%)",
+   "probA": 0.6280200353565115,
+   "probB": 0.37197996464348854,
+   "basis": "Pinnacle moneyline, vig removed (overround 6.68%)",
    "confidence": "high",
    "pick": "Anyone's Legend",
-   "pickProb": 0.6443612540945252,
+   "pickProb": 0.6280200353565115,
    "pickSide": "A"
   },
   {
@@ -3561,11 +3581,11 @@
      {
       "source": "Pinnacle",
       "matchName": "G2 vs Dplus KIA",
-      "oddsA": 2.2800000000000002,
-      "oddsB": 1.6622516556291391,
-      "probA": 0.4216503158177664,
-      "probB": 0.5783496841822336,
-      "overround": 4.0190116726078084,
+      "oddsA": 2.26,
+      "oddsB": 1.6711409395973154,
+      "probA": 0.42510328814832515,
+      "probB": 0.5748967118516747,
+      "overround": 4.087145040338358,
       "startTime": "2026-10-23T20:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638750815/markets/related/straight",
@@ -3607,25 +3627,25 @@
       "swapped": false
      }
     ],
-    "oddsA": 2.2800000000000002,
-    "oddsB": 1.6622516556291391,
-    "probA": 0.4216503158177664,
-    "probB": 0.5783496841822336,
+    "oddsA": 2.26,
+    "oddsB": 1.6711409395973154,
+    "probA": 0.42510328814832515,
+    "probB": 0.5748967118516747,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638750815/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 2.9,
+     "spreadPts": 3.2,
      "nBooks": 3
     }
    },
    "resolution": "market",
-   "probA": 0.4216503158177664,
-   "probB": 0.5783496841822336,
-   "basis": "Pinnacle moneyline, vig removed (overround 4.02%)",
+   "probA": 0.42510328814832515,
+   "probB": 0.5748967118516747,
+   "basis": "Pinnacle moneyline, vig removed (overround 4.09%)",
    "confidence": "high",
    "pick": "Dplus KIA",
-   "pickProb": 0.5783496841822336,
+   "pickProb": 0.5748967118516747,
    "pickSide": "B"
   },
   {
@@ -3747,11 +3767,11 @@
      {
       "source": "Pinnacle",
       "matchName": "LOS vs T1",
-      "oddsA": 6.22,
+      "oddsA": 6.23,
       "oddsB": 1.1226993865030674,
-      "probA": 0.1529000885650786,
-      "probB": 0.8470999114349214,
-      "overround": 5.148208669372556,
+      "probA": 0.15269213760648817,
+      "probB": 0.8473078623935119,
+      "overround": 5.1224026173372295,
       "startTime": "2026-10-23T22:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight",
@@ -3784,7 +3804,7 @@
       "probA": 0.125,
       "probB": 0.875,
       "overround": 0,
-      "startTime": "2026-10-23T22:00:00Z",
+      "startTime": "2026-10-23T23:00:00Z",
       "bestOf": null,
       "sourceUrl": "https://polymarket.com/event/lol-los-t1-2026-10-23",
       "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-los-t1-2026-10-23",
@@ -3793,10 +3813,10 @@
       "swapped": false
      }
     ],
-    "oddsA": 6.22,
+    "oddsA": 6.23,
     "oddsB": 1.1226993865030674,
-    "probA": 0.1529000885650786,
-    "probB": 0.8470999114349214,
+    "probA": 0.15269213760648817,
+    "probB": 0.8473078623935119,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638748205/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
@@ -3806,12 +3826,12 @@
     }
    },
    "resolution": "market",
-   "probA": 0.1529000885650786,
-   "probB": 0.8470999114349214,
-   "basis": "Pinnacle moneyline, vig removed (overround 5.15%)",
+   "probA": 0.15269213760648817,
+   "probB": 0.8473078623935119,
+   "basis": "Pinnacle moneyline, vig removed (overround 5.12%)",
    "confidence": "high",
    "pick": "T1",
-   "pickProb": 0.8470999114349214,
+   "pickProb": 0.8473078623935119,
    "pickSide": "B"
   },
   {
@@ -3840,11 +3860,11 @@
      {
       "source": "Pinnacle",
       "matchName": "Secret Whales vs LYON",
-      "oddsA": 2.29,
-      "oddsB": 1.6578947368421053,
-      "probA": 0.4199440074656713,
-      "probB": 0.5800559925343287,
-      "overround": 3.985582588202674,
+      "oddsA": 2.2800000000000002,
+      "oddsB": 1.6622516556291391,
+      "probA": 0.4216503158177664,
+      "probB": 0.5783496841822336,
+      "overround": 4.0190116726078084,
       "startTime": "2026-10-23T23:00:00Z",
       "bestOf": 1,
       "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638754606/markets/related/straight",
@@ -3877,7 +3897,7 @@
       "probA": 0.415,
       "probB": 0.585,
       "overround": 0,
-      "startTime": "2026-10-23T23:00:00Z",
+      "startTime": "2026-10-24T00:00:00Z",
       "bestOf": null,
       "sourceUrl": "https://polymarket.com/event/lol-tsw-ly-2026-10-23",
       "apiUrl": "https://gamma-api.polymarket.com/events?slug=lol-tsw-ly-2026-10-23",
@@ -3886,25 +3906,25 @@
       "swapped": false
      }
     ],
-    "oddsA": 2.29,
-    "oddsB": 1.6578947368421053,
-    "probA": 0.4199440074656713,
-    "probB": 0.5800559925343287,
+    "oddsA": 2.2800000000000002,
+    "oddsB": 1.6622516556291391,
+    "probA": 0.4216503158177664,
+    "probB": 0.5783496841822336,
     "sourceUrl": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638754606/markets/related/straight",
     "confidence": "sharp",
     "agreement": {
      "sameSide": true,
-     "spreadPts": 0.5,
+     "spreadPts": 0.7,
      "nBooks": 3
     }
    },
    "resolution": "market",
-   "probA": 0.4199440074656713,
-   "probB": 0.5800559925343287,
-   "basis": "Pinnacle moneyline, vig removed (overround 3.99%)",
+   "probA": 0.4216503158177664,
+   "probB": 0.5783496841822336,
+   "basis": "Pinnacle moneyline, vig removed (overround 4.02%)",
    "confidence": "high",
    "pick": "LYON",
-   "pickProb": 0.5800559925343287,
+   "pickProb": 0.5783496841822336,
    "pickSide": "B"
   },
   {
@@ -7697,6 +7717,64 @@
    "hotspawnUrlUnverifiedGuess": null,
    "hotspawnPickedA": 21,
    "hotspawnPickedB": 79,
+   "resolution": "unresolved",
+   "probA": null,
+   "probB": null,
+   "basis": null,
+   "confidence": "none",
+   "pick": null,
+   "pickProb": null,
+   "pickSide": null
+  },
+  {
+   "id": "1081421",
+   "competition": "LCP 2027 Promotion",
+   "competitionId": "35766",
+   "teamA": "FENNEL",
+   "teamB": "Nothin'Here",
+   "teamAId": "74694",
+   "teamBId": "263325",
+   "startUtc": "2026-11-10T05:00:00.000Z",
+   "startMs": 1794286800000,
+   "tier": "s",
+   "stage": "waiting for information",
+   "points": 30,
+   "lockTime": "2026-11-10T04:55:00.000Z",
+   "status": "upcoming",
+   "hotspawnUrl": "https://www.hotspawn.com/matches/fennel-vs-nothinhere-lcp-2027-promotion-1081421",
+   "hotspawnUrlSource": "lobby-card",
+   "hotspawnUrlUnverifiedGuess": null,
+   "hotspawnPickedA": 0,
+   "hotspawnPickedB": 0,
+   "resolution": "unresolved",
+   "probA": null,
+   "probB": null,
+   "basis": null,
+   "confidence": "none",
+   "pick": null,
+   "pickProb": null,
+   "pickSide": null
+  },
+  {
+   "id": "1082007",
+   "competition": "LCP 2027 Promotion",
+   "competitionId": "35766",
+   "teamA": "Saigon Warriors",
+   "teamB": "Team Gromp",
+   "teamAId": "249229",
+   "teamBId": "263527",
+   "startUtc": "2026-11-10T09:00:00.000Z",
+   "startMs": 1794301200000,
+   "tier": "s",
+   "stage": "waiting for information",
+   "points": 30,
+   "lockTime": "2026-11-10T08:55:00.000Z",
+   "status": "upcoming",
+   "hotspawnUrl": "https://www.hotspawn.com/matches/saigon-warriors-vs-team-gromp-lcp-2027-promotion-1082007",
+   "hotspawnUrlSource": "lobby-card",
+   "hotspawnUrlUnverifiedGuess": null,
+   "hotspawnPickedA": 0,
+   "hotspawnPickedB": 0,
    "resolution": "unresolved",
    "probA": null,
    "probB": null,
